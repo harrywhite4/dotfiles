@@ -1,7 +1,4 @@
 set nocompatible              " be iMproved, required
-" minibufexpl
-let g:miniBufExplStatusLineText = ""
-let g:miniBufExplAutoStart = 1
 
 filetype off                  " required
 
@@ -63,7 +60,9 @@ set tabstop=2
 set shiftwidth=2
 set noswapfile
 
+" Toggle nerdtree on ctrl-n
 map <C-n> :NERDTreeToggle<CR>
+" Open nerdtree by default if no file specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
