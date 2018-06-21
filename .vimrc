@@ -1,4 +1,8 @@
 set nocompatible              " be iMproved, required
+" minibufexpl
+let g:miniBufExplStatusLineText = ""
+let g:miniBufExplAutoStart = 1
+
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -15,11 +19,12 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
-Plugin 'bling/vim-bufferline'
 Plugin 'klen/python-mode'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'tpope/vim-rhubarb'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'jarrodctaylor/vim-python-test-runner'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -35,6 +40,18 @@ let g:pymode_run = 0
 let g:pymode_motion = 0
 let g:pymode_rope = 0
 let g:pymode_rope_completion = 0
+
+" Command completion
+set wildmode=list:longest,full
+
+" Ignore case when searching
+set ignorecase
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
 " Misc stuff
 syntax enable
