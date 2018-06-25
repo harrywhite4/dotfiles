@@ -38,11 +38,15 @@ let g:pymode_motion = 0
 let g:pymode_rope = 0
 let g:pymode_rope_completion = 0
 
+" Leader
+let mapleader = ","
+
 " Command completion
 set wildmode=list:longest,full
 
-" Ignore case when searching
+" Ignore case when searching except when caps used
 set ignorecase
+set smartcase
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -50,15 +54,35 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Allow switching from unsaved buffer
+set hidden
+
+" Turn off backups
+set nobackup
+set nowb
+set noswapfile
+
+" Give cursor 7 lines
+set so=7
+
+" Spellcheck
+map <leader>ss :setlocal spell!<cr>
+
+" Colors
+set background=dark
+
+try
+    colorscheme solarized
+catch
+endtry
+
 " Misc stuff
 syntax enable
-set background=dark
-colorscheme solarized
 set number
 set expandtab
 set tabstop=2
 set shiftwidth=2
-set noswapfile
+map <leader>w :w<cr>
 
 " Toggle nerdtree on ctrl-n
 map <C-n> :NERDTreeToggle<CR>
