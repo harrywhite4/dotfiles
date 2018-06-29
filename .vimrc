@@ -43,6 +43,7 @@ let mapleader = ","
 
 " Command completion
 set wildmode=list:longest,full
+set wildmenu
 
 " Ignore case when searching except when caps used
 set ignorecase
@@ -82,7 +83,11 @@ set number
 set expandtab
 set tabstop=2
 set shiftwidth=2
+
+" Extra maps
 map <leader>w :w<cr>
+map <leader>n :cn<cr>
+map <leader>p :cp<cr>
 
 " Toggle nerdtree on ctrl-n
 map <C-n> :NERDTreeToggle<CR>
