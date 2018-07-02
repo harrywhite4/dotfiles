@@ -22,6 +22,7 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'jarrodctaylor/vim-python-test-runner'
+Plugin 'posva/vim-vue'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
