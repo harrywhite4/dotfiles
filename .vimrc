@@ -83,6 +83,7 @@ set number
 set expandtab
 set tabstop=2
 set shiftwidth=2
+set mouse=a
 
 " Extra maps
 map <leader>w :w<cr>
