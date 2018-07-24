@@ -41,9 +41,9 @@ let g:pymode_rope_completion = 0
 
 " ctrlp settings
 let g:ctrlp_follow_symlinks = 0
-let g:ctrlp_lazy_update = 1
+let g:ctrlp_lazy_update = 0
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](node_modules|venv|__pycache__)|(\.(git|hg|svn|tox|venv))$',
+  \ 'dir':  '\v[\/](node_modules|venv|__pycache__|data)|(\.(git|hg|svn|tox|venv))$',
   \ 'file': '\v\.(exe|so|dll|pyc|djcache)$',
   \ 'link': '',
   \ }
