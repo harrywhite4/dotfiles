@@ -39,10 +39,12 @@ let g:pymode_motion = 0
 let g:pymode_rope = 0
 let g:pymode_rope_completion = 0
 
-" ctrlp ignore
+" ctrlp settings
+let g:ctrlp_follow_symlinks = 0
+let g:ctrlp_lazy_update = 1
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](node_modules|venv)|(\.(git|hg|svn|tox|venv))$',
-  \ 'file': '\v\.(exe|so|dll|egg)$',
+  \ 'dir':  '\v[\/](node_modules|venv|__pycache__)|(\.(git|hg|svn|tox|venv))$',
+  \ 'file': '\v\.(exe|so|dll|pyc|djcache)$',
   \ 'link': '',
   \ }
 
