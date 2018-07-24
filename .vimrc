@@ -39,6 +39,13 @@ let g:pymode_motion = 0
 let g:pymode_rope = 0
 let g:pymode_rope_completion = 0
 
+" ctrlp ignore
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](node_modules|venv)|(\.(git|hg|svn|tox|venv))$',
+  \ 'file': '\v\.(exe|so|dll|egg)$',
+  \ 'link': '',
+  \ }
+
 " Leader
 let mapleader = ","
 
