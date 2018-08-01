@@ -21,8 +21,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'jarrodctaylor/vim-python-test-runner'
 Plugin 'posva/vim-vue'
+Plugin 'janko-m/vim-test'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -47,6 +47,9 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|pyc|djcache)$',
   \ 'link': '',
   \ }
+
+" vim-test settings
+let test#python#runner = 'djangotest'
 
 " Leader
 let mapleader = ","
