@@ -23,6 +23,7 @@ Plugin 'tpope/vim-rhubarb'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'posva/vim-vue'
 Plugin 'janko-m/vim-test'
+Plugin 'skywind3000/asyncrun.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -50,6 +51,10 @@ let g:ctrlp_custom_ignore = {
 
 " vim-test settings
 let test#python#runner = 'djangotest'
+let test#strategy = 'asyncrun'
+
+" asyncrun settings
+let g:asyncrun_open = 8
 
 " Leader
 let mapleader = ","
