@@ -54,7 +54,7 @@ let test#python#runner = 'djangotest'
 let test#strategy = 'asyncrun'
 
 " asyncrun settings
-let g:asyncrun_open = 8
+let g:asyncrun_open = 10
 
 " Leader
 let mapleader = ","
