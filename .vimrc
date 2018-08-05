@@ -56,6 +56,9 @@ let test#strategy = 'asyncrun'
 " asyncrun settings
 let g:asyncrun_open = 10
 
+" airline settings
+let g:airline#extensions#virtualenv#enabled = 0
+
 " Leader
 let mapleader = ","
 
