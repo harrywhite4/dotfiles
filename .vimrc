@@ -111,6 +111,9 @@ map <leader>w :w<cr>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
+" Clipboard as default register
+set clipboard=unnamedplus
+
 " Toggle nerdtree on ctrl-n
 map <C-n> :NERDTreeToggle<CR>
 " Open nerdtree by default if no file specified
