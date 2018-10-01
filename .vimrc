@@ -56,7 +56,10 @@ let test#python#runner = 'djangotest'
 let test#strategy = 'asyncrun'
 
 " asyncrun settings
-let g:asyncrun_open = 8
+let g:asyncrun_open = 10
+
+" airline settings
+let g:airline#extensions#virtualenv#enabled = 0
 
 " ale settings
 let g:ale_linters = {
@@ -120,6 +123,9 @@ map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 map <leader>g :Gstatus<cr>
 map <leader>a :ALEDetail<cr>
+
+" Clipboard as default register
+set clipboard=unnamedplus
 
 " Toggle nerdtree on ctrl-n
 map <C-n> :NERDTreeToggle<CR>
