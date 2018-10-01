@@ -118,6 +118,8 @@ set mouse=a
 map <leader>w :w<cr>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
+map <leader>g :Gstatus<cr>
+map <leader>a :ALEDetail<cr>
 
 " Toggle nerdtree on ctrl-n
 map <C-n> :NERDTreeToggle<CR>
