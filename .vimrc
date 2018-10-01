@@ -24,6 +24,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'posva/vim-vue'
 Plugin 'janko-m/vim-test'
 Plugin 'skywind3000/asyncrun.vim'
+Plugin 'w0rp/ale'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -56,6 +57,15 @@ let test#strategy = 'asyncrun'
 
 " asyncrun settings
 let g:asyncrun_open = 8
+
+" ale settings
+let g:ale_linters = {
+  \ 'python': ['flake8'],
+  \ 'javascript': ['eslint'],
+  \ }
+let g:ale_lint_on_text_changed = 'never' " Only run on save
+let g:airline#extensions#ale#enabled = 1
+" let g:ale_python_flake8_executable = 'pipenv'
 
 " Leader
 let mapleader = ","
