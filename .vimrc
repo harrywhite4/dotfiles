@@ -109,12 +109,15 @@ try
 catch
 endtry
 
+" Indentation
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+autocmd FileType html setlocal shiftwidth=2 softtabstop=2
+
 " Misc stuff
 syntax enable
 set number
-set expandtab
-set tabstop=2
-set shiftwidth=2
 set mouse=a
 
 " Extra maps
