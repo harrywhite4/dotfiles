@@ -11,20 +11,24 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Plugins 
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
-Plugin 'klen/python-mode'
-Plugin 'pangloss/vim-javascript'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'posva/vim-vue'
 Plugin 'janko-m/vim-test'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'w0rp/ale'
+
+" Language specific plugins
+Plugin 'klen/python-mode'
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/html5.vim'
+Plugin 'posva/vim-vue'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -108,6 +112,9 @@ try
     colorscheme solarized
 catch
 endtry
+
+" Vue
+autocmd FileType vue syntax sync fromstart
 
 " Indentation
 set expandtab
