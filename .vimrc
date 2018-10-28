@@ -23,6 +23,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'janko-m/vim-test'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'w0rp/ale'
+Plugin 'brooth/far.vim'
 
 " Language specific plugins
 Plugin 'klen/python-mode'
@@ -58,6 +59,7 @@ let g:ctrlp_custom_ignore = {
 " vim-test settings
 let test#python#runner = 'djangotest'
 let test#strategy = 'asyncrun'
+let test#python#djangotest#executable = 'pipenv run python manage.py test'
 
 " asyncrun settings
 let g:asyncrun_open = 10
