@@ -74,7 +74,8 @@ let g:ale_linters = {
   \ }
 let g:ale_lint_on_text_changed = 'never' " Only run on save
 let g:airline#extensions#ale#enabled = 1
-" let g:ale_python_flake8_executable = 'pipenv'
+let g:ale_echo_cursor = 0
+let g:ale_lint_on_insert_leave = 1
 
 " Leader
 let mapleader = ","
@@ -123,6 +124,9 @@ set expandtab
 set softtabstop=4
 set shiftwidth=4
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2
+autocmd FileType htmldjango setlocal shiftwidth=2 softtabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
+autocmd FileType json setlocal shiftwidth=2 softtabstop=2
 
 " Misc stuff
 syntax enable
