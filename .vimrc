@@ -74,8 +74,9 @@ let g:ale_linters = {
   \ }
 let g:ale_lint_on_text_changed = 'never' " Only run on save
 let g:airline#extensions#ale#enabled = 1
-let g:ale_echo_cursor = 0
 let g:ale_lint_on_insert_leave = 1
+let g:ale_echo_cursor = 0
+let g:ale_close_preview_on_insert = 1
 
 " Leader
 let mapleader = ","
@@ -138,7 +139,8 @@ map <leader>w :w<cr>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 map <leader>g :Gstatus<cr>
-map <leader>a :ALEDetail<cr>
+map <leader>a <Plug>(ale_detail)
+map <leader>t :TestLast<cr>
 
 " Clipboard as default register
 set clipboard=unnamedplus
