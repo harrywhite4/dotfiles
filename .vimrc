@@ -69,7 +69,7 @@ let g:airline#extensions#virtualenv#enabled = 0
 
 " ale settings
 let g:ale_linters = {
-  \ 'python': ['flake8'],
+  \ 'python': ['flake8', 'mypy'],
   \ 'javascript': ['eslint'],
   \ }
 let g:ale_lint_on_text_changed = 'never' " Only run on save
@@ -141,12 +141,14 @@ map <leader>p :cp<cr>
 map <leader>g :Gstatus<cr>
 map <leader>a <Plug>(ale_detail)
 map <leader>t :TestLast<cr>
+map <leader>d :setlocal filetype=htmldjango<cr>
 
 " Clipboard as default register
 set clipboard=unnamedplus
 
 " Toggle nerdtree on ctrl-n
 map <C-n> :NERDTreeToggle<CR>
+
 " Open nerdtree by default if no file specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
