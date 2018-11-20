@@ -75,8 +75,7 @@ let g:ale_linters = {
 let g:ale_lint_on_text_changed = 'never' " Only run on save
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_insert_leave = 1
-let g:ale_echo_cursor = 0
-let g:ale_close_preview_on_insert = 1
+let g:ale_echo_cursor = 1
 
 " Leader
 let mapleader = ","
