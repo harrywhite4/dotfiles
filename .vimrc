@@ -142,7 +142,7 @@ map <leader>a <Plug>(ale_detail)
 map <leader>t :TestNearest<cr>
 map <leader>l :TestLast<cr>
 map <leader>d :setlocal filetype=htmldjango<cr>
-map <leader>d <C-W>x
+map <leader>x <C-W>x
 
 " Clipboard as default register
 set clipboard=unnamedplus
