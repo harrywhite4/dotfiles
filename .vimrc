@@ -69,7 +69,7 @@ let g:airline#extensions#virtualenv#enabled = 0
 
 " ale settings
 let g:ale_linters = {
-  \ 'python': ['flake8', 'mypy'],
+  \ 'python': ['flake8'],
   \ 'javascript': ['eslint'],
   \ }
 let g:ale_lint_on_text_changed = 'never' " Only run on save
@@ -116,9 +116,6 @@ try
 catch
 endtry
 
-" Vue
-autocmd FileType vue syntax sync fromstart
-
 " Indentation
 set expandtab
 set softtabstop=4
@@ -132,6 +129,9 @@ autocmd FileType json setlocal shiftwidth=2 softtabstop=2
 syntax enable
 set number
 set mouse=a
+"
+" Vue
+autocmd FileType vue syntax sync fromstart
 
 " Extra maps
 map <leader>w :w<cr>
@@ -139,8 +139,10 @@ map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 map <leader>g :Gstatus<cr>
 map <leader>a <Plug>(ale_detail)
-map <leader>t :TestLast<cr>
+map <leader>t :TestNearest<cr>
+map <leader>l :TestLast<cr>
 map <leader>d :setlocal filetype=htmldjango<cr>
+map <leader>d <C-W>x
 
 " Clipboard as default register
 set clipboard=unnamedplus
