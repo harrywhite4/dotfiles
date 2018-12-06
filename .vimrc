@@ -105,9 +105,6 @@ set noswapfile
 " Give cursor 7 lines
 set so=7
 
-" Spellcheck
-map <leader>ss :setlocal spell!<cr>
-
 " Colors
 set background=dark
 
@@ -115,6 +112,10 @@ try
     colorscheme solarized
 catch
 endtry
+
+" Spellcheck
+map <leader>ss :setlocal spell!<cr>
+hi SpellBad cterm=underline ctermfg=red
 
 " Indentation
 set expandtab
