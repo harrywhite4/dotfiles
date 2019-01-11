@@ -40,6 +40,7 @@ let g:airline#extensions#default#layout = [
     \ [ 'a', 'b', 'c' ],
     \ [ 'x', 'y', 'error', 'warning' ]
     \ ]
+let g:airline#extensions#virtualenv#enabled = 0
 
 " Pymode
 " Defaults https://github.com/python-mode/python-mode/blob/develop/doc/pymode.txt
@@ -69,9 +70,6 @@ let test#python#djangotest#executable = 'pipenv run python manage.py test'
 
 " asyncrun settings
 let g:asyncrun_open = 10
-
-" airline settings
-let g:airline#extensions#virtualenv#enabled = 0
 
 " ale settings
 let g:ale_linters = {
@@ -136,7 +134,7 @@ autocmd FileType json setlocal shiftwidth=2 softtabstop=2
 syntax enable
 set number
 set mouse=a
-"
+
 " Vue
 autocmd FileType vue syntax sync fromstart
 
