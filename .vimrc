@@ -35,6 +35,12 @@ Plugin 'posva/vim-vue'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" Airline
+let g:airline#extensions#default#layout = [
+    \ [ 'a', 'b', 'c' ],
+    \ [ 'x', 'y', 'error', 'warning' ]
+    \ ]
+
 " Pymode
 " Defaults https://github.com/python-mode/python-mode/blob/develop/doc/pymode.txt
 " let g:pymode = 0
