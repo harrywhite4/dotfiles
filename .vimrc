@@ -117,10 +117,6 @@ try
 catch
 endtry
 
-" Spellcheck
-map <leader>ss :setlocal spell!<cr>
-hi SpellBad cterm=underline ctermfg=red
-
 " Indentation
 set expandtab
 set softtabstop=4
@@ -137,6 +133,10 @@ set mouse=a
 
 " Vue
 autocmd FileType vue syntax sync fromstart
+"
+" Spellcheck
+map <leader>ss :setlocal spell!<cr>
+hi SpellBad cterm=underline ctermfg=red
 
 " Extra maps
 map <leader>w :w<cr>
@@ -148,6 +148,7 @@ map <leader>t :TestNearest<cr>
 map <leader>l :TestLast<cr>
 map <leader>d :setlocal filetype=htmldjango<cr>
 map <leader>x <C-W>x
+map <leader>f :setlocal foldmethod=indent<cr>
 
 " Clipboard as default register
 set clipboard=unnamedplus
@@ -158,6 +159,7 @@ map <C-n> :NERDTreeToggle<CR>
 " Open nerdtree by default if no file specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
