@@ -27,6 +27,7 @@ Plugin 'brooth/far.vim'
 
 " Language specific plugins
 Plugin 'klen/python-mode'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/html5.vim'
 Plugin 'posva/vim-vue'
@@ -53,6 +54,9 @@ let g:pymode_motion = 0
 let g:pymode_rope = 0
 let g:pymode_rope_completion = 0
 let g:pymode_doc = 0
+
+" Jedi
+let g:jedi#popup_on_dot = 0
 
 " ctrlp settings
 let g:ctrlp_follow_symlinks = 0
@@ -154,6 +158,7 @@ map <leader>l :TestLast<cr>
 map <leader>d :setlocal filetype=htmldjango<cr>
 map <leader>x <C-W>x
 map <leader>f za
+map <leader>i :ALEDisableBuffer<cr>
 
 " Clipboard as default register
 set clipboard=unnamedplus
