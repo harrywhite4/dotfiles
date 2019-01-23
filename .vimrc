@@ -138,6 +138,11 @@ autocmd FileType vue syntax sync fromstart
 map <leader>ss :setlocal spell!<cr>
 hi SpellBad cterm=underline ctermfg=red
 
+" Folding
+set foldmethod=indent
+set foldnestmax=2
+set foldlevel=2
+
 " Extra maps
 map <leader>w :w<cr>
 map <leader>n :cn<cr>
@@ -148,7 +153,7 @@ map <leader>t :TestNearest<cr>
 map <leader>l :TestLast<cr>
 map <leader>d :setlocal filetype=htmldjango<cr>
 map <leader>x <C-W>x
-map <leader>f :setlocal foldmethod=indent<cr>
+map <leader>f za
 
 " Clipboard as default register
 set clipboard=unnamedplus
