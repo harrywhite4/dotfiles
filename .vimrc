@@ -56,7 +56,14 @@ let g:pymode_rope_completion = 0
 let g:pymode_doc = 0
 
 " Jedi
+let g:jedi#completions_command = "<C-N>"
 let g:jedi#popup_on_dot = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#goto_assignments_command = "<leader>ja"
+let g:jedi#usages_command = "<leader>ju"
+let g:jedi#goto_command = "<leader>jg"
+let g:jedi#documentation_command = ""
+let g:jedi#rename_command = "<leader>jr"
 
 " ctrlp settings
 let g:ctrlp_follow_symlinks = 0
@@ -152,7 +159,6 @@ map <leader>w :w<cr>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 map <leader>g :Gstatus<cr>
-map <leader>a <Plug>(ale_detail)
 map <leader>t :TestNearest<cr>
 map <leader>l :TestLast<cr>
 map <leader>d :setlocal filetype=htmldjango<cr>
