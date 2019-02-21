@@ -54,16 +54,22 @@ let g:pymode_motion = 0
 let g:pymode_rope = 0
 let g:pymode_rope_completion = 0
 let g:pymode_doc = 0
+let g:pymode_folding = 0
+let g:pymode_rope_show_doc_bind = ""
+let g:pymode_breakpoint = 0
+let g:pymode_options_max_line_length = 100
 
 " Jedi
 let g:jedi#completions_command = "<C-N>"
-let g:jedi#popup_on_dot = 0
-let g:jedi#auto_vim_configuration = 0
 let g:jedi#goto_assignments_command = "<leader>ja"
 let g:jedi#usages_command = "<leader>ju"
 let g:jedi#goto_command = "<leader>jg"
 let g:jedi#documentation_command = ""
 let g:jedi#rename_command = "<leader>jr"
+let g:jedi#show_call_signatures = "1"
+let g:jedi#popup_on_dot = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#completions_enabled = 0
 
 " ctrlp settings
 let g:ctrlp_follow_symlinks = 0
