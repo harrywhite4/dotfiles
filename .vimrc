@@ -26,7 +26,8 @@ Plugin 'w0rp/ale'
 Plugin 'brooth/far.vim'
 
 " Language specific plugins
-Plugin 'klen/python-mode'
+" Plugin 'klen/python-mode'
+Plugin 'vim-python/python-syntax'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/html5.vim'
@@ -43,9 +44,12 @@ let g:airline#extensions#default#layout = [
     \ ]
 let g:airline#extensions#virtualenv#enabled = 0
 
+
+" Python-syntax
+let g:python_highlight_all = 1
+
 " Pymode
 " Defaults https://github.com/python-mode/python-mode/blob/develop/doc/pymode.txt
-" let g:pymode = 0
 let g:pymode_python = 'python3'
 let g:pymode_lint = 0
 let g:pymode_breakpoint = 1
