@@ -28,6 +28,7 @@ Plugin 'brooth/far.vim'
 " Language specific plugins
 " Plugin 'klen/python-mode'
 Plugin 'vim-python/python-syntax'
+Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/html5.vim'
