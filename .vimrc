@@ -33,6 +33,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/html5.vim'
 Plugin 'posva/vim-vue'
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -147,6 +148,7 @@ autocmd FileType html setlocal shiftwidth=2 softtabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
 autocmd FileType json setlocal shiftwidth=2 softtabstop=2
+autocmd FileType go setlocal tabstop=4
 
 " Misc stuff
 syntax enable
