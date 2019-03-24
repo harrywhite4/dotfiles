@@ -34,6 +34,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'othree/html5.vim'
 Plugin 'posva/vim-vue'
 Plugin 'fatih/vim-go'
+Plugin 'jparise/vim-graphql'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
