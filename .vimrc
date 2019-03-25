@@ -78,6 +78,10 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#completions_enabled = 0
 
+" vim-go settings
+" disable fmt on save since we using ale for this
+let g:go_fmt_autosave = 0
+
 " ctrlp settings
 let g:ctrlp_follow_symlinks = 0
 let g:ctrlp_lazy_update = 0
@@ -99,11 +103,16 @@ let g:asyncrun_open = 10
 let g:ale_linters = {
   \ 'python': ['flake8'],
   \ 'javascript': ['eslint'],
+  \ 'go': ['gofmt', 'govet']
   \ }
-let g:ale_lint_on_text_changed = 'never' " Only run on save
+let g:ale_fixers = {
+  \ 'go': ['gofmt']
+  \ }
+let g:ale_lint_on_text_changed = 'never'
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_echo_cursor = 1
+let g:ale_fix_on_save = 1
 
 " Leader
 let mapleader = ","
