@@ -21,7 +21,6 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'janko-m/vim-test'
-Plugin 'skywind3000/asyncrun.vim'
 Plugin 'w0rp/ale'
 Plugin 'brooth/far.vim'
 
@@ -92,12 +91,11 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " vim-test settings
+let test#strategy = 'vimterminal'
 let test#python#runner = 'djangotest'
-let test#strategy = 'asyncrun'
 let test#python#djangotest#executable = 'pipenv run python manage.py test'
-
-" asyncrun settings
-let g:asyncrun_open = 10
+let test#go = 'gotest'
+let test#go#gotest#options = '-v'
 
 " ale settings
 let g:ale_linters = {
@@ -150,6 +148,9 @@ try
 catch
 endtry
 
+" Terminal size
+set termsize=10x0
+
 " Indentation
 set expandtab
 set softtabstop=4
@@ -167,7 +168,7 @@ set mouse=a
 
 " Vue
 autocmd FileType vue syntax sync fromstart
-"
+
 " Spellcheck
 map <leader>ss :setlocal spell!<cr>
 hi SpellBad cterm=underline ctermfg=red
