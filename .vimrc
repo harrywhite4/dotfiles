@@ -34,6 +34,7 @@ Plugin 'othree/html5.vim'
 Plugin 'posva/vim-vue'
 Plugin 'fatih/vim-go'
 Plugin 'jparise/vim-graphql'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -57,19 +58,21 @@ let g:pymode_lint = 0
 let g:pymode_breakpoint = 1
 let g:pymode_run = 0
 let g:pymode_motion = 0
-let g:pymode_rope = 0
+let g:pymode_rope = 1
+let g:pymode_rope_regenerate_on_write = 0
+let g:pymode_rope_lookup_project = 0
 let g:pymode_rope_completion = 0
+let g:pymode_rope_goto_definition_bind = '<C-]>'
 let g:pymode_doc = 0
 let g:pymode_folding = 0
-let g:pymode_rope_show_doc_bind = ""
 let g:pymode_breakpoint = 0
 let g:pymode_options_max_line_length = 100
 
 " Jedi
-let g:jedi#completions_command = "<C-N>"
+let g:jedi#completions_command = "<C-Space>"
 let g:jedi#goto_assignments_command = "<leader>ja"
 let g:jedi#usages_command = "<leader>ju"
-let g:jedi#goto_command = "<leader>jg"
+let g:jedi#goto_command = "<C-]>"
 let g:jedi#documentation_command = ""
 let g:jedi#rename_command = "<leader>jr"
 let g:jedi#show_call_signatures = "0"
@@ -104,13 +107,14 @@ let g:ale_linters = {
   \ 'go': ['gofmt', 'govet']
   \ }
 let g:ale_fixers = {
-  \ 'go': ['gofmt']
+  \ 'go': ['gofmt'],
+  \ 'python': ['autopep8']
   \ }
 let g:ale_lint_on_text_changed = 'never'
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_echo_cursor = 1
-let g:ale_fix_on_save = 1
+autocmd FileType go let b:ale_fix_on_save = 1 " Fix on save for golang
 
 " Leader
 let mapleader = ","
@@ -189,6 +193,8 @@ map <leader>d :setlocal filetype=htmldjango<cr>
 map <leader>x <C-W>x
 map <leader>f za
 map <leader>i :ALEDisableBuffer<cr>
+map <leader>f <Plug>(ale_fix)
+map <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
 
 " Clipboard as default register
 set clipboard=unnamedplus
