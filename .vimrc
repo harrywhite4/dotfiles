@@ -191,10 +191,10 @@ map <leader>t :TestNearest<cr>
 map <leader>l :TestLast<cr>
 map <leader>d :setlocal filetype=htmldjango<cr>
 map <leader>x <C-W>x
-map <leader>f za
 map <leader>i :ALEDisableBuffer<cr>
 map <leader>f <Plug>(ale_fix)
 map <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
+map <leader>e :bo terminal<cr>
 
 " Clipboard as default register
 set clipboard=unnamedplus
