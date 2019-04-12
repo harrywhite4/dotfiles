@@ -152,9 +152,6 @@ try
 catch
 endtry
 
-" Terminal size
-set termsize=10x0
-
 " Indentation
 set expandtab
 set softtabstop=4
@@ -195,6 +192,8 @@ map <leader>f za
 map <leader>i :ALEDisableBuffer<cr>
 map <leader>f <Plug>(ale_fix)
 map <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
+map <leader>e :bo terminal ++close ++rows=10<cr>
+map <leader>z :bo terminal ++close ++rows=30 lazygit<cr>
 
 " Clipboard as default register
 set clipboard=unnamedplus
