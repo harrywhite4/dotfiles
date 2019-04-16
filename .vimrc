@@ -179,6 +179,10 @@ set foldmethod=indent
 set foldnestmax=2
 set foldlevel=2
 
+" Windows
+set equalalways
+set eadirection="hor"
+
 " Extra maps
 map <leader>w :w<cr>
 map <leader>n :cn<cr>
@@ -194,16 +198,12 @@ map <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
 map <leader>e :bo terminal ++close ++rows=10<cr>
 map <leader>z :bo terminal ++close ++rows=30 lazygit<cr>
 
-" Clipboard as default register
-set clipboard=unnamedplus
-
 " Toggle nerdtree on ctrl-n
 map <C-n> :NERDTreeToggle<CR>
 
 " Open nerdtree by default if no file specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
