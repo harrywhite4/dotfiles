@@ -119,6 +119,9 @@ autocmd FileType go let b:ale_fix_on_save = 1 " Fix on save for golang
 " Leader
 let mapleader = ","
 
+" Backspace
+set backspace=indent,eol,start
+
 " Command completion
 set wildmode=list:longest,full
 set wildmenu
