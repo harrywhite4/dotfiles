@@ -122,6 +122,9 @@ let mapleader = ","
 " Backspace
 set backspace=indent,eol,start
 
+" Use ripgrep
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+
 " Command completion
 set wildmode=list:longest,full
 set wildmenu
