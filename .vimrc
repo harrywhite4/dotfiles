@@ -12,29 +12,20 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugins 
+Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'jlanzarotta/bufexplorer'
-Plugin 'tpope/vim-rhubarb'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'janko-m/vim-test'
 Plugin 'w0rp/ale'
-Plugin 'brooth/far.vim'
 
 " Language specific plugins
-" Plugin 'klen/python-mode'
-Plugin 'vim-python/python-syntax'
-Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'othree/html5.vim'
-Plugin 'posva/vim-vue'
 Plugin 'fatih/vim-go'
-Plugin 'jparise/vim-graphql'
-Plugin 'mustache/vim-mustache-handlebars'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -53,32 +44,32 @@ let g:python_highlight_all = 1
 
 " Pymode
 " Defaults https://github.com/python-mode/python-mode/blob/develop/doc/pymode.txt
-let g:pymode_python = 'python3'
-let g:pymode_lint = 0
-let g:pymode_breakpoint = 1
-let g:pymode_run = 0
-let g:pymode_motion = 0
-let g:pymode_rope = 1
-let g:pymode_rope_regenerate_on_write = 0
-let g:pymode_rope_lookup_project = 0
-let g:pymode_rope_completion = 0
-let g:pymode_rope_goto_definition_bind = '<C-]>'
-let g:pymode_doc = 0
-let g:pymode_folding = 0
-let g:pymode_breakpoint = 0
-let g:pymode_options_max_line_length = 100
+" let g:pymode_python = 'python3'
+" let g:pymode_lint = 0
+" let g:pymode_breakpoint = 1
+" let g:pymode_run = 0
+" let g:pymode_motion = 0
+" let g:pymode_rope = 1
+" let g:pymode_rope_regenerate_on_write = 0
+" let g:pymode_rope_lookup_project = 0
+" let g:pymode_rope_completion = 0
+" let g:pymode_rope_goto_definition_bind = '<C-]>'
+" let g:pymode_doc = 0
+" let g:pymode_folding = 0
+" let g:pymode_breakpoint = 0
+" let g:pymode_options_max_line_length = 100
 
 " Jedi
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#goto_assignments_command = "<leader>ja"
-let g:jedi#usages_command = "<leader>ju"
-let g:jedi#goto_command = "<C-]>"
-let g:jedi#documentation_command = ""
-let g:jedi#rename_command = "<leader>jr"
-let g:jedi#show_call_signatures = "0"
-let g:jedi#popup_on_dot = 0
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#completions_enabled = 0
+" let g:jedi#completions_command = "<C-Space>"
+" let g:jedi#goto_assignments_command = "<leader>ja"
+" let g:jedi#usages_command = "<leader>ju"
+" let g:jedi#goto_command = "<C-]>"
+" let g:jedi#documentation_command = ""
+" let g:jedi#rename_command = "<leader>jr"
+" let g:jedi#show_call_signatures = "0"
+" let g:jedi#popup_on_dot = 0
+" let g:jedi#auto_vim_configuration = 0
+" let g:jedi#completions_enabled = 0
 
 " vim-go settings
 " disable fmt on save since we using ale for this
@@ -122,6 +113,12 @@ let mapleader = ","
 " Backspace
 set backspace=indent,eol,start
 
+" Netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 0
+let g:netrw_altv = 1
+
 " Use ripgrep
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
@@ -157,6 +154,9 @@ try
     colorscheme solarized
 catch
 endtry
+
+" Give terminal dark background
+hi Terminal ctermbg=0
 
 " Indentation
 set expandtab
@@ -197,15 +197,13 @@ map <leader>g :Gstatus<cr>
 map <leader>t :TestNearest<cr>
 map <leader>l :TestLast<cr>
 map <leader>d :setlocal filetype=htmldjango<cr>
-map <leader>x <C-W>x
+map <leader>x <C-w>x
 map <leader>i :ALEDisableBuffer<cr>
 map <leader>f <Plug>(ale_fix)
 map <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
 map <leader>e :bo terminal ++close ++rows=10<cr>
 map <leader>z :bo terminal ++close ++rows=30 lazygit<cr>
-
-" Toggle nerdtree on ctrl-n
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<cr>
 
 " Open nerdtree by default if no file specified
 autocmd StdinReadPre * let s:std_in=1
