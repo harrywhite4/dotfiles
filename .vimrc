@@ -26,6 +26,7 @@ Plugin 'w0rp/ale'
 
 " Language specific plugins
 Plugin 'fatih/vim-go'
+Plugin 'davidhalter/jedi-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -42,34 +43,13 @@ let g:airline#extensions#virtualenv#enabled = 0
 " Python-syntax
 let g:python_highlight_all = 1
 
-" Pymode
-" Defaults https://github.com/python-mode/python-mode/blob/develop/doc/pymode.txt
-" let g:pymode_python = 'python3'
-" let g:pymode_lint = 0
-" let g:pymode_breakpoint = 1
-" let g:pymode_run = 0
-" let g:pymode_motion = 0
-" let g:pymode_rope = 1
-" let g:pymode_rope_regenerate_on_write = 0
-" let g:pymode_rope_lookup_project = 0
-" let g:pymode_rope_completion = 0
-" let g:pymode_rope_goto_definition_bind = '<C-]>'
-" let g:pymode_doc = 0
-" let g:pymode_folding = 0
-" let g:pymode_breakpoint = 0
-" let g:pymode_options_max_line_length = 100
-
-" Jedi
-" let g:jedi#completions_command = "<C-Space>"
-" let g:jedi#goto_assignments_command = "<leader>ja"
-" let g:jedi#usages_command = "<leader>ju"
-" let g:jedi#goto_command = "<C-]>"
-" let g:jedi#documentation_command = ""
-" let g:jedi#rename_command = "<leader>jr"
-" let g:jedi#show_call_signatures = "0"
-" let g:jedi#popup_on_dot = 0
-" let g:jedi#auto_vim_configuration = 0
-" let g:jedi#completions_enabled = 0
+" Jedi (only using omnifunc)
+let g:jedi#auto_initialization = 0
+let g:jedi#show_call_signatures = "0"
+let g:jedi#popup_on_dot = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#completions_enabled = 0
+autocmd FileType python setlocal omnifunc=jedi#completions
 
 " vim-go settings
 " disable fmt on save since we using ale for this
