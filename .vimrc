@@ -204,6 +204,9 @@ map <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
 map <leader>e :bo terminal ++close ++rows=10<cr>
 map <leader>z :bo terminal ++close ++rows=30 lazygit<cr>
 map <C-n> :NERDTreeToggle<cr>
+" Insert mode maps
+imap <C-Space> <C-x><C-o>
+imap <C-@> <C-Space>
 
 " Open nerdtree by default if no file specified
 autocmd StdinReadPre * let s:std_in=1
