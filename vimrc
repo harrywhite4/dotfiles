@@ -18,7 +18,6 @@ Plugin 'tpope/vim-rhubarb'
 " Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
 " Plugin 'airblade/vim-gitgutter'
-" Plugin 'vim-airline/vim-airline'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'janko-m/vim-test'
@@ -31,13 +30,6 @@ Plugin 'davidhalter/jedi-vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-
-" Airline
-let g:airline#extensions#default#layout = [
-    \ [ 'a', 'b', 'c' ],
-    \ [ 'x', 'y', 'error', 'warning' ]
-    \ ]
-let g:airline#extensions#virtualenv#enabled = 0
 
 " Jedi (only using omnifunc)
 let g:jedi#auto_initialization = 0
@@ -100,12 +92,13 @@ function GetLintErrorCount()
 endfunction
 set statusline=%<%2*%h%m%r\ %3*[%{FugitiveHead()}]\ %2*%{GetLintErrorCount()}\ %1*%f%=%L\ %p%%
 
-" Solarized hilights
+" Solarized highlights
 autocmd colorscheme solarized
     \ hi User1 ctermbg=0 ctermfg=14 |
     \ hi User2 ctermbg=0 ctermfg=1 |
     \ hi User3 ctermbg=0 ctermfg=5 |
-    \ hi Terminal ctermbg=0
+    \ hi Terminal ctermbg=0 |
+    \ hi SignColumn ctermbg=0 ctermfg=14
 
 " Netrw
 let g:netrw_banner = 0
