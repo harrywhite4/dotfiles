@@ -15,10 +15,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-airline/vim-airline'
+" Plugin 'airblade/vim-gitgutter'
+" Plugin 'vim-airline/vim-airline'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'janko-m/vim-test'
@@ -38,10 +38,6 @@ let g:airline#extensions#default#layout = [
     \ [ 'x', 'y', 'error', 'warning' ]
     \ ]
 let g:airline#extensions#virtualenv#enabled = 0
-
-
-" Python-syntax
-let g:python_highlight_all = 1
 
 " Jedi (only using omnifunc)
 let g:jedi#auto_initialization = 0
@@ -93,6 +89,24 @@ let mapleader = ","
 " Backspace
 set backspace=indent,eol,start
 
+" Statusline
+set laststatus=2
+function GetLintErrorCount()
+    let lintErrorCount = ale#statusline#Count(bufnr(''))['total']
+    if lintErrorCount > 0
+        return lintErrorCount
+    endif
+    return ''
+endfunction
+set statusline=%<%2*%h%m%r\ %3*[%{FugitiveHead()}]\ %2*%{GetLintErrorCount()}\ %1*%f%=%L\ %p%%
+
+" Solarized hilights
+autocmd colorscheme solarized
+    \ hi User1 ctermbg=0 ctermfg=14 |
+    \ hi User2 ctermbg=0 ctermfg=1 |
+    \ hi User3 ctermbg=0 ctermfg=5 |
+    \ hi Terminal ctermbg=0
+
 " Netrw
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -134,9 +148,6 @@ try
     colorscheme solarized
 catch
 endtry
-
-" Give terminal dark background
-hi Terminal ctermbg=0
 
 " Indentation
 set expandtab
@@ -189,8 +200,8 @@ imap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
 
 " Open nerdtree by default if no file specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
