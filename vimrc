@@ -84,6 +84,16 @@ set backspace=indent,eol,start
 " Statusline
 set laststatus=2
 
+function GetModified()
+    if !&modifiable
+        return "[NM]"
+    endif
+    if &modified
+        return "[Modified]"
+    endif
+    return ""
+endfunction
+
 function GetLintErrorCount()
     let lintErrorCount = ale#statusline#Count(bufnr(''))['total']
     if lintErrorCount > 0
@@ -92,10 +102,18 @@ function GetLintErrorCount()
     return ''
 endfunction
 
+function GetBranchName()
+    let branchName = FugitiveHead()
+    if len(branchName)
+        return "[" . branchName . "]"
+    endif
+    return ""
+endfunction
+
 set statusline=
 set statusline+=%1*%n\                            " Buffer number
-set statusline+=%2*%m%r%4*%h%w%q\                 " Flags
-set statusline+=%3*[%{FugitiveHead()}]\           " Git branch
+set statusline+=%2*%{GetModified()}%r%4*%h%w%q\   " Flags
+set statusline+=%3*%{GetBranchName()}\            " Git branch
 set statusline+=%2*%{GetLintErrorCount()}\        " Lint Errors
 set statusline+=%1*%f                             " File name
 set statusline+=%=                                " Seperate left and right
