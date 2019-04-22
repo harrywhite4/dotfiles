@@ -94,7 +94,7 @@ endfunction
 
 set statusline=
 set statusline+=%1*%n\                            " Buffer number
-set statusline+=%2*%m%r%h%w%q\                    " Flags
+set statusline+=%2*%m%r%4*%h%w%q\                 " Flags
 set statusline+=%3*[%{FugitiveHead()}]\           " Git branch
 set statusline+=%2*%{GetLintErrorCount()}\        " Lint Errors
 set statusline+=%1*%f                             " File name
