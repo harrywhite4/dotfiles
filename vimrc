@@ -83,6 +83,7 @@ set backspace=indent,eol,start
 
 " Statusline
 set laststatus=2
+
 function GetLintErrorCount()
     let lintErrorCount = ale#statusline#Count(bufnr(''))['total']
     if lintErrorCount > 0
@@ -90,13 +91,22 @@ function GetLintErrorCount()
     endif
     return ''
 endfunction
-set statusline=%<%2*%h%m%r\ %3*[%{FugitiveHead()}]\ %2*%{GetLintErrorCount()}\ %1*%f%=%L\ %p%%
+
+set statusline=
+set statusline+=%1*%n\                            " Buffer number
+set statusline+=%2*%m%r%h%w%q\                    " Flags
+set statusline+=%3*[%{FugitiveHead()}]\           " Git branch
+set statusline+=%2*%{GetLintErrorCount()}\        " Lint Errors
+set statusline+=%1*%f                             " File name
+set statusline+=%=                                " Seperate left and right
+set statusline+=%4*%y\ %1*%L\ %p%%                " Type + stats
 
 " Solarized highlights
 autocmd colorscheme solarized
     \ hi User1 ctermbg=0 ctermfg=14 |
     \ hi User2 ctermbg=0 ctermfg=1 |
     \ hi User3 ctermbg=0 ctermfg=5 |
+    \ hi User4 ctermbg=0 ctermfg=4 |
     \ hi Terminal ctermbg=0 |
     \ hi SignColumn ctermbg=0 ctermfg=14
 
@@ -177,20 +187,21 @@ set equalalways
 set eadirection="hor"
 
 " Extra maps
-map <leader>w :w<cr>
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
-map <leader>g :Gstatus<cr>
-map <leader>t :TestNearest<cr>
-map <leader>l :TestLast<cr>
-map <leader>d :setlocal filetype=htmldjango<cr>
-map <leader>x <C-w>x
-map <leader>i :ALEDisableBuffer<cr>
-map <leader>f <Plug>(ale_fix)
 map <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
+map <leader>4 :setlocal shiftwidth=4 softtabstop=4<cr>
+map <leader>d :setlocal filetype=htmldjango<cr>
 map <leader>e :bo terminal ++close ++rows=10<cr>
+map <leader>f <Plug>(ale_fix)
+map <leader>g :Gstatus<cr>
+map <leader>i :ALEDisableBuffer<cr>
+map <leader>l :TestLast<cr>
+map <leader>r :%s/\<<C-r><C-w>\>/
+map <leader>t :TestNearest<cr>
+map <leader>w :w<cr>
+map <leader>x :Rex<cr>
 map <leader>z :bo terminal ++close ++rows=30 lazygit<cr>
-map <C-n> :NERDTreeToggle<cr>
+map <C-n> :cn<cr>
+map <C-p> :cp<cr>
 " Insert mode maps
 imap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
