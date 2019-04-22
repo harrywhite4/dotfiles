@@ -125,7 +125,7 @@ autocmd colorscheme solarized
     \ hi User2 ctermbg=0 ctermfg=1 |
     \ hi User3 ctermbg=0 ctermfg=5 |
     \ hi User4 ctermbg=0 ctermfg=4 |
-    \ hi Terminal ctermbg=0 |
+    \ hi link Terminal Normal |
     \ hi SignColumn ctermbg=0 ctermfg=14
 
 " Netrw
