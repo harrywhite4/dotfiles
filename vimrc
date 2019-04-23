@@ -84,6 +84,9 @@ set backspace=indent,eol,start
 " Statusline
 set laststatus=2
 
+" Tags
+set tags+=./.git/tags
+
 function GetModified()
     if !&modifiable
         return "[NM]"
