@@ -217,7 +217,7 @@ map <leader>4 :setlocal shiftwidth=4 softtabstop=4<cr>
 map <leader>d :setlocal filetype=htmldjango<cr>
 map <leader>e :bo terminal ++close ++rows=10<cr>
 map <leader>f <Plug>(ale_fix)
-map <leader>g :Gstatus<cr>
+map <leader>g :15split \| Gedit :<cr>
 map <leader>i :ALEDisableBuffer<cr>
 map <leader>l :TestLast<cr>
 map <leader>n :cn<cr>
