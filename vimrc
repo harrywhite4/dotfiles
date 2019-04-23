@@ -111,21 +111,28 @@ function GetBranchName()
 endfunction
 
 set statusline=
-set statusline+=%1*%n\                            " Buffer number
-set statusline+=%2*%{GetModified()}%r%4*%h%w%q\   " Flags
-set statusline+=%3*%{GetBranchName()}\            " Git branch
-set statusline+=%2*%{GetLintErrorCount()}\        " Lint Errors
-set statusline+=%1*%f                             " File name
-set statusline+=%=                                " Seperate left and right
-set statusline+=%4*%y\ %1*%L\ %p%%                " Type + stats
+set statusline+=%#PmenuSel#
+set statusline+=\ %n\                      " Buffer number
+set statusline+=%{GetBranchName()}\        " Git branch
+set statusline+=%#DiffText#
+set statusline+=%(%h%w%q\ %)                 " Flags
+set statusline+=%#DiffDelete#
+set statusline+=%(%{GetLintErrorCount()}\ %{GetModified()}%r%)       " Error Flags
+set statusline+=%0*
+set statusline+=\ %f                         " File name
+set statusline+=%=                         " Seperate left and right
+set statusline+=%#DiffText#
+set statusline+=%y\                        " Type 
+set statusline+=%#PMenuSel#
+set statusline+=\ %L\ %p%%\                " Stats
 
 " Solarized highlights
-autocmd colorscheme solarized
-    \ hi User1 ctermbg=0 ctermfg=14 |
-    \ hi User2 ctermbg=0 ctermfg=1 |
-    \ hi User3 ctermbg=0 ctermfg=5 |
-    \ hi User4 ctermbg=0 ctermfg=4 |
+autocmd colorscheme *
     \ hi link Terminal Normal |
+    \ hi StatusLine cterm=NONE ctermfg=7 ctermbg=0 |
+    \ hi StatusLineNC cterm=NONE ctermfg=10 ctermbg=0 |
+    \ hi StatusLineTerm cterm=NONE ctermfg=2 ctermbg=0 |
+    \ hi StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=0 |
     \ hi SignColumn ctermbg=0 ctermfg=14
 
 " Netrw
