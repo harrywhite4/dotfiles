@@ -105,7 +105,7 @@ endfunction
 function GetBranchName()
     let branchName = FugitiveHead()
     if len(branchName)
-        return "[" . branchName . "]"
+        return "[" . branchName . "] "
     endif
     return ""
 endfunction
@@ -115,16 +115,16 @@ set statusline+=%#PmenuSel#
 set statusline+=\ %n\                      " Buffer number
 set statusline+=%{GetBranchName()}\        " Git branch
 set statusline+=%#DiffText#
-set statusline+=%(%h%w%q\ %)                 " Flags
+set statusline+=%(\ %h%w%q%)                 " Flags
 set statusline+=%#DiffDelete#
-set statusline+=%(%{GetLintErrorCount()}\ %{GetModified()}%r%)       " Error Flags
-set statusline+=%0*
+set statusline+=%(\ %{GetLintErrorCount()}%{GetModified()}%r%)       " Error Flags
+set statusline+=%<%0*
 set statusline+=\ %f                         " File name
 set statusline+=%=                         " Seperate left and right
 set statusline+=%#DiffText#
-set statusline+=%y\                        " Type 
+set statusline+=\ %y\                        " Type 
 set statusline+=%#PMenuSel#
-set statusline+=\ %L\ %p%%\                " Stats
+set statusline+=\ %LL\ %p%%\                " Stats
 
 " Solarized highlights
 autocmd colorscheme *
