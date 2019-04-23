@@ -135,7 +135,7 @@ let g:netrw_browse_split = 0
 let g:netrw_altv = 1
 let g:netrw_altfile = 1
 let g:netrw_sizestyle = "h"
-let g:netrw_fastbrowse = 2
+let g:netrw_fastbrowse = 0
 
 " Use ripgrep
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
@@ -213,13 +213,13 @@ map <leader>f <Plug>(ale_fix)
 map <leader>g :Gstatus<cr>
 map <leader>i :ALEDisableBuffer<cr>
 map <leader>l :TestLast<cr>
+map <leader>n :cn<cr>
+map <leader>p :cp<cr>
 map <leader>r :%s/\<<C-r><C-w>\>/
 map <leader>t :TestNearest<cr>
 map <leader>w :w<cr>
 map <leader>x :Rex<cr>
 map <leader>z :bo terminal ++close ++rows=30 lazygit<cr>
-map <C-n> :cn<cr>
-map <C-p> :cp<cr>
 " Insert mode maps
 imap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
