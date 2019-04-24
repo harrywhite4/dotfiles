@@ -46,11 +46,8 @@ let g:go_fmt_autosave = 0
 " ctrlp settings
 let g:ctrlp_follow_symlinks = 0
 let g:ctrlp_lazy_update = 0
-" let g:ctrlp_custom_ignore = {
-"   \ 'dir':  '\v[\/](node_modules|venv|__pycache__|data)|(\.(git|hg|svn|tox|venv))$',
-"   \ 'file': '\v\.(exe|so|dll|pyc|djcache)$',
-"   \ 'link': '',
-"   \ }
+" Much faster listing at the expense of only working on git repos & notlisting untracked files
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 " vim-test settings
 let test#strategy = 'vimterminal'
@@ -87,15 +84,16 @@ set laststatus=2
 " Tags
 set tags+=./.git/tags
 
-" Wildignore (affects ctrl-p aswell)
+" Wildignore
 set wildignore=*.exe,*.dll,*.so,*.pyc
-set wildignore+=*/.git/*
+set wildignore+=*/.git/objects/*
+set wildignore+=*/.git/logs/*
+set wildignore+=*/.git/refs/*
 set wildignore+=*/__pycache__/*
 set wildignore+=*__pycache__
 set wildignore+=*/.venv/*
 set wildignore+=*/.tox/*
 set wildignore+=*/.mypy_cache/*
-set wildignore+=*djcache
 set wildignore+=*/node_modules/*
 set wildignore+=*/dist/*
 
