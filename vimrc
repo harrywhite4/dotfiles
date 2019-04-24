@@ -46,11 +46,11 @@ let g:go_fmt_autosave = 0
 " ctrlp settings
 let g:ctrlp_follow_symlinks = 0
 let g:ctrlp_lazy_update = 0
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](node_modules|venv|__pycache__|data)|(\.(git|hg|svn|tox|venv))$',
-  \ 'file': '\v\.(exe|so|dll|pyc|djcache)$',
-  \ 'link': '',
-  \ }
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\v[\/](node_modules|venv|__pycache__|data)|(\.(git|hg|svn|tox|venv))$',
+"   \ 'file': '\v\.(exe|so|dll|pyc|djcache)$',
+"   \ 'link': '',
+"   \ }
 
 " vim-test settings
 let test#strategy = 'vimterminal'
@@ -87,6 +87,22 @@ set laststatus=2
 " Tags
 set tags+=./.git/tags
 
+" Wildignore (affects ctrl-p aswell)
+set wildignore=*.exe,*.dll,*.so,*.pyc
+set wildignore+=*/.git/*
+set wildignore+=*/__pycache__/*
+set wildignore+=*__pycache__
+set wildignore+=*/.venv/*
+set wildignore+=*/.tox/*
+set wildignore+=*/.mypy_cache/*
+set wildignore+=*djcache
+set wildignore+=*/node_modules/*
+set wildignore+=*/dist/*
+
+" Path
+set path=.,**
+
+" Statusline
 function GetModified()
     if !&modifiable
         return "[NM]"
@@ -129,7 +145,7 @@ set statusline+=\ %y\                        " Type
 set statusline+=%#PMenuSel#
 set statusline+=\ %LL\ %p%%\                " Stats
 
-" Solarized highlights
+" Highlights
 autocmd colorscheme *
     \ hi link Terminal Normal |
     \ hi StatusLine cterm=NONE ctermfg=7 ctermbg=0 |
