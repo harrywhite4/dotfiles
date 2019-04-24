@@ -50,7 +50,11 @@ let g:ctrlp_lazy_update = 0
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 " vim-test settings
-let test#strategy = 'vimterminal'
+function! SmTerminalStrategy(cmd)
+    execute "bo terminal ++rows=15 ".a:cmd
+endfunction
+let g:test#custom_strategies = {'smterminal': function('SmTerminalStrategy')}
+let test#strategy = 'smterminal'
 let test#python#runner = 'djangotest'
 let test#python#djangotest#executable = 'pipenv run python manage.py test'
 let test#go = 'gotest'
