@@ -170,7 +170,7 @@ let g:netrw_fastbrowse = 0
 
 " Use ripgrep if avaliable
 if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+    set grepprg=rg\ --vimgrep\ --smart-case
 endif
 
 " Command completion
