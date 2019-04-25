@@ -165,8 +165,10 @@ let g:netrw_altfile = 1
 let g:netrw_sizestyle = "h"
 let g:netrw_fastbrowse = 0
 
-" Use ripgrep
-set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+" Use ripgrep if avaliable
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+endif
 
 " Command completion
 set wildmode=list:longest,full
@@ -199,6 +201,7 @@ set background=dark
 try
     colorscheme solarized
 catch
+    colorscheme darkblue
 endtry
 
 " Indentation
