@@ -11,7 +11,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Plugins 
+" Plugins
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
@@ -75,6 +75,9 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_echo_cursor = 1
 autocmd FileType go let b:ale_fix_on_save = 1 " Fix on save for golang
+
+" Buf explorer
+let g:bufExplorerDisableDefaultKeyMapping=1
 
 " Leader
 let mapleader = ","
@@ -143,7 +146,7 @@ set statusline+=%<%0*
 set statusline+=\ %f                         " File name
 set statusline+=%=                         " Seperate left and right
 set statusline+=%#DiffText#
-set statusline+=\ %y\                        " Type 
+set statusline+=\ %y\                        " Type
 set statusline+=%#PMenuSel#
 set statusline+=\ %LL\ %p%%\                " Stats
 
@@ -223,7 +226,6 @@ set mouse=a
 autocmd FileType vue syntax sync fromstart
 
 " Spellcheck
-map <leader>ss :setlocal spell!<cr>
 hi SpellBad cterm=underline ctermfg=red
 
 " Folding
@@ -235,12 +237,27 @@ set foldlevel=2
 set equalalways
 set eadirection="hor"
 
-" Extra maps
+" Misc functions
+function! StripTrailingWhitespace()
+  " Stips whitespace while maintaining cursor position
+  if !&binary && &filetype != 'diff'
+    normal mz
+    normal Hmy
+    %s/\s\+$//e
+    normal 'yz<CR>
+    normal `z
+  endif
+endfunction
+
+" Mappings
+map <F2> :call StripTrailingWhitespace()<cr>
+map <F3> <Plug>(ale_fix)
+map <F4> :setlocal spell!<cr>
 map <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
 map <leader>4 :setlocal shiftwidth=4 softtabstop=4<cr>
 map <leader>d :setlocal filetype=htmldjango<cr>
+map <leader>b :BufExplorer<cr>
 map <leader>e :bo terminal ++close ++rows=10<cr>
-map <leader>f <Plug>(ale_fix)
 map <leader>g :15split \| Gedit :<cr>
 map <leader>i :ALEDisableBuffer<cr>
 map <leader>l :TestLast<cr>
@@ -249,7 +266,7 @@ map <leader>p :cp<cr>
 map <leader>r :%s/\<<C-r><C-w>\>/
 map <leader>t :TestNearest<cr>
 map <leader>w :w<cr>
-map <leader>x :Rex<cr>
+map <leader>x :Ex<cr>
 map <leader>z :bo terminal ++close ++rows=30 lazygit<cr>
 " Insert mode maps
 imap <C-Space> <C-x><C-o>
