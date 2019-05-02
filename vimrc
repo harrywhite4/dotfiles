@@ -204,7 +204,7 @@ set background=dark
 try
     colorscheme solarized
 catch
-    colorscheme darkblue
+    colorscheme slate
 endtry
 
 " Indentation
