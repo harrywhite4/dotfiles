@@ -32,11 +32,11 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Jedi (only using omnifunc)
-let g:jedi#auto_initialization = 0
-let g:jedi#show_call_signatures = "0"
-let g:jedi#popup_on_dot = 0
 let g:jedi#auto_vim_configuration = 0
+let g:jedi#auto_initialization = 0
+let g:jedi#popup_on_dot = 0
 let g:jedi#completions_enabled = 0
+let g:jedi#show_call_signatures = "0"
 autocmd FileType python setlocal omnifunc=jedi#completions
 
 " vim-go settings
@@ -177,6 +177,9 @@ endif
 " Command completion
 set wildmode=list:longest,full
 set wildmenu
+
+" Completion
+set completeopt=menuone,longest,preview
 
 " Ignore case when searching except when caps used
 set ignorecase
