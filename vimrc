@@ -42,6 +42,7 @@ autocmd FileType python setlocal omnifunc=jedi#completions
 " vim-go settings
 " disable fmt on save since we using ale for this
 let g:go_fmt_autosave = 0
+let g:go_version_warning = 0
 
 " ctrlp settings
 let g:ctrlp_follow_symlinks = 0
