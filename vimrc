@@ -33,16 +33,17 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Jedi (only using omnifunc)
-let g:jedi#auto_initialization = 0
-let g:jedi#show_call_signatures = "0"
-let g:jedi#popup_on_dot = 0
 let g:jedi#auto_vim_configuration = 0
+let g:jedi#auto_initialization = 0
+let g:jedi#popup_on_dot = 0
 let g:jedi#completions_enabled = 0
+let g:jedi#show_call_signatures = "0"
 autocmd FileType python setlocal omnifunc=jedi#completions
 
 " vim-go settings
 " disable fmt on save since we using ale for this
 let g:go_fmt_autosave = 0
+let g:go_version_warning = 0
 
 " ctrlp settings
 let g:ctrlp_follow_symlinks = 0
@@ -178,7 +179,8 @@ endif
 set wildmode=list:longest,full
 set wildmenu
 
-" C-N C-P completion
+" Completion
+set completeopt=menuone,longest,preview
 set complete=.,w,b,u,t
 
 " Ignore case when searching except when caps used
@@ -208,7 +210,7 @@ set background=dark
 try
     colorscheme solarized
 catch
-    colorscheme darkblue
+    colorscheme slate
 endtry
 
 " Indentation
