@@ -1,3 +1,2 @@
-#!/bin/bash
-rm ~/.vimrc
-cp vimrc ~/.vimrc
+#!/bin/sh
+cp --backup vimrc ~/.vimrc
