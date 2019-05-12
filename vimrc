@@ -32,7 +32,7 @@ Plugin 'davidhalter/jedi-vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" Jedi (only using omnifunc)
+" Jedi
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#auto_initialization = 0
 let g:jedi#popup_on_dot = 0
@@ -44,6 +44,7 @@ autocmd FileType python setlocal omnifunc=jedi#completions
 " disable fmt on save since we using ale for this
 let g:go_fmt_autosave = 0
 let g:go_version_warning = 0
+let g:go_def_mapping_enabled = 0
 
 " ctrlp settings
 let g:ctrlp_follow_symlinks = 0
@@ -278,6 +279,9 @@ map <leader>z :bo terminal ++close ++rows=30 lazygit<cr>
 " Insert mode maps
 imap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
+" Filetype mappings
+autocmd filetype python map <leader><leader> :call jedi#goto()<cr>
+autocmd filetype go map <leader><leader> :GoDef<cr>
 
 " Open nerdtree by default if no file specified
 " autocmd StdinReadPre * let s:std_in=1
