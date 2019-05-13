@@ -49,8 +49,8 @@ let g:go_def_mapping_enabled = 0
 " ctrlp settings
 let g:ctrlp_follow_symlinks = 0
 let g:ctrlp_lazy_update = 0
-" Much faster listing at the expense of only working on git repos & notlisting untracked files
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+" Much faster listing when in a git repo
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " vim-test settings
 function! SmTerminalStrategy(cmd)
