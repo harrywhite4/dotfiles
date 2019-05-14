@@ -257,7 +257,7 @@ function! StripTrailingWhitespace()
   endif
 endfunction
 
-" Mappings
+" --- Mappings ---
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
@@ -267,9 +267,11 @@ nnoremap <F3> <Plug>(ale_fix)
 nnoremap <F4> :setlocal spell!<cr>
 nnoremap <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
 nnoremap <leader>4 :setlocal shiftwidth=4 softtabstop=4<cr>
-nnoremap <leader>d :setlocal filetype=htmldjango<cr>
 nnoremap <leader>b :BufExplorer<cr>
+nnoremap <leader>d :setlocal filetype=htmldjango<cr>
 nnoremap <leader>e :bo terminal ++close ++rows=10<cr>
+" Copy file path to register
+nnoremap <leader>f :let @" = expand("%")<cr>
 nnoremap <leader>g :Gstatus<cr>
 nnoremap <leader>i :ALEDisableBuffer<cr>
 nnoremap <leader>l :TestLast<cr>
@@ -280,9 +282,11 @@ nnoremap <leader>t :TestNearest<cr>
 nnoremap <leader>w :w<cr>
 nnoremap <leader>x :Ex<cr>
 nnoremap <leader>z :bo terminal ++close ++rows=30 lazygit<cr>
+
 " Insert mode maps
 imap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
+
 " Filetype mappings
 augroup typemaps
     autocmd!
