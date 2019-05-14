@@ -181,8 +181,9 @@ set wildmode=list:longest,full
 set wildmenu
 
 " Completion
-set completeopt=menuone,longest,preview
+set completeopt=menu,longest,preview
 set complete=.,w,b,u,t
+set pumheight=15
 
 " Ignore case when searching except when caps used
 set ignorecase
@@ -269,7 +270,6 @@ nnoremap <leader>4 :setlocal shiftwidth=4 softtabstop=4<cr>
 nnoremap <leader>d :setlocal filetype=htmldjango<cr>
 nnoremap <leader>b :BufExplorer<cr>
 nnoremap <leader>e :bo terminal ++close ++rows=10<cr>
-" nnoremap <leader>g :15split \| Gedit :<cr>
 nnoremap <leader>g :Gstatus<cr>
 nnoremap <leader>i :ALEDisableBuffer<cr>
 nnoremap <leader>l :TestLast<cr>
@@ -281,8 +281,11 @@ nnoremap <leader>w :w<cr>
 nnoremap <leader>x :Ex<cr>
 nnoremap <leader>z :bo terminal ++close ++rows=30 lazygit<cr>
 " Insert mode maps
-inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-Space>
+imap <C-Space> <C-x><C-o>
+imap <C-@> <C-Space>
 " Filetype mappings
-autocmd filetype python nnoremap <leader><leader> :call jedi#goto()<cr>
-autocmd filetype go nnoremap <leader><leader> :GoDef<cr>
+augroup typemaps
+    autocmd!
+    autocmd filetype python nnoremap <leader><leader> :call jedi#goto()<cr>
+    autocmd filetype go nnoremap <leader><leader> :GoDef<cr>
+augroup END
