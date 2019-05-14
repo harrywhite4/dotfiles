@@ -1,36 +1,23 @@
-set nocompatible              " be iMproved, required
-
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " Plugins
-Plugin 'sheerun/vim-polyglot'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'
-Plugin 'tpope/vim-vinegar'
-" Plugin 'scrooloose/nerdtree'
-Plugin 'altercation/vim-colors-solarized'
-" Plugin 'airblade/vim-gitgutter'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'janko-m/vim-test'
-Plugin 'w0rp/ale'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-vinegar'
+" Plug 'scrooloose/nerdtree'
+Plug 'altercation/vim-colors-solarized'
+" Plug 'airblade/vim-gitgutter'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'janko-m/vim-test'
+Plug 'w0rp/ale'
 
 " Language specific plugins
-Plugin 'fatih/vim-go'
-Plugin 'davidhalter/jedi-vim'
+Plug 'fatih/vim-go'
+Plug 'davidhalter/jedi-vim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 " Jedi
 let g:jedi#auto_vim_configuration = 0
@@ -122,17 +109,21 @@ function GetModified()
 endfunction
 
 function GetLintErrorCount()
-    let lintErrorCount = ale#statusline#Count(bufnr(''))['total']
-    if lintErrorCount > 0
-        return lintErrorCount
+    if exists("*ale#statusline#Count")
+        let lintErrorCount = ale#statusline#Count(bufnr(''))['total']
+        if lintErrorCount > 0
+            return lintErrorCount
+        endif
     endif
     return ''
 endfunction
 
 function GetBranchName()
-    let branchName = FugitiveHead()
-    if len(branchName)
-        return "[" . branchName . "] "
+    if exists("*FugitiveHead")
+        let branchName = FugitiveHead()
+        if len(branchName)
+            return "[" . branchName . "] "
+        endif
     endif
     return ""
 endfunction
@@ -282,19 +273,3 @@ imap <C-@> <C-Space>
 " Filetype mappings
 autocmd filetype python map <leader><leader> :call jedi#goto()<cr>
 autocmd filetype go map <leader><leader> :GoDef<cr>
-
-" Open nerdtree by default if no file specified
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
