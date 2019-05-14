@@ -25,7 +25,10 @@ let g:jedi#auto_initialization = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures = "0"
-autocmd FileType python setlocal omnifunc=jedi#completions
+augroup python
+    autocmd!
+    autocmd FileType python setlocal omnifunc=jedi#completions
+augroup END
 
 " vim-go settings
 " disable fmt on save since we using ale for this
@@ -64,7 +67,10 @@ let g:ale_lint_on_text_changed = 'never'
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_echo_cursor = 1
-autocmd FileType go let b:ale_fix_on_save = 1 " Fix on save for golang
+augroup golang
+    autocmd!
+    autocmd FileType go let b:ale_fix_on_save = 1 " Fix on save for golang
+augroup END
 
 " Buf explorer
 let g:bufExplorerDisableDefaultKeyMapping=1
@@ -145,13 +151,16 @@ set statusline+=%#PMenuSel#
 set statusline+=\ %LL\ %p%%\                " Stats
 
 " Highlights
-autocmd colorscheme *
-    \ hi link Terminal Normal |
-    \ hi StatusLine cterm=NONE ctermfg=7 ctermbg=0 |
-    \ hi StatusLineNC cterm=NONE ctermfg=10 ctermbg=0 |
-    \ hi StatusLineTerm cterm=NONE ctermfg=2 ctermbg=0 |
-    \ hi StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=0 |
-    \ hi SignColumn ctermbg=0 ctermfg=14
+augroup highlights
+    autocmd!
+    autocmd colorscheme *
+        \ highlight link Terminal Normal |
+        \ highlight StatusLine cterm=NONE ctermfg=7 ctermbg=0 |
+        \ highlight StatusLineNC cterm=NONE ctermfg=10 ctermbg=0 |
+        \ highlight StatusLineTerm cterm=NONE ctermfg=2 ctermbg=0 |
+        \ highlight StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=0 |
+        \ highlight SignColumn ctermbg=0 ctermfg=14
+augroup END
 
 " Netrw
 let g:netrw_banner = 0
@@ -179,12 +188,6 @@ set complete=.,w,b,u,t
 set ignorecase
 set smartcase
 
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
 " Allow switching from unsaved buffer
 set hidden
 
@@ -209,11 +212,14 @@ endtry
 set expandtab
 set softtabstop=4
 set shiftwidth=4
-autocmd FileType html setlocal shiftwidth=2 softtabstop=2
-autocmd FileType htmldjango setlocal shiftwidth=2 softtabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
-autocmd FileType json setlocal shiftwidth=2 softtabstop=2
-autocmd FileType go setlocal tabstop=4
+augroup indentation
+    autocmd!
+    autocmd FileType html setlocal shiftwidth=2 softtabstop=2
+    autocmd FileType htmldjango setlocal shiftwidth=2 softtabstop=2
+    autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
+    autocmd FileType json setlocal shiftwidth=2 softtabstop=2
+    autocmd FileType go setlocal tabstop=4
+augroup END
 
 " Misc stuff
 syntax enable
@@ -221,10 +227,13 @@ set number
 set mouse=a
 
 " Vue
-autocmd FileType vue syntax sync fromstart
+augroup vuejs
+    autocmd!
+    autocmd FileType vue syntax sync fromstart
+augroup END
 
 " Spellcheck
-hi SpellBad cterm=underline ctermfg=red
+highlight SpellBad cterm=underline ctermfg=red
 
 " Folding
 set foldmethod=indent
@@ -248,28 +257,32 @@ function! StripTrailingWhitespace()
 endfunction
 
 " Mappings
-map <F2> :call StripTrailingWhitespace()<cr>
-map <F3> <Plug>(ale_fix)
-map <F4> :setlocal spell!<cr>
-map <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
-map <leader>4 :setlocal shiftwidth=4 softtabstop=4<cr>
-map <leader>d :setlocal filetype=htmldjango<cr>
-map <leader>b :BufExplorer<cr>
-map <leader>e :bo terminal ++close ++rows=10<cr>
-" map <leader>g :15split \| Gedit :<cr>
-map <leader>g :Gstatus<cr>
-map <leader>i :ALEDisableBuffer<cr>
-map <leader>l :TestLast<cr>
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
-map <leader>r :%s/\<<C-r><C-w>\>/
-map <leader>t :TestNearest<cr>
-map <leader>w :w<cr>
-map <leader>x :Ex<cr>
-map <leader>z :bo terminal ++close ++rows=30 lazygit<cr>
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
+nnoremap <F2> :call StripTrailingWhitespace()<cr>
+nnoremap <F3> <Plug>(ale_fix)
+nnoremap <F4> :setlocal spell!<cr>
+nnoremap <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
+nnoremap <leader>4 :setlocal shiftwidth=4 softtabstop=4<cr>
+nnoremap <leader>d :setlocal filetype=htmldjango<cr>
+nnoremap <leader>b :BufExplorer<cr>
+nnoremap <leader>e :bo terminal ++close ++rows=10<cr>
+" nnoremap <leader>g :15split \| Gedit :<cr>
+nnoremap <leader>g :Gstatus<cr>
+nnoremap <leader>i :ALEDisableBuffer<cr>
+nnoremap <leader>l :TestLast<cr>
+nnoremap <leader>n :cn<cr>
+nnoremap <leader>p :cp<cr>
+nnoremap <leader>r :%s/\<<C-r><C-w>\>/
+nnoremap <leader>t :TestNearest<cr>
+nnoremap <leader>w :w<cr>
+nnoremap <leader>x :Ex<cr>
+nnoremap <leader>z :bo terminal ++close ++rows=30 lazygit<cr>
 " Insert mode maps
-imap <C-Space> <C-x><C-o>
-imap <C-@> <C-Space>
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-Space>
 " Filetype mappings
-autocmd filetype python map <leader><leader> :call jedi#goto()<cr>
-autocmd filetype go map <leader><leader> :GoDef<cr>
+autocmd filetype python nnoremap <leader><leader> :call jedi#goto()<cr>
+autocmd filetype go nnoremap <leader><leader> :GoDef<cr>
