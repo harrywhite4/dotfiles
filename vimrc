@@ -278,6 +278,7 @@ nnoremap <leader>l :TestLast<cr>
 nnoremap <leader>n :cn<cr>
 nnoremap <leader>p :cp<cr>
 nnoremap <leader>r :%s/\<<C-r><C-w>\>/
+nnoremap <leader>r :grep '<C-r><C-w>'
 nnoremap <leader>t :TestNearest<cr>
 nnoremap <leader>w :w<cr>
 nnoremap <leader>x :Ex<cr>
