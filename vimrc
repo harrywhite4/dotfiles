@@ -19,16 +19,15 @@ Plug 'davidhalter/jedi-vim'
 
 call plug#end()
 
+" ------------ Plugin Settings ----------
+
 " Jedi
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#auto_initialization = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures = "0"
-augroup python
-    autocmd!
-    autocmd FileType python setlocal omnifunc=jedi#completions
-augroup END
+" omnifunc is used in lanspecific augroup below
 
 " vim-go settings
 " disable fmt on save since we using ale for this
@@ -67,13 +66,20 @@ let g:ale_lint_on_text_changed = 'never'
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_echo_cursor = 1
-augroup golang
-    autocmd!
-    autocmd FileType go let b:ale_fix_on_save = 1 " Fix on save for golang
-augroup END
 
 " Buf explorer
 let g:bufExplorerDisableDefaultKeyMapping=1
+
+" ------------ Vim Settings ----------
+
+" Syntax highlighting
+syntax enable
+
+" Show line numbers
+set number
+
+" Enable mouse support
+set mouse=a
 
 " Leader
 let mapleader = ","
@@ -222,15 +228,15 @@ augroup indentation
     autocmd FileType go setlocal tabstop=4
 augroup END
 
-" Misc stuff
-syntax enable
-set number
-set mouse=a
-
-" Vue
-augroup vuejs
+" Lang specific settings
+augroup langspecific
     autocmd!
+    " Sync vue files from the start
     autocmd FileType vue syntax sync fromstart
+    " Use omnifunc from jedo
+    autocmd FileType python setlocal omnifunc=jedi#completions
+    " Fix on save for golang
+    autocmd FileType go let b:ale_fix_on_save = 1
 augroup END
 
 " Spellcheck
@@ -257,32 +263,46 @@ function! StripTrailingWhitespace()
   endif
 endfunction
 
-" --- Mappings ---
+" ---------- Mappings ----------
+"  Move around
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
+" Strip whitespace
 nnoremap <F2> :call StripTrailingWhitespace()<cr>
+" Autofix lint errors
 nnoremap <F3> <Plug>(ale_fix)
+" Toggle spellcheck
 nnoremap <F4> :setlocal spell!<cr>
+" Change indentation
 nnoremap <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
 nnoremap <leader>4 :setlocal shiftwidth=4 softtabstop=4<cr>
+" Explore buffers
 nnoremap <leader>b :BufExplorer<cr>
+" Set filetype to htmldjango
 nnoremap <leader>d :setlocal filetype=htmldjango<cr>
+" Open terminal
 nnoremap <leader>e :bo terminal ++close ++rows=10<cr>
 " Copy file path to register
 nnoremap <leader>f :let @" = expand("%")<cr>
+" Open git status
 nnoremap <leader>g :Gstatus<cr>
+" Disable ale for this duffer
 nnoremap <leader>i :ALEDisableBuffer<cr>
+" Run last test
 nnoremap <leader>l :TestLast<cr>
+" Navigate quickfix
 nnoremap <leader>n :cn<cr>
 nnoremap <leader>p :cp<cr>
+" Replace word under cursor
 nnoremap <leader>r :%s/\<<C-r><C-w>\>/
+" Grep word under cursor
 nnoremap <leader>r :grep '<C-r><C-w>'
+" Run nearest test
 nnoremap <leader>t :TestNearest<cr>
+" Save
 nnoremap <leader>w :w<cr>
-nnoremap <leader>x :Ex<cr>
-nnoremap <leader>z :bo terminal ++close ++rows=30 lazygit<cr>
 
 " Insert mode maps
 imap <C-Space> <C-x><C-o>
@@ -291,6 +311,8 @@ imap <C-@> <C-Space>
 " Filetype mappings
 augroup typemaps
     autocmd!
-    autocmd filetype python nnoremap <leader><leader> :call jedi#goto()<cr>
+    autocmd filetype python
+        \ nnoremap <leader><leader> :call jedi#goto()<cr> |
+        \ nnoremap K :call jedi#show_documentation()<cr>
     autocmd filetype go nnoremap <leader><leader> :GoDef<cr>
 augroup END
