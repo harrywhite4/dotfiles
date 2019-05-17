@@ -295,10 +295,10 @@ nnoremap <leader>l :TestLast<cr>
 " Navigate quickfix
 nnoremap <leader>n :cn<cr>
 nnoremap <leader>p :cp<cr>
-" Replace word under cursor
-nnoremap <leader>r :%s/\<<C-r><C-w>\>/
 " Grep word under cursor
 nnoremap <leader>r :grep '<C-r><C-w>'
+" Replace word under cursor
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 " Run nearest test
 nnoremap <leader>t :TestNearest<cr>
 " Save
