@@ -271,12 +271,12 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 " Strip whitespace
 nnoremap <F2> :call StripTrailingWhitespace()<cr>
-" Autofix lint errors
-nnoremap <F3> <Plug>(ale_fix)
 " Toggle spellcheck
-nnoremap <F4> :setlocal spell!<cr>
+nnoremap <F3> :setlocal spell!<cr>
 " Check files to reload
 nnoremap <F5> :checktime<cr>
+" Autofix lint errors
+nmap <F8> <Plug>(ale_fix)
 " Change indentation
 nnoremap <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
 nnoremap <leader>4 :setlocal shiftwidth=4 softtabstop=4<cr>
@@ -298,7 +298,7 @@ nnoremap <leader>l :TestLast<cr>
 nnoremap <leader>n :cn<cr>
 nnoremap <leader>p :cp<cr>
 " Grep word under cursor
-nnoremap <leader>r :grep '<C-r><C-w>'
+nnoremap <leader>r :grep! <C-r><C-w>
 " Replace word under cursor
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 " Run nearest test
