@@ -275,6 +275,8 @@ nnoremap <F2> :call StripTrailingWhitespace()<cr>
 nnoremap <F3> <Plug>(ale_fix)
 " Toggle spellcheck
 nnoremap <F4> :setlocal spell!<cr>
+" Check files to reload
+nnoremap <F5> :checktime<cr>
 " Change indentation
 nnoremap <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
 nnoremap <leader>4 :setlocal shiftwidth=4 softtabstop=4<cr>
