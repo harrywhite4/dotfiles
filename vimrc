@@ -5,6 +5,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 " Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'
 " Plug 'airblade/vim-gitgutter'
@@ -263,6 +265,18 @@ function! StripTrailingWhitespace()
   endif
 endfunction
 
+" If there is a window at pos close it
+function! CloseWin(pos)
+    let cur = winnr()
+    let id = winnr(a:pos)
+    if cur != id
+        execute id . "wincmd c"
+    endif
+endfunction
+
+" ---------- Commands ----------
+command -nargs=* Term execute "bo terminal ++rows=15 <args>"
+
 " ---------- Mappings ----------
 "  Move around
 nnoremap <C-j> <C-W>j
@@ -285,7 +299,7 @@ nnoremap <leader>b :BufExplorer<cr>
 " Set filetype to htmldjango
 nnoremap <leader>d :setlocal filetype=htmldjango<cr>
 " Open terminal
-nnoremap <leader>e :bo terminal ++close ++rows=10<cr>
+nnoremap <leader>e :bo terminal ++close ++rows=15<cr>
 " Copy file path to register
 nnoremap <leader>f :let @" = expand("%")<cr>
 " Open git status
@@ -297,6 +311,8 @@ nnoremap <leader>l :TestLast<cr>
 " Navigate quickfix
 nnoremap <leader>n :cn<cr>
 nnoremap <leader>p :cp<cr>
+" Close window below
+nnoremap <leader>q :call CloseWin("j")<cr>
 " Grep word under cursor
 nnoremap <leader>r :grep! <C-r><C-w>
 " Replace word under cursor
