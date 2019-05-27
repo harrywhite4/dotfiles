@@ -1,0 +1,14 @@
+#!/bin/sh
+# Adapted from https://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
+set -e
+# Set variables
+GIT_DIR=$(git rev-parse --git-dir)
+PID=$$
+TEMP_TAG_FILE="$GIT_DIR/$PID.tags"
+FIN_TAG_FILE="$GIT_DIR/tags"
+# Remove file if exist
+rm -f $TEMP_TAG_FILE
+# Tag files from git
+git ls-files | ctags --tag-relative=yes -L - -f $TEMP_TAG_FILE 
+# Replace tags file
+mv $TEMP_TAG_FILE $FIN_TAG_FILE
