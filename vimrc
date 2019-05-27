@@ -21,58 +21,7 @@ Plug 'davidhalter/jedi-vim'
 
 call plug#end()
 
-" ------------ Plugin Settings ----------
-
-" Jedi
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#auto_initialization = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#completions_enabled = 0
-let g:jedi#show_call_signatures = "0"
-" omnifunc is used in lanspecific augroup below
-
-" vim-go settings
-" disable fmt on save since we using ale for this
-let g:go_fmt_autosave = 0
-let g:go_version_warning = 0
-let g:go_def_mapping_enabled = 0
-
-" ctrlp settings
-let g:ctrlp_follow_symlinks = 0
-let g:ctrlp_lazy_update = 0
-" Much faster listing when in a git repo
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-
-" vim-test settings
-function! SmTerminalStrategy(cmd)
-    execute "bo terminal ++rows=15 ".a:cmd
-endfunction
-let g:test#custom_strategies = {'smterminal': function('SmTerminalStrategy')}
-let test#strategy = 'smterminal'
-let test#python#runner = 'djangotest'
-let test#python#djangotest#executable = 'pipenv run python manage.py test'
-let test#go = 'gotest'
-let test#go#gotest#options = '-v'
-
-" ale settings
-let g:ale_linters = {
-  \ 'python': ['flake8'],
-  \ 'javascript': ['eslint'],
-  \ 'go': ['gofmt', 'govet']
-  \ }
-let g:ale_fixers = {
-  \ 'go': ['gofmt'],
-  \ 'python': ['autopep8']
-  \ }
-let g:ale_lint_on_text_changed = 'never'
-let g:airline#extensions#ale#enabled = 1
-let g:ale_lint_on_insert_leave = 1
-let g:ale_echo_cursor = 1
-
-" Buf explorer
-let g:bufExplorerDisableDefaultKeyMapping=1
-
-" ------------ Vim Settings ----------
+" ---------- Base settings ----------
 
 " Syntax highlighting
 syntax enable
@@ -124,7 +73,7 @@ endfunction
 
 function GetLintErrorCount()
     if exists("*ale#statusline#Count")
-        let lintErrorCount = ale#statusline#Count(bufnr(''))['total']
+        let lintErrorCount = ale#statusline#Count(bufnr("%"))['total']
         if lintErrorCount > 0
             return lintErrorCount
         endif
@@ -253,9 +202,10 @@ set foldlevel=2
 set equalalways
 set eadirection="hor"
 
-" Misc functions
+" ---------- Functions ----------
+
+" Stips whitespace while maintaining cursor position
 function! StripTrailingWhitespace()
-  " Stips whitespace while maintaining cursor position
   if !&binary && &filetype != 'diff'
     normal mz
     normal Hmy
@@ -274,10 +224,36 @@ function! CloseWin(pos)
     endif
 endfunction
 
+" Open terminal reusing existing
+function! TermExec(command)
+    " Get all terminal buffers
+    let tlist = term_list()
+    for bufn in tlist
+        " If status is finished
+        let status = term_getstatus(bufn)
+        if status == "finished"
+            " If has a window on this tabpage
+            let window = bufwinnr(bufn)
+            if window != -1
+                " Reuse window
+                execute window . "wincmd w"
+                execute "terminal ++curwin" a:command
+                return bufnr("%")
+            endif
+        endif
+    endfor
+    " Create new window
+    execute "bo terminal ++rows=15" a:command
+    return bufnr("%")
+endfunction
+
 " ---------- Commands ----------
-command -nargs=* Term execute "bo terminal ++rows=15 <args>"
+
+command -nargs=* Term :call TermExec("<args>")
+command -nargs=+ Rg :Term rg --vimgrep --color always <args>
 
 " ---------- Mappings ----------
+
 "  Move around
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
@@ -334,3 +310,55 @@ augroup typemaps
         \ nnoremap K :call jedi#show_documentation()<cr>
     autocmd filetype go nnoremap <leader><leader> :GoDef<cr>
 augroup END
+
+
+" ------------ Plugin Settings ----------
+
+" Jedi
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#auto_initialization = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#completions_enabled = 0
+let g:jedi#show_call_signatures = "0"
+" omnifunc is used in lanspecific augroup above
+
+" vim-go settings
+" disable fmt on save since we using ale for this
+let g:go_fmt_autosave = 0
+let g:go_version_warning = 0
+let g:go_def_mapping_enabled = 0
+
+" ctrlp settings
+let g:ctrlp_follow_symlinks = 0
+let g:ctrlp_lazy_update = 0
+" Much faster listing when in a git repo
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+" vim-test settings
+function! SmTerminalStrategy(cmd)
+    execute TermExec(a:cmd)
+endfunction
+let g:test#custom_strategies = {'smterminal': function('SmTerminalStrategy')}
+let test#strategy = 'smterminal'
+let test#python#runner = 'djangotest'
+let test#python#djangotest#executable = 'pipenv run python manage.py test'
+let test#go = 'gotest'
+let test#go#gotest#options = '-v'
+
+" ale settings
+let g:ale_linters = {
+  \ 'python': ['flake8'],
+  \ 'javascript': ['eslint'],
+  \ 'go': ['gofmt', 'govet']
+  \ }
+let g:ale_fixers = {
+  \ 'go': ['gofmt'],
+  \ 'python': ['autopep8']
+  \ }
+let g:ale_lint_on_text_changed = 'never'
+let g:airline#extensions#ale#enabled = 1
+let g:ale_lint_on_insert_leave = 1
+let g:ale_echo_cursor = 1
+
+" Buf explorer
+let g:bufExplorerDisableDefaultKeyMapping=1
