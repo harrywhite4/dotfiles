@@ -36,6 +36,7 @@ alias grep="grep --color=auto"
 
 # General aliases
 alias ll="ls -lah"
+alias la="ls -a"
 alias x="exit"
 alias randompw="strings /dev/urandom | head -c 12 | tr -d \'\\n\' | base64"
 alias rgrep="grep -nr"
