@@ -1,3 +1,4 @@
 [alias]
+    s = status
     branches = branch --sort=-committerdate
     newbr = checkout upstream/develop --no-track -b
