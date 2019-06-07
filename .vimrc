@@ -33,7 +33,7 @@ set number
 set mouse=a
 
 " Leader
-let mapleader = ","
+let mapleader = "\<Space>"
 
 " Backspace
 set backspace=indent,eol,start
