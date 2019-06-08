@@ -23,6 +23,10 @@ call plug#end()
 
 " ---------- Base settings ----------
 
+" Open augroup
+augroup mygroup
+autocmd!
+
 " Syntax highlighting
 syntax enable
 
@@ -108,16 +112,12 @@ set statusline+=%#PMenuSel#
 set statusline+=\ %LL\ %p%%\                " Stats
 
 " Highlights
-augroup highlights
-    autocmd!
-    autocmd colorscheme *
-        \ highlight link Terminal Normal |
-        \ highlight StatusLine cterm=NONE ctermfg=7 ctermbg=0 |
-        \ highlight StatusLineNC cterm=NONE ctermfg=10 ctermbg=0 |
-        \ highlight StatusLineTerm cterm=NONE ctermfg=2 ctermbg=0 |
-        \ highlight StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=0 |
-        \ highlight SignColumn ctermbg=0 ctermfg=14
-augroup END
+autocmd colorscheme *
+    \ highlight link Terminal Normal |
+    \ highlight StatusLine cterm=NONE ctermfg=7 ctermbg=0 |
+    \ highlight StatusLineNC cterm=NONE ctermfg=10 ctermbg=0 |
+    \ highlight StatusLineTerm cterm=NONE ctermfg=2 ctermbg=0 |
+    \ highlight StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=0 |
 
 " Netrw
 let g:netrw_banner = 0
@@ -170,25 +170,19 @@ endtry
 set expandtab
 set softtabstop=4
 set shiftwidth=4
-augroup indentation
-    autocmd!
-    autocmd FileType html setlocal shiftwidth=2 softtabstop=2
-    autocmd FileType htmldjango setlocal shiftwidth=2 softtabstop=2
-    autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
-    autocmd FileType json setlocal shiftwidth=2 softtabstop=2
-    autocmd FileType go setlocal tabstop=4
-augroup END
+autocmd FileType html setlocal shiftwidth=2 softtabstop=2
+autocmd FileType htmldjango setlocal shiftwidth=2 softtabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
+autocmd FileType json setlocal shiftwidth=2 softtabstop=2
+autocmd FileType go setlocal tabstop=4
 
 " Lang specific settings
-augroup langspecific
-    autocmd!
-    " Sync vue files from the start
-    autocmd FileType vue syntax sync fromstart
-    " Use omnifunc from jedo
-    autocmd FileType python setlocal omnifunc=jedi#completions
-    " Fix on save for golang
-    autocmd FileType go let b:ale_fix_on_save = 1
-augroup END
+" Sync vue files from the start
+autocmd FileType vue syntax sync fromstart
+" Use omnifunc from jedo
+autocmd FileType python setlocal omnifunc=jedi#completions
+" Fix on save for golang
+autocmd FileType go let b:ale_fix_on_save = 1
 
 " Spellcheck
 highlight SpellBad cterm=underline ctermfg=red
@@ -201,6 +195,9 @@ set foldlevel=2
 " Windows
 set equalalways
 set eadirection="hor"
+
+" Formatting (see :h fo-table)
+autocmd FileType * setlocal formatoptions=crql
 
 " ---------- Functions ----------
 
@@ -303,13 +300,10 @@ imap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
 
 " Filetype mappings
-augroup typemaps
-    autocmd!
-    autocmd filetype python
-        \ nnoremap <leader><leader> :call jedi#goto()<cr> |
-        \ nnoremap K :call jedi#show_documentation()<cr>
-    autocmd filetype go nnoremap <leader><leader> :GoDef<cr>
-augroup END
+autocmd filetype python
+    \ nnoremap <leader><leader> :call jedi#goto()<cr> |
+    \ nnoremap K :call jedi#show_documentation()<cr>
+autocmd filetype go nnoremap <leader><leader> :GoDef<cr>
 
 
 " ------------ Plugin Settings ----------
@@ -346,19 +340,24 @@ let test#go = 'gotest'
 let test#go#gotest#options = '-v'
 
 " ale settings
+let g:ale_linters_explicit = 1
 let g:ale_linters = {
   \ 'python': ['flake8'],
   \ 'javascript': ['eslint'],
-  \ 'go': ['gofmt', 'govet']
+  \ 'go': ['gofmt', 'govet'],
+  \ 'cpp': ['cpplint']
   \ }
 let g:ale_fixers = {
   \ 'go': ['gofmt'],
   \ 'python': ['autopep8']
   \ }
-let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_text_changed = 'normal'
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_echo_cursor = 1
 
 " Buf explorer
 let g:bufExplorerDisableDefaultKeyMapping=1
+
+"End augroup
+augroup END
