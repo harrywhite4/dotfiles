@@ -118,6 +118,7 @@ autocmd colorscheme *
     \ highlight StatusLineNC cterm=NONE ctermfg=10 ctermbg=0 |
     \ highlight StatusLineTerm cterm=NONE ctermfg=2 ctermbg=0 |
     \ highlight StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=0 |
+    \ highlight SignColumn ctermbg=0 ctermfg=14
 
 " Netrw
 let g:netrw_banner = 0
