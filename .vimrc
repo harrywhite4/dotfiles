@@ -352,8 +352,8 @@ let g:ale_fixers = {
   \ 'go': ['gofmt'],
   \ 'python': ['autopep8']
   \ }
+let g:ale_set_highlights = 0
 let g:ale_lint_on_text_changed = 'normal'
-let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_echo_cursor = 1
 
