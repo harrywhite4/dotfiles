@@ -301,6 +301,9 @@ nnoremap <leader>w :w<cr>
 imap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
 
+" Visual mode maps
+vnoremap <leader>s :s/<C-r>"/
+
 " Filetype mappings
 autocmd filetype python
     \ nnoremap <leader><leader> :call jedi#goto()<cr> |
