@@ -7,11 +7,9 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-" Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'
-" Plug 'airblade/vim-gitgutter'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', {'dir': '~/.fzf'}
 Plug 'janko-m/vim-test'
 Plug 'w0rp/ale'
 
@@ -252,6 +250,8 @@ command -nargs=+ Rg :Term rg --vimgrep --color always <args>
 
 " ---------- Mappings ----------
 
+" FZF
+nnoremap <C-p> :FZF<cr>
 "  Move around
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
@@ -309,6 +309,9 @@ autocmd filetype go nnoremap <leader><leader> :GoDef<cr>
 
 " ------------ Plugin Settings ----------
 
+" FZF
+let g:fzf_layout = { 'down': '~30%' }
+
 " Jedi
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#auto_initialization = 0
@@ -322,12 +325,6 @@ let g:jedi#show_call_signatures = "0"
 let g:go_fmt_autosave = 0
 let g:go_version_warning = 0
 let g:go_def_mapping_enabled = 0
-
-" ctrlp settings
-let g:ctrlp_follow_symlinks = 0
-let g:ctrlp_lazy_update = 0
-" Much faster listing when in a git repo
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " vim-test settings
 function! SmTerminalStrategy(cmd)

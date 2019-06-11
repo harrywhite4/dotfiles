@@ -24,6 +24,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Load fzf if avaliable set default command
+if [ -f ~/.fzf.bash ]; then
+    export FZF_DEFAULT_COMMAND='rg --files'
+    source ~/.fzf.bash
+fi
+
 # Default editor
 export EDITOR="vim"
 
