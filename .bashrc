@@ -41,6 +41,7 @@ alias x="exit"
 alias randompw="strings /dev/urandom | head -c 12 | tr -d \'\\n\' | base64"
 alias rgrep="grep -nr"
 alias lg="lazygit"
+alias rovim="vim -MR"
 
 # Compilers
 alias g++="g++-8"
@@ -51,7 +52,7 @@ alias mostused="history | awk '{usage[\$2]+=1}END{for(key in usage){print key, u
 alias space="df -h | awk '{if(\$6==\"/\"||NR==1){print}}'"
 alias gitopen="firefox \$(git remote -v | awk '/origin/{print substr(\$2,0,length(\$2)-4);exit}')"
 alias paths="echo \$PATH | awk -F ':' '{for (i=1;i<NF;i++){print \$i}}'"
-alias temps="cat /sys/class/thermal/thermal_zone*/temp | awk '{print \"Core\" NR-1 \" \" \$1/1000 \"C\"}'"
+alias temps="cat /sys/class/thermal/thermal_zone*/temp | awk '{print \"Thermal Zone \" NR-1 \" \" \$1/1000 \"C\"}'"
 
 # Python
 alias python="python3"
