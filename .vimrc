@@ -246,8 +246,8 @@ endfunction
 " ---------- Commands ----------
 
 command -nargs=* Term :call TermExec("<args>")
-command -nargs=+ Rg :Term rg --vimgrep --color always <args>
-command -nargs=+ Grep :grep! <args> | botright copen
+command -nargs=+ Rg :silent! grep <args> | redraw!
+command -nargs=+ Lrg :silent! grep! <args> | redraw! | botright copen
 
 " ---------- Mappings ----------
 
