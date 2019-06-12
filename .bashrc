@@ -48,6 +48,7 @@ alias randompw="strings /dev/urandom | head -c 12 | tr -d \'\\n\' | base64"
 alias rgrep="grep -nr"
 alias lg="lazygit"
 alias rovim="vim -MR"
+alias fvim='vim $(fzf)'
 
 # Compilers
 alias g++="g++-8"
