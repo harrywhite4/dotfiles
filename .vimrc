@@ -246,6 +246,7 @@ endfunction
 " ---------- Commands ----------
 
 command -nargs=* Term :call TermExec("<args>")
+command -nargs=1 -complete=dir Tabdir :tabnew | lcd <args> | Ex
 command -nargs=+ Rg :silent! grep <args> | redraw!
 command -nargs=+ Lrg :silent! grep! <args> | redraw! | botright copen
 
