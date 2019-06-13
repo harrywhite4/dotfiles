@@ -303,7 +303,7 @@ imap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
 
 " Visual mode maps
-vnoremap <leader>s :s/<C-r>"/
+vnoremap <leader>s :s/<C-r>0/
 
 " Filetype mappings
 autocmd filetype python
