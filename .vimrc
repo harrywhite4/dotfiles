@@ -290,7 +290,7 @@ nnoremap <leader>p :cp<cr>
 " Close window below
 nnoremap <leader>q :call CloseWin("j")<cr>
 " Grep word under cursor
-nnoremap <leader>r :Grep <C-r><C-w>
+nnoremap <leader>r :Lrg <C-r><C-w>
 " Replace word under cursor
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 " Run nearest test
