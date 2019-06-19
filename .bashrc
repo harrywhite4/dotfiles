@@ -44,7 +44,6 @@ alias grep="grep --color=auto"
 alias ll="ls -lah"
 alias la="ls -a"
 alias x="exit"
-alias randompw="strings /dev/urandom | head -c 12 | tr -d \'\\n\' | base64"
 alias rgrep="grep -nr"
 alias lg="lazygit"
 alias rovim="vim -MR"
@@ -60,6 +59,9 @@ alias space="df -h | awk '{if(\$6==\"/\"||NR==1){print}}'"
 alias gitopen="firefox \$(git remote -v | awk '/origin/{print substr(\$2,0,length(\$2)-4);exit}')"
 alias paths="echo \$PATH | awk -F ':' '{for (i=1;i<NF;i++){print \$i}}'"
 alias temps="cat /sys/class/thermal/thermal_zone*/temp | awk '{print \"Thermal Zone \" NR-1 \" \" \$1/1000 \"C\"}'"
+
+# Python one liners
+alias randompw="python3 -c 'import string,secrets;print(\"\".join(secrets.choice(string.ascii_letters+string.digits+string.punctuation) for i in range(20)))'"
 
 # Python
 alias python="python3"
