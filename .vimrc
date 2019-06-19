@@ -165,6 +165,9 @@ catch
     colorscheme slate
 endtry
 
+" Turn off modelines
+set nomodeline
+
 " Indentation
 set expandtab
 set softtabstop=4
