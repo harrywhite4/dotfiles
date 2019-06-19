@@ -249,6 +249,8 @@ command -nargs=* Term :call TermExec("<args>")
 command -nargs=1 -complete=dir Tabdir :tabnew | lcd <args> | Ex
 command -nargs=+ Rg :silent! grep <args> | redraw!
 command -nargs=+ Lrg :silent! grep! <args> | redraw! | botright copen
+command -nargs=1 Type :setlocal filetype=<args>
+command -nargs=1 Fileat :Gedit <args>:%
 
 " ---------- Mappings ----------
 
@@ -265,25 +267,22 @@ nnoremap <F2> :call StripTrailingWhitespace()<cr>
 nnoremap <F3> :setlocal spell!<cr>
 " Check files to reload
 nnoremap <F5> :checktime<cr>
+" Disable ale for this duffer
+nnoremap <F6> :ALEDisableBuffer<cr>
 " Autofix lint errors
 nmap <F8> <Plug>(ale_fix)
 " Change indentation
-nnoremap <leader>2 :setlocal shiftwidth=2 softtabstop=2<cr>
-nnoremap <leader>4 :setlocal shiftwidth=4 softtabstop=4<cr>
+nnoremap <leader>i2 :setlocal shiftwidth=2 softtabstop=2<cr>
+nnoremap <leader>i4 :setlocal shiftwidth=4 softtabstop=4<cr>
 " Explore buffers
 nnoremap <leader>b :BufExplorer<cr>
-" Set filetype to htmldjango
-nnoremap <leader>d :setlocal filetype=htmldjango<cr>
 " Open terminal
 nnoremap <leader>e :bo terminal ++close ++rows=15<cr>
 " Copy file path to register
 nnoremap <leader>f :let @" = expand("%")<cr>
 " Open git status
-nnoremap <leader>g :Gstatus<cr>
-" Disable ale for this duffer
-nnoremap <leader>i :ALEDisableBuffer<cr>
-" Run last test
-nnoremap <leader>l :TestLast<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>ge :Gedit :<cr>
 " Navigate quickfix
 nnoremap <leader>n :cn<cr>
 nnoremap <leader>p :cp<cr>
@@ -293,8 +292,9 @@ nnoremap <leader>q :call CloseWin("j")<cr>
 nnoremap <leader>r :Lrg <C-r><C-w>
 " Replace word under cursor
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
-" Run nearest test
-nnoremap <leader>t :TestNearest<cr>
+" Test maps
+nnoremap <leader>tn :TestNearest<cr>
+nnoremap <leader>tl :TestLast<cr>
 " Save
 nnoremap <leader>w :w<cr>
 
