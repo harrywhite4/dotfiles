@@ -283,6 +283,7 @@ nnoremap <leader>f :let @" = expand("%")<cr>
 " Open git status
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>ge :Gedit :<cr>
+nnoremap <leader>gd :Gdiff<cr>
 " Navigate quickfix
 nnoremap <leader>n :cn<cr>
 nnoremap <leader>p :cp<cr>
