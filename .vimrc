@@ -191,9 +191,6 @@ autocmd FileType python setlocal omnifunc=jedi#completions
 " Fix on save for golang
 autocmd FileType go let b:ale_fix_on_save = 1
 
-" Spellcheck
-highlight SpellBad cterm=underline ctermfg=red
-
 " Folding
 set foldmethod=indent
 set foldnestmax=2
