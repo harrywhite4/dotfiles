@@ -7,11 +7,11 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'altercation/vim-colors-solarized'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', {'dir': '~/.fzf'}
 Plug 'janko-m/vim-test'
 Plug 'w0rp/ale'
+Plug 'dikiaap/minimalist'
 
 " Language specific plugins
 Plug 'fatih/vim-go'
@@ -27,6 +27,9 @@ autocmd!
 
 " Syntax highlighting
 syntax enable
+
+" 256 colors
+set t_Co=256
 
 " Show line numbers
 set number
@@ -97,14 +100,14 @@ set statusline=
 set statusline+=%#PmenuSel#
 set statusline+=\ %n\                      " Buffer number
 set statusline+=%{GetBranchName()}\        " Git branch
-set statusline+=%#DiffText#
+set statusline+=%1*
 set statusline+=%(\ %h%w%q%)                 " Flags
-set statusline+=%#DiffDelete#
+set statusline+=%2*
 set statusline+=%(\ %{GetLintErrorCount()}%{GetModified()}%r%)       " Error Flags
 set statusline+=%<%0*
 set statusline+=\ %f                         " File name
 set statusline+=%=                         " Seperate left and right
-set statusline+=%#DiffText#
+set statusline+=%1*
 set statusline+=\ %y\                        " Type
 set statusline+=%#PMenuSel#
 set statusline+=\ %LL\ %p%%\                " Stats
@@ -112,11 +115,13 @@ set statusline+=\ %LL\ %p%%\                " Stats
 " Highlights
 autocmd colorscheme *
     \ highlight link Terminal Normal |
-    \ highlight StatusLine cterm=NONE ctermfg=7 ctermbg=0 |
-    \ highlight StatusLineNC cterm=NONE ctermfg=10 ctermbg=0 |
-    \ highlight StatusLineTerm cterm=NONE ctermfg=2 ctermbg=0 |
-    \ highlight StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=0 |
-    \ highlight SignColumn ctermbg=0 ctermfg=14
+    \ highlight User1 ctermbg=24 |
+    \ highlight User2 ctermbg=239 ctermfg=167 |
+    \ highlight SignColumn ctermbg=234 |
+    \ highlight StatusLineTerm cterm=NONE ctermfg=2 ctermbg=239 |
+    \ highlight StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=239 |
+    \ highlight DiffAdded cterm=NONE ctermfg=green |
+    \ highlight DiffRemoved cterm=NONE ctermfg=red |
 
 " Netrw
 let g:netrw_banner = 0
@@ -160,9 +165,9 @@ set so=7
 set background=dark
 
 try
-    colorscheme solarized
+    colorscheme minimalist
 catch
-    colorscheme slate
+    colorscheme darkblue
 endtry
 
 " Turn off modelines
