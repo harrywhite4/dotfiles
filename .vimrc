@@ -122,6 +122,7 @@ autocmd colorscheme *
     \ highlight StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=239 |
     \ highlight DiffAdded cterm=NONE ctermfg=green |
     \ highlight DiffRemoved cterm=NONE ctermfg=red |
+    \ highlight link pythonClassVar Function |
 
 " Netrw
 let g:netrw_banner = 0
@@ -202,6 +203,15 @@ set eadirection="hor"
 
 " Formatting (see :h fo-table)
 autocmd FileType * setlocal formatoptions=crql
+
+let g:python_highlight_all = 0
+let g:python_highlight_builtin_objs = 1
+let g:python_highlight_builtin_funcs = 1
+let g:python_highlight_builtin_types = 1
+let g:python_highlight_class_vars = 1
+let g:python_highlight_operators = 1
+let g:python_highlight_exceptions = 1
+
 
 " ---------- Functions ----------
 
