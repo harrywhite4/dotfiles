@@ -123,6 +123,7 @@ autocmd colorscheme *
     \ highlight DiffAdded cterm=NONE ctermfg=green |
     \ highlight DiffRemoved cterm=NONE ctermfg=red |
     \ highlight link pythonClassVar Function |
+    \ highlight PMenu ctermbg=237
 
 " Netrw
 let g:netrw_banner = 0
