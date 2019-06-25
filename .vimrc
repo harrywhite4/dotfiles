@@ -169,7 +169,7 @@ set background=dark
 try
     colorscheme minimalist
 catch
-    colorscheme darkblue
+    colorscheme slate
 endtry
 
 " Turn off modelines
