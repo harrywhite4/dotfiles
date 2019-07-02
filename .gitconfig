@@ -2,3 +2,4 @@
     s = status
     branches = branch --sort=-committerdate
     newbr = checkout upstream/develop --no-track -b
+    smlog = log --oneline -n 20
