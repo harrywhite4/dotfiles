@@ -48,6 +48,7 @@ alias rgrep="grep -nr"
 alias lg="lazygit"
 alias rovim="vim -MR"
 alias fvim='vim $(fzf)'
+alias jcurl="curl -H 'Content-Type: application/json'"
 
 # Compilers
 alias g++="g++-8"
