@@ -24,6 +24,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Load aws bash completion if avaliable
+AWS_COMPLETER="${HOME}/.local/bin/aws_completer"
+if [ -f $AWS_COMPLETER ]; then
+    complete -C $AWS_COMPLETER aws
+fi
+
 # Load fzf if avaliable set default command
 if [ -f ~/.fzf.bash ]; then
     export FZF_DEFAULT_COMMAND='rg --files'
