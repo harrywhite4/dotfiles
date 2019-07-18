@@ -362,7 +362,7 @@ let test#go#gotest#options = '-v'
 " ale settings
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
-  \ 'python': ['flake8'],
+  \ 'python': ['flake8', 'mypy'],
   \ 'javascript': ['eslint'],
   \ 'go': ['gofmt', 'govet'],
   \ 'cpp': ['cpplint']

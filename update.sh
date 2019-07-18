@@ -8,5 +8,7 @@ mv ~/.gitconfig ~/.gitconfig~
 head ~/.gitconfig~ --lines=3 | cat - .gitconfig > ~/.gitconfig
 # Copy git template dir
 cp --backup --recursive ./.git_template ~
+# Copy .config dir
+cp --backup --recursive ./.config ~
 echo "Done!"
 exit 0
