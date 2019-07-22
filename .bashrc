@@ -55,6 +55,7 @@ alias lg="lazygit"
 alias rovim="vim -MR"
 alias fvim='vim $(fzf)'
 alias jcurl="curl -H 'Content-Type: application/json'"
+alias space="df -h -t ext4"
 
 # Compilers
 alias g++="g++-8"
@@ -62,7 +63,6 @@ export CXX="g++-8"
 
 # AWK one liners
 alias mostused="history | awk '{usage[\$2]+=1}END{for(key in usage){print key, usage[key]}}' | sort -nrk 2 | head"
-alias space="df -h | awk '{if(\$6==\"/\"||NR==1){print}}'"
 alias gitopen="firefox \$(git remote -v | awk '/origin/{print substr(\$2,0,length(\$2)-4);exit}')"
 alias paths="echo \$PATH | awk -F ':' '{for (i=1;i<NF;i++){print \$i}}'"
 alias temps="cat /sys/class/thermal/thermal_zone*/temp | awk '{print \"Thermal Zone \" NR-1 \" \" \$1/1000 \"C\"}'"
