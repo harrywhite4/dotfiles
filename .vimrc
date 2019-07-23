@@ -12,6 +12,7 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf'}
 Plug 'janko-m/vim-test'
 Plug 'w0rp/ale'
 Plug 'dikiaap/minimalist'
+Plug 'ajh17/VimCompletesMe'
 
 " Language specific plugins
 Plug 'fatih/vim-go'
@@ -386,6 +387,9 @@ let g:ale_echo_cursor = 1
 
 " Buf explorer
 let g:bufExplorerDisableDefaultKeyMapping=1
+
+" VCM
+let g:vcm_omni_pattern = '\m\.$'
 
 "End augroup
 augroup END
