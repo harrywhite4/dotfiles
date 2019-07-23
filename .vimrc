@@ -277,6 +277,12 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
+" Tabs
+nnoremap <leader>1 :1tabn<cr>
+nnoremap <leader>2 :2tabn<cr>
+nnoremap <leader>3 :3tabn<cr>
+nnoremap <leader>4 :4tabn<cr>
+nnoremap <leader>5 :5tabn<cr>
 " Strip whitespace
 nnoremap <F2> :call StripTrailingWhitespace()<cr>
 " Toggle spellcheck
@@ -293,13 +299,15 @@ nnoremap <leader>i4 :setlocal shiftwidth=4 softtabstop=4<cr>
 " Explore buffers
 nnoremap <leader>b :BufExplorer<cr>
 " Open terminal
-nnoremap <leader>e :bo terminal ++close ++rows=15<cr>
+nnoremap <leader>cb :bo terminal ++close ++rows=15<cr>
+nnoremap <leader>ct :tab terminal<cr>
 " Copy file path to register
 nnoremap <leader>f :let @" = expand("%")<cr>
 " Open git status
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>ge :Gedit :<cr>
 nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gb :Gblame<cr>
 " Navigate quickfix
 nnoremap <leader>n :cn<cr>
 nnoremap <leader>p :cp<cr>
