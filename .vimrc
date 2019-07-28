@@ -66,6 +66,9 @@ set wildignore+=*/dist/*
 " Path
 set path=.,**
 
+" Line display
+set display=lastline
+
 " Statusline
 function GetModified()
     if !&modifiable
