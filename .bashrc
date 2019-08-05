@@ -67,9 +67,6 @@ alias gitopen="firefox \$(git remote -v | awk '/origin/{print substr(\$2,0,lengt
 alias paths="echo \$PATH | awk -F ':' '{for (i=1;i<NF;i++){print \$i}}'"
 alias temps="cat /sys/class/thermal/thermal_zone*/temp | awk '{print \"Thermal Zone \" NR-1 \" \" \$1/1000 \"C\"}'"
 
-# Python one liners
-alias randompw="python3 -c 'import string,secrets;print(\"\".join(secrets.choice(string.ascii_letters+string.digits+string.punctuation) for i in range(20)))'"
-
 # Python
 alias python="python3"
 alias pip="pip3"
@@ -87,3 +84,9 @@ alias dcsql="docker-compose exec db psql --user postgres"
 
 # Git
 export GIT_TEMPLATE_DIR=~/.git_template
+
+# Functions
+random_string() {
+    CHARS="${1:-20}"
+    python3 -c "import string,secrets;print(\"\".join(secrets.choice(string.ascii_letters+string.digits+string.punctuation) for i in range($CHARS)))"
+}
