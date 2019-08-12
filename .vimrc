@@ -149,7 +149,7 @@ set wildmenu
 
 " Completion
 set completeopt=menu,longest,preview
-set complete=.,w,b,u,t
+set complete=.,w,b,u,t,k
 set pumheight=15
 
 " Ignore case when searching except when caps used
@@ -208,6 +208,9 @@ set eadirection="hor"
 
 " Formatting (see :h fo-table)
 autocmd FileType * setlocal formatoptions=crql
+
+" Dictionary
+set dictionary=/usr/share/dict/words
 
 " ---------- Functions ----------
 
