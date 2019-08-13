@@ -149,7 +149,7 @@ set wildmenu
 
 " Completion
 set completeopt=menu,longest,preview
-set complete=.,w,b,u,t,k
+set complete=.,w,b,u,t
 set pumheight=15
 
 " Ignore case when searching except when caps used
@@ -382,7 +382,8 @@ let g:ale_linters = {
   \ 'python': ['flake8', 'mypy'],
   \ 'javascript': ['eslint'],
   \ 'go': ['gofmt', 'govet'],
-  \ 'cpp': ['cpplint']
+  \ 'cpp': ['cpplint'],
+  \ 'cloudformation': 'all',
   \ }
 let g:ale_fixers = {
   \ 'go': ['gofmt'],
