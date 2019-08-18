@@ -385,7 +385,7 @@ let g:ale_linters = {
   \ 'javascript': ['eslint'],
   \ 'go': ['gofmt', 'govet'],
   \ 'cpp': ['cpplint'],
-  \ 'cloudformation': 'all',
+  \ 'cloudformation': ['cloudformation'],
   \ }
 let g:ale_fixers = {
   \ 'go': ['gofmt'],
