@@ -11,5 +11,7 @@ head ~/.gitconfig~ --lines=3 | cat - .gitconfig > ~/.gitconfig
 cp --backup --recursive ./.git_template ~
 # Copy .config dir
 cp --backup --recursive ./.config ~
+# Copy .vim
+cp --recursive ./.vim ~
 echo "Done!"
 exit 0
