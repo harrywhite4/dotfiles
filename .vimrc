@@ -339,6 +339,7 @@ autocmd filetype go nnoremap <leader><leader> :GoDef<cr>
 " ------------ Plugin Settings ----------
 
 " Polyglot
+let g:polyglot_disabled = ['csv']
 let g:vim_json_warnings = 0
 let g:python_highlight_all = 0
 let g:python_highlight_builtin_objs = 1
