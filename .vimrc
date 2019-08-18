@@ -364,6 +364,7 @@ let g:jedi#show_call_signatures = "0"
 let g:go_fmt_autosave = 0
 let g:go_version_warning = 0
 let g:go_def_mapping_enabled = 0
+let g:go_template_autocreate = 0
 
 " vim-test settings
 function! SmTerminalStrategy(cmd)
