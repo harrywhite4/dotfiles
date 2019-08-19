@@ -186,6 +186,7 @@ set shiftwidth=4
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
+autocmd FileType cloudformation setlocal shiftwidth=2 softtabstop=2
 autocmd FileType json setlocal shiftwidth=2 softtabstop=2
 autocmd FileType go setlocal tabstop=4
 
