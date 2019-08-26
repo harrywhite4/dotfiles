@@ -24,9 +24,14 @@ cd $TOP
 
 echo "Copying dotfiles..."
 
-# Merge gitconfig with current files first 3 lines
+# Merge gitconfig with gitname if avaliable
 mv ~/.gitconfig ~/.gitconfig~
-head ~/.gitconfig~ --lines=3 | cat - .gitconfig > ~/.gitconfig
+if [[ -f ~/.gitname ]]; then
+    cat ~/.gitname .gitconfig > ~/.gitconfig
+else
+    cp ./.gitconfig ~/.gitconfig
+fi
+
 if [[ $VERBOSE -eq 1 ]]; then
     echo "Copied ./.gitconfig"
 fi
