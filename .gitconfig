@@ -1,5 +1,5 @@
 [alias]
     s = status
     branches = branch --sort=-committerdate
-    newbr = checkout upstream/develop --no-track -b
+    cnt = checkout --no-track
     smlog = log --oneline -n 20
