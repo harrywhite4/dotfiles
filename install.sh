@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 VIM_PLUGINS_DIR=~/.vim/plugged
 VIM_PLUG_FILE=~/.vim/autoload/plug.vim
 # Clean plugins if found
