@@ -266,6 +266,7 @@ command -nargs=+ Rg :silent! grep <args> | redraw!
 command -nargs=+ Lrg :silent! grep! <args> | redraw! | botright copen
 command -nargs=1 Type :setlocal filetype=<args>
 command -nargs=1 Fileat :Gedit <args>:%
+command -nargs=+ Pydoc :terminal ++close pipenv run python -m pydoc <args>
 command BufOnly :%bd | e#
 
 " ---------- Mappings ----------
