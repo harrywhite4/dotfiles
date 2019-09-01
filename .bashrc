@@ -77,9 +77,7 @@ alias pr="pipenv run"
 alias prp="pipenv run python"
 
 # Docker
-alias dc="docker-compose"
-alias dce="docker-compose exec"
-alias dcr="docker-compose restart"
+alias doco="docker-compose"
 
 # Docker project specific
 alias dcadmin="docker-compose exec web django-admin"
