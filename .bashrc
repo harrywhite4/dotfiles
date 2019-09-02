@@ -36,58 +36,8 @@ if [ -f ~/.fzf.bash ]; then
     source ~/.fzf.bash
 fi
 
-# Default editor
-export EDITOR="vim"
-
-# Default browser
-export BROWSER="firefox"
-
 # Prompt
 export PS1="\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ "
 
-# Color aliases
-alias ls="ls --color=auto"
-alias grep="grep --color=auto"
-
-# General aliases
-alias ll="ls -lah"
-alias la="ls -a"
-alias x="exit"
-alias rgrep="grep -nr"
-alias lg="lazygit"
-alias rovim="vim -MR"
-alias fvim='vim $(fzf)'
-alias jcurl="curl -H 'Content-Type: application/json'"
-alias space="df -h -t ext4"
-
-# Compilers
-alias g++="g++-8"
-export CXX="g++-8"
-
-# AWK one liners
-alias mostused="history | awk '{usage[\$2]+=1}END{for(key in usage){print key, usage[key]}}' | sort -nrk 2 | head"
-alias gitopen="firefox \$(git remote -v | awk '/origin/{print substr(\$2,0,length(\$2)-4);exit}')"
-alias paths="echo \$PATH | awk -F ':' '{for (i=1;i<NF;i++){print \$i}}'"
-alias temps="cat /sys/class/thermal/thermal_zone*/temp | awk '{print \"Thermal Zone \" NR-1 \" \" \$1/1000 \"C\"}'"
-
-# Python
-alias python="python3"
-alias pip="pip3"
-alias pr="pipenv run"
-alias prp="pipenv run python"
-
-# Docker
-alias doco="docker-compose"
-
-# Docker project specific
-alias dcadmin="docker-compose exec web django-admin"
-alias dcsql="docker-compose exec db psql --user postgres"
-
-# Git
-export GIT_TEMPLATE_DIR=~/.git_template
-
-# Functions
-random_string() {
-    CHARS="${1:-20}"
-    python3 -c "import string,secrets;print(\"\".join(secrets.choice(string.ascii_letters+string.digits+string.punctuation) for i in range($CHARS)))"
-}
+# include common files
+source $HOME/.shellrc
