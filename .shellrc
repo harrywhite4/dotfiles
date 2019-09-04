@@ -20,6 +20,7 @@ alias rovim="vim -MR"
 alias fvim='vim $(fzf)'
 alias jcurl="curl -H 'Content-Type: application/json'"
 alias space="df -h -t ext4"
+alias stime="/usr/bin/time -p"
 
 # Compilers
 alias g++="g++-8"
