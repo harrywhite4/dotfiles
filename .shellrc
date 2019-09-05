@@ -1,10 +1,6 @@
 # Common config for .bashrc and .zshrc
 
-# Default editor
-export EDITOR="vim"
-
-# Default browser
-export BROWSER="firefox"
+# ---------- Aliases ----------
 
 # Color aliases
 alias ls="ls --color=auto"
@@ -43,6 +39,17 @@ alias doco="docker-compose"
 # Docker project specific
 alias dcadmin="docker-compose exec web django-admin"
 alias dcsql="docker-compose exec db psql --user postgres"
+
+# ---------- Variables ----------
+
+# Default editor
+export EDITOR="vim"
+
+# Default browser
+export BROWSER="firefox"
+
+# BC
+export BC_ENV_ARGS="${HOME}/.bc"
 
 # Git
 export GIT_TEMPLATE_DIR=~/.git_template
