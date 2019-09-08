@@ -13,6 +13,10 @@ PROMPT='%B%F{green}%n%f%b:%B%F{blue}%3~%f%b${vcs_info_msg_0_} $ '
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
+# ctrl left/right for moving by word
+bindkey ";5D" backward-word
+bindkey ";5C" forward-word
+
 # History config
 HISTSIZE=1000
 SAVEHIST=1000
