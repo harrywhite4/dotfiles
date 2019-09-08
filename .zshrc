@@ -74,5 +74,8 @@ if [[ -f $AWS_COMPLETER ]]; then
     source $AWS_COMPLETER
 fi
 
+# Skip compinit in global config
+skip_global_compinit=1
+
 # Common config
 source $HOME/.shellrc
