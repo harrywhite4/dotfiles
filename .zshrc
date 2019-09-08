@@ -1,5 +1,14 @@
 # Prompt
-PS1="%B%F{green}%n%f%b:%B%F{blue}%3~%f%b$ "
+setopt promptsubst
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' formats ' (%b)'
+zstyle ':vcs_info:*' actionformats ' (%b|%a)'
+
+precmd () { vcs_info }
+
+PROMPT='%B%F{green}%n%f%b:%B%F{blue}%3~%f%b${vcs_info_msg_0_} $ '
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
