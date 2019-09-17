@@ -40,6 +40,9 @@ eval "$(dircolors -b)"
 setopt auto_pushd
 setopt pushd_silent
 
+# Cap dir stack size
+DIRSTACKSIZE=10
+
 # Use modern completion system
 setopt auto_menu
 setopt always_to_end
