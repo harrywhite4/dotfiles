@@ -268,7 +268,7 @@ command -nargs=1 Type :setlocal filetype=<args>
 command -nargs=1 Fileat :Gedit <args>:%
 command -nargs=+ Pydoc :terminal ++close pipenv run python -m pydoc <args>
 command Mdpreview :terminal ++hidden ++close sh -c "pandoc % -o /tmp/preview.html && firefox /tmp/preview.html"
-command BufOnly :%bd | e#
+command Bufonly :%bd | e#
 
 " ---------- Mappings ----------
 
