@@ -12,6 +12,7 @@ alias la="ls -a"
 alias x="exit"
 alias rgrep="grep -nr"
 alias lg="lazygit"
+alias ld="lazydocker"
 alias rovim="vim -MR"
 alias fvim='vim $(fzf)'
 alias jcurl="curl -H 'Content-Type: application/json'"
