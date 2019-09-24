@@ -148,7 +148,7 @@ set wildmode=list:longest,full
 set wildmenu
 
 " Completion
-set completeopt=menu,longest,preview
+set completeopt=menu,noinsert,preview
 set complete=.,w,b,u,t
 set pumheight=15
 
@@ -326,8 +326,8 @@ nnoremap <leader>tl :TestLast<cr>
 nnoremap <leader>w :w<cr>
 
 " Insert mode maps
-imap <C-Space> <C-x><C-o>
-imap <C-@> <C-Space>
+imap <C-o> <C-x><C-o>
+imap <C-]> <C-x><C-]>
 
 " Visual mode maps
 vnoremap <leader>s :s/<C-r>0/
@@ -404,6 +404,7 @@ let g:bufExplorerDisableDefaultKeyMapping=1
 
 " VCM
 let g:vcm_omni_pattern = '\m\.$'
+let g:vcm_direction = 'p'
 
 "End augroup
 augroup END
