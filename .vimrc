@@ -200,8 +200,8 @@ autocmd FileType go let b:ale_fix_on_save = 1
 
 " Folding
 set foldmethod=indent
-set foldnestmax=2
-set foldlevel=2
+set foldnestmax=20
+set foldlevelstart=20
 
 " Windows
 set equalalways
