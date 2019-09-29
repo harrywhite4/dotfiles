@@ -161,7 +161,7 @@ set hidden
 
 " Turn off backups
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 " Give cursor 7 lines
@@ -328,6 +328,8 @@ nnoremap <leader>w :w<cr>
 " Insert mode maps
 imap <C-o> <C-x><C-o>
 imap <C-]> <C-x><C-]>
+imap <C-k> <C-x><C-k>
+imap <C-f> <C-x><C-f>
 
 " Visual mode maps
 vnoremap <leader>s :s/<C-r>0/
