@@ -269,6 +269,7 @@ command -nargs=1 Fileat :Gedit <args>:%
 command -nargs=+ Pydoc :terminal ++close pipenv run python -m pydoc <args>
 command Mdpreview :terminal ++hidden ++close sh -c "pandoc % -o /tmp/preview.html && firefox /tmp/preview.html"
 command Bufonly :%bd | e#
+command -nargs=1 PipenvOpen :call PipenvOpen("<args>")
 
 " ---------- Mappings ----------
 
