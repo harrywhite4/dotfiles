@@ -148,7 +148,7 @@ set wildmode=list:longest,full
 set wildmenu
 
 " Completion
-set completeopt=menu,preview
+set completeopt=menu,menuone,preview,noselect
 set complete=.,w,b,u,t
 set pumheight=15
 
