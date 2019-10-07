@@ -87,4 +87,4 @@ fi
 skip_global_compinit=1
 
 # Common config
-source $HOME/.shellrc
+source $HOME/.common.sh
