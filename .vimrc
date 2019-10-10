@@ -208,7 +208,7 @@ set equalalways
 set eadirection="hor"
 
 " Formatting (see :h fo-table)
-autocmd FileType * setlocal formatoptions=crql
+autocmd FileType * setlocal formatoptions=tcrql
 
 " Dictionary
 set dictionary=/usr/share/dict/words
