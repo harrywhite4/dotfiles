@@ -213,6 +213,9 @@ autocmd FileType text setlocal formatoptions=trq
 autocmd FileType gitcommit setlocal formatoptions=tarq textwidth=72
 autocmd FileType markdown setlocal formatoptions=trq textwidth=100
 
+" Show column at textwidth +1 if textwidth is set
+set colorcolumn=+1
+
 " Dictionary
 set dictionary=/usr/share/dict/words
 
