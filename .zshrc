@@ -86,5 +86,9 @@ fi
 # Skip compinit in global config
 skip_global_compinit=1
 
+# Zcalc
+autoload zcalc
+alias calc="zcalc -f"
+
 # Common config
 source $HOME/.common.sh
