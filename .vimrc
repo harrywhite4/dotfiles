@@ -14,6 +14,7 @@ Plug 'w0rp/ale'
 Plug 'dikiaap/minimalist'
 Plug 'ajh17/VimCompletesMe'
 
+
 " Language specific plugins
 Plug 'fatih/vim-go'
 Plug 'davidhalter/jedi-vim'
@@ -101,32 +102,35 @@ function GetBranchName()
 endfunction
 
 set statusline=
-set statusline+=%#PmenuSel#
+set statusline+=%1*
 set statusline+=\ %n\                      " Buffer number
 set statusline+=%{GetBranchName()}\        " Git branch
-set statusline+=%1*
-set statusline+=%(\ %h%w%q%)                 " Flags
 set statusline+=%2*
+set statusline+=%(\ %h%w%q\ %)                 " Flags
+set statusline+=%3*
 set statusline+=%(\ %{GetLintErrorCount()}%{GetModified()}%r%)       " Error Flags
 set statusline+=%<%0*
 set statusline+=\ %f                         " File name
 set statusline+=%=                         " Seperate left and right
-set statusline+=%1*
+set statusline+=%2*
 set statusline+=\ %y\                        " Type
-set statusline+=%#PMenuSel#
+set statusline+=%1*
 set statusline+=\ %LL\ %p%%\                " Stats
 
 " Highlights
 autocmd colorscheme *
     \ highlight link Terminal Normal |
-    \ highlight User1 ctermbg=24 |
-    \ highlight User2 ctermbg=239 ctermfg=167 |
-    \ highlight SignColumn ctermbg=234 |
-    \ highlight StatusLineTerm cterm=NONE ctermfg=2 ctermbg=239 |
-    \ highlight StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=239 |
     \ highlight DiffAdded cterm=NONE ctermfg=green |
     \ highlight DiffRemoved cterm=NONE ctermfg=red |
     \ highlight link pythonClassVar Function |
+    \ highlight StatusLineTerm cterm=NONE ctermfg=2 ctermbg=239 |
+    \ highlight StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=239 |
+    \ highlight User1 cterm=bold ctermfg=255 ctermbg=59 |
+    \ highlight User2 cterm=bold ctermbg=24 |
+    \ highlight User3 cterm=bold ctermbg=239 ctermfg=167
+
+autocmd colorscheme minimalist
+    \ highlight SignColumn ctermbg=234 |
     \ highlight PMenu ctermbg=237
 
 " Netrw
