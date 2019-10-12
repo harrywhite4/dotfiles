@@ -337,10 +337,11 @@ nnoremap <leader>tl :TestLast<cr>
 nnoremap <leader>w :w<cr>
 
 " Insert mode maps
-imap <C-o> <C-x><C-o>
-imap <C-]> <C-x><C-]>
-imap <C-k> <C-x><C-k>
-imap <C-f> <C-x><C-f>
+inoremap <C-o> <C-x><C-o>
+inoremap <C-]> <C-x><C-]>
+inoremap <expr> <C-k> pumvisible() ? "\<Up>" : "\<C-x>\<C-k>"
+inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
+inoremap <C-f> <C-x><C-f>
 
 " Visual mode maps
 vnoremap <leader>s :s/<C-r>0/
