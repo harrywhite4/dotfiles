@@ -272,10 +272,10 @@ endfunction
 function! ToggleAutoFormat()
     if stridx(&formatoptions, "a") == -1
         setlocal formatoptions+=a
-        echo "Auto format on"
+        echomsg "Auto format on"
     else
         setlocal formatoptions-=a
-        echo "Auto format off"
+        echomsg "Auto format off"
     endif
 endfunction
 

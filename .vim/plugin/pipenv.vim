@@ -7,10 +7,10 @@ function! s:getEnvPath()
         if v:shell_error == 0
             return envpath
         else
-            echo "No venv found"
+            echoerr "No venv found"
         endif
     else
-        echo "Pipenv is not installed"
+        echoerr "Pipenv is not installed"
     endif
 
     return ""
@@ -31,10 +31,9 @@ function! PipenvOpen(package)
     if sitepath != ""
         let package_path = sitepath . "/" . a:package
         if isdirectory(package_path)
-            echo package_path
             execute "tabe" package_path
         else
-            echo a:package "is not installed"
+            echoerr a:package "is not installed"
         endif
     endif
 endfunction
