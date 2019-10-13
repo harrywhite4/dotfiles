@@ -268,6 +268,17 @@ function! TermExec(command)
     return bufnr("%")
 endfunction
 
+" Toggle auto formatting
+function! ToggleAutoFormat()
+    if stridx(&formatoptions, "a") == -1
+        setlocal formatoptions+=a
+        echo "Auto format on"
+    else
+        setlocal formatoptions-=a
+        echo "Auto format off"
+    endif
+endfunction
+
 " ---------- Commands ----------
 
 command -nargs=* Term :call TermExec("<args>")
@@ -300,6 +311,8 @@ nnoremap <leader>5 :5tabn<cr>
 nnoremap <F2> :call StripTrailingWhitespace()<cr>
 " Toggle spellcheck
 nnoremap <F3> :setlocal spell!<cr>
+" Toggle auto-format
+nnoremap <F4> :call ToggleAutoFormat()<cr>
 " Check files to reload
 nnoremap <F5> :checktime<cr>
 " Disable ale for this duffer
