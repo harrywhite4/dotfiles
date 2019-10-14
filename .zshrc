@@ -77,6 +77,9 @@ if [ -f $AWS_COMPLETER ]; then
     source $AWS_COMPLETER
 fi
 
+# Zeus completion
+eval "$(_ZEUS_COMPLETE=source_zsh zeus)"
+
 # Load fzf if available
 if [ -f ~/.fzf.zsh ]; then
     export FZF_DEFAULT_COMMAND='rg --files'
