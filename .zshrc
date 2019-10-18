@@ -78,7 +78,9 @@ if [ -f $AWS_COMPLETER ]; then
 fi
 
 # Zeus completion
-eval "$(_ZEUS_COMPLETE=source_zsh zeus)"
+if which zeus > /dev/null; then
+    eval "$(_ZEUS_COMPLETE=source_zsh zeus)"
+fi
 
 # Load fzf if available
 if [ -f ~/.fzf.zsh ]; then
