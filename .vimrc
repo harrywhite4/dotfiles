@@ -50,6 +50,7 @@ set laststatus=2
 
 " Tags
 set tags+=./.git/tags
+set cpoptions+=d
 
 " Wildignore
 set wildignore=*.exe,*.dll,*.so,*.pyc
@@ -329,7 +330,7 @@ nnoremap <leader>cb :bo terminal ++close ++rows=15<cr>
 nnoremap <leader>ct :tab terminal<cr>
 " Copy file path to register
 nnoremap <leader>f :let @" = expand("%")<cr>
-" Open git status
+" Git maps
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>ge :Gedit :<cr>
 nnoremap <leader>gd :Gdiff<cr>
