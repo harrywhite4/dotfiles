@@ -16,6 +16,7 @@ alias lzd="lazydocker"
 alias rovim="vim -MR"
 alias fvim='vim $(fzf)'
 alias jcurl="curl -H 'Content-Type: application/json'"
+alias myip="curl checkip.amazonaws.com"
 alias space="df -h -t ext4"
 alias stime="/usr/bin/time -p"
 
