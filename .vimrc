@@ -336,11 +336,6 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>ge :Gedit :<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Gblame<cr>
-" Navigate quickfix
-nnoremap <leader>n :cn<cr>
-nnoremap <leader>p :cp<cr>
-" Close window below
-nnoremap <leader>q :call CloseWin("j")<cr>
 " Grep word under cursor
 nnoremap <leader>r :Lrg <C-r><C-w>
 " Replace word under cursor
@@ -352,11 +347,11 @@ nnoremap <leader>tl :TestLast<cr>
 nnoremap <leader>w :w<cr>
 
 " Insert mode maps
-inoremap <C-o> <C-x><C-o>
+inoremap <C-Space> <C-x><C-o>
 inoremap <C-]> <C-x><C-]>
+inoremap <C-f> <C-x><C-f>
 inoremap <expr> <C-k> pumvisible() ? "\<Up>" : "\<C-x>\<C-k>"
 inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
-inoremap <C-f> <C-x><C-f>
 
 " Visual mode maps
 vnoremap <leader>s :s/<C-r>0/
@@ -390,7 +385,7 @@ let g:jedi#auto_initialization = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures = "0"
-" omnifunc is used in lanspecific augroup above
+" omnifunc is used above
 
 " vim-go settings
 " disable fmt on save since we using ale for this
