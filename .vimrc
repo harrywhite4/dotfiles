@@ -352,7 +352,8 @@ nnoremap <leader>tl :TestLast<cr>
 nnoremap <leader>w :w<cr>
 
 " Insert mode maps
-inoremap <C-o> <C-x><C-o>
+imap <C-@> <C-Space>
+imap <C-Space> <C-x><C-o>
 inoremap <C-]> <C-x><C-]>
 inoremap <expr> <C-k> pumvisible() ? "\<Up>" : "\<C-x>\<C-k>"
 inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
