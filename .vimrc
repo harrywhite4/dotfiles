@@ -237,6 +237,15 @@ function! StripTrailingWhitespace()
   endif
 endfunction
 
+" Format file with gq
+function! FormatFile()
+    normal mz
+    normal Hmy
+    normal gggqG
+    normal 'yz<cr>
+    normal 'z
+endfunction
+
 " If there is a window at pos close it
 function! CloseWin(pos)
     let cur = winnr()
@@ -318,8 +327,8 @@ nnoremap <F4> :call ToggleAutoFormat()<cr>
 nnoremap <F5> :checktime<cr>
 " Disable ale for this duffer
 nnoremap <F6> :ALEDisableBuffer<cr>
-" Autofix lint errors
-nmap <F8> <Plug>(ale_fix)
+" Format file
+nmap <F8> :call FormatFile()<cr>
 " Change indentation
 nnoremap <leader>i2 :setlocal shiftwidth=2 softtabstop=2<cr>
 nnoremap <leader>i4 :setlocal shiftwidth=4 softtabstop=4<cr>
