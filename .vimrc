@@ -196,13 +196,15 @@ autocmd FileType cloudformation setlocal shiftwidth=2 softtabstop=2
 autocmd FileType json setlocal shiftwidth=2 softtabstop=2
 autocmd FileType go setlocal tabstop=4
 
+" Formatting
+autocmd Filetype python setlocal formatprg=autopep8\ -
+autocmd Filetype go setlocal formatprg=gofmt
+
 " Lang specific settings
 " Sync vue files from the start
 autocmd FileType vue syntax sync fromstart
-" Use omnifunc from jedo
+" Use omnifunc from jedi
 autocmd FileType python setlocal omnifunc=jedi#completions
-" Fix on save for golang
-autocmd FileType go let b:ale_fix_on_save = 1
 
 " Folding
 set foldmethod=indent
@@ -389,8 +391,7 @@ let g:jedi#show_call_signatures = "0"
 " omnifunc is used above
 
 " vim-go settings
-" disable fmt on save since we using ale for this
-let g:go_fmt_autosave = 0
+let g:go_fmt_autosave = 1
 let g:go_version_warning = 0
 let g:go_def_mapping_enabled = 0
 let g:go_template_autocreate = 0
@@ -415,11 +416,8 @@ let g:ale_linters = {
   \ 'cpp': ['cpplint'],
   \ 'cloudformation': ['cloudformation'],
   \ }
-let g:ale_fixers = {
-  \ 'go': ['gofmt'],
-  \ 'python': ['autopep8']
-  \ }
 let g:ale_set_highlights = 0
+let g:ale_disable_lsp = 0
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_echo_cursor = 1
