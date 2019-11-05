@@ -31,6 +31,10 @@ autocmd!
 " Syntax highlighting
 syntax enable
 
+" Key timeouts
+set ttimeout
+set ttimeoutlen=100
+
 " Show line numbers
 set number
 
@@ -40,7 +44,7 @@ set mouse=a
 " Leader
 let mapleader = "\<Space>"
 
-" Backspace
+" Backspace over anything
 set backspace=indent,eol,start
 
 " Statusline
@@ -50,7 +54,16 @@ set laststatus=2
 set tags+=./.git/tags
 set cpoptions+=d
 
-" Wildignore
+" Command history
+set history=200
+
+" Echo commands
+set showcmd
+
+" Show incremental search
+set incsearch
+
+" Patterns ignored when using wildcards
 set wildignore=*.exe,*.dll,*.so,*.pyc
 set wildignore+=*/.git/objects/*
 set wildignore+=*/.git/logs/*
@@ -168,7 +181,7 @@ set nowritebackup
 set noswapfile
 
 " Give cursor 7 lines
-set so=7
+set scrolloff=7
 
 " Colors
 set background=dark
@@ -223,6 +236,13 @@ set colorcolumn=+1
 
 " Dictionary
 set dictionary=/usr/share/dict/words
+
+" Move cursor to last position when opening file if appropriate
+" Taken from defaults.vim
+autocmd BufReadPost *
+      \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+      \ |   exe "normal! g`\""
+      \ | endif
 
 " ---------- Functions ----------
 
@@ -304,6 +324,8 @@ command -nargs=1 PipenvOpen :call PipenvOpen("<args>")
 
 " ---------- Mappings ----------
 
+" Formatting
+map Q gq
 " FZF
 nnoremap <C-p> :FZF<cr>
 "  Move around
