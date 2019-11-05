@@ -15,14 +15,13 @@ Plug 'w0rp/ale'
 Plug 'dikiaap/minimalist'
 Plug 'ajh17/VimCompletesMe'
 
-
 " Language specific plugins
 Plug 'fatih/vim-go'
 Plug 'davidhalter/jedi-vim'
 
 call plug#end()
 
-" ---------- Base settings ----------
+" -------------------- Base settings --------------------
 
 " Open augroup
 augroup mygroup
@@ -88,78 +87,6 @@ set path=.,**
 " Line display
 set display=lastline
 
-" Statusline
-function GetModified()
-    if !&modifiable
-        return "[NM]"
-    endif
-    if &modified
-        return "[Modified]"
-    endif
-    return ""
-endfunction
-
-function GetLintErrorCount()
-    if exists("*ale#statusline#Count")
-        let lintErrorCount = ale#statusline#Count(bufnr("%"))['total']
-        if lintErrorCount > 0
-            return lintErrorCount
-        endif
-    endif
-    return ''
-endfunction
-
-function GetBranchName()
-    if exists("*FugitiveHead")
-        let branchName = FugitiveHead()
-        if len(branchName)
-            return "[" . branchName . "] "
-        endif
-    endif
-    return ""
-endfunction
-
-set statusline=
-set statusline+=%1*
-set statusline+=\ %n\                      " Buffer number
-set statusline+=%{GetBranchName()}\        " Git branch
-set statusline+=%2*
-set statusline+=%(\ %h%w%q\ %)                 " Flags
-set statusline+=%3*
-set statusline+=%(\ %{GetLintErrorCount()}%{GetModified()}%r%)       " Error Flags
-set statusline+=%<%0*
-set statusline+=\ %f                         " File name
-set statusline+=%=                         " Seperate left and right
-set statusline+=%2*
-set statusline+=\ %y\                        " Type
-set statusline+=%1*
-set statusline+=\ %LL\ %p%%\                " Stats
-
-" Highlights
-autocmd colorscheme *
-    \ highlight link Terminal Normal |
-    \ highlight DiffAdded cterm=NONE ctermfg=green |
-    \ highlight DiffRemoved cterm=NONE ctermfg=red |
-    \ highlight link pythonClassVar Function |
-    \ highlight StatusLineTerm cterm=NONE ctermfg=2 ctermbg=239 |
-    \ highlight StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=239 |
-    \ highlight User1 cterm=bold ctermfg=255 ctermbg=59 |
-    \ highlight User2 cterm=bold ctermbg=24 |
-    \ highlight User3 cterm=bold ctermbg=239 ctermfg=167
-
-autocmd colorscheme minimalist
-    \ highlight SignColumn ctermbg=234 |
-    \ highlight PMenu ctermbg=237
-
-" Netrw
-let g:netrw_banner = 0
-let g:netrw_liststyle = 1
-let g:netrw_browse_split = 0
-let g:netrw_altv = 1
-let g:netrw_altfile = 1
-let g:netrw_sizestyle = "h"
-let g:netrw_fastbrowse = 0
-
 " Use ripgrep if avaliable
 if executable("rg")
     set grepprg=rg\ --vimgrep\ --smart-case
@@ -189,17 +116,11 @@ set noswapfile
 " Give cursor 7 lines
 set scrolloff=7
 
-" Colors
-set background=dark
-
-try
-    colorscheme minimalist
-catch
-    colorscheme slate
-endtry
-
 " Turn off modelines
 set nomodeline
+
+" Dictionary
+set dictionary=/usr/share/dict/words
 
 " Indentation
 set expandtab
@@ -238,11 +159,34 @@ autocmd FileType text setlocal formatoptions=trq
 autocmd FileType gitcommit setlocal formatoptions=tarq textwidth=72
 autocmd FileType markdown setlocal formatoptions=trq textwidth=100
 
+" Colors
+set background=dark
+
+" Highlights
+autocmd colorscheme *
+    \ highlight link Terminal Normal |
+    \ highlight DiffAdded cterm=NONE ctermfg=green |
+    \ highlight DiffRemoved cterm=NONE ctermfg=red |
+    \ highlight link pythonClassVar Function |
+    \ highlight StatusLineTerm cterm=NONE ctermfg=2 ctermbg=239 |
+    \ highlight StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=239 |
+    \ highlight User1 cterm=bold ctermfg=255 ctermbg=59 |
+    \ highlight User2 cterm=bold ctermbg=24 |
+    \ highlight User3 cterm=bold ctermbg=239 ctermfg=167
+
+autocmd colorscheme minimalist
+    \ highlight SignColumn ctermbg=234 |
+    \ highlight PMenu ctermbg=237
+
+" Colorscheme with fallback
+try
+    colorscheme minimalist
+catch
+    colorscheme slate
+endtry
+
 " Show column at textwidth +1 if textwidth is set
 set colorcolumn=+1
-
-" Dictionary
-set dictionary=/usr/share/dict/words
 
 " Move cursor to last position when opening file if appropriate
 " Taken from defaults.vim
@@ -251,7 +195,64 @@ autocmd BufReadPost *
       \ |   exe "normal! g`\""
       \ | endif
 
-" ---------- Functions ----------
+" Statusline, plus functions used in statusline
+function GetModified()
+    if !&modifiable
+        return "[NM]"
+    endif
+    if &modified
+        return "[Modified]"
+    endif
+    return ""
+endfunction
+
+function GetLintErrorCount()
+    if exists("*ale#statusline#Count")
+        let lintErrorCount = ale#statusline#Count(bufnr("%"))['total']
+        if lintErrorCount > 0
+            return lintErrorCount
+        endif
+    endif
+    return ''
+endfunction
+
+function GetBranchName()
+    if exists("*FugitiveHead")
+        let branchName = FugitiveHead()
+        if len(branchName)
+            return "[" . branchName . "] "
+        endif
+    endif
+    return ""
+endfunction
+
+set statusline=
+set statusline+=%1*
+set statusline+=\ %n\                      " Buffer number
+set statusline+=%{GetBranchName()}\        " Git branch
+set statusline+=%2*
+set statusline+=%(\ %h%w%q\ %)             " Flags
+set statusline+=%3*
+set statusline+=%(\ %{GetLintErrorCount()}%{GetModified()}%r%)  " Error Flags
+set statusline+=%<%0*
+set statusline+=\ %f                       " File name
+set statusline+=%=                         " Seperate left and right
+set statusline+=%2*
+set statusline+=\ %y\                      " Type
+set statusline+=%1*
+set statusline+=\ %LL\ %p%%\               " Stats
+
+" Netrw settings
+let g:netrw_banner = 0
+let g:netrw_liststyle = 1
+let g:netrw_browse_split = 0
+let g:netrw_altv = 1
+let g:netrw_altfile = 1
+let g:netrw_sizestyle = "h"
+let g:netrw_fastbrowse = 0
+
+
+" -------------------- Functions --------------------
 
 " Stips whitespace while maintaining cursor position
 function! StripTrailingWhitespace()
@@ -316,7 +317,7 @@ function! ToggleAutoFormat()
     endif
 endfunction
 
-" ---------- Commands ----------
+" -------------------- Commands --------------------
 
 command -nargs=* Term :call TermExec("<args>")
 command -nargs=1 -complete=dir Tabdir :tabnew | lcd <args> | Ex
@@ -329,7 +330,7 @@ command Mdpreview :terminal ++hidden ++close sh -c "pandoc % -o /tmp/preview.htm
 command Bufonly :%bd | e#
 command -nargs=1 PipenvOpen :call PipenvOpen("<args>")
 
-" ---------- Mappings ----------
+" -------------------- Mappings --------------------
 
 " Formatting
 map Q gq
@@ -401,7 +402,7 @@ autocmd filetype python
 autocmd filetype go nnoremap <leader><leader> :GoDef<cr>
 
 
-" ------------ Plugin Settings ----------
+" -------------------- Plugin Settings --------------------
 
 " Load matchit plugin (comes with vim)
 if !exists('g:loaded_matchit')
