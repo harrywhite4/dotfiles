@@ -35,8 +35,14 @@ syntax enable
 set ttimeout
 set ttimeoutlen=100
 
+" Auto reload buffers
+set autoread
+
 " Show line numbers
 set number
+
+" Number formats
+set nrformats-=octal
 
 " Enable mouse support
 set mouse=a
@@ -206,7 +212,7 @@ autocmd FileType cloudformation setlocal shiftwidth=2 softtabstop=2
 autocmd FileType json setlocal shiftwidth=2 softtabstop=2
 autocmd FileType go setlocal tabstop=4
 
-" Formatting
+" Format programs
 autocmd Filetype python setlocal formatprg=autopep8\ -
 autocmd Filetype go setlocal formatprg=gofmt
 
@@ -227,6 +233,7 @@ set eadirection="hor"
 
 " Formatting (see :h fo-table)
 set formatoptions=crql
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 autocmd FileType text setlocal formatoptions=trq
 autocmd FileType gitcommit setlocal formatoptions=tarq textwidth=72
 autocmd FileType markdown setlocal formatoptions=trq textwidth=100
@@ -395,6 +402,11 @@ autocmd filetype go nnoremap <leader><leader> :GoDef<cr>
 
 
 " ------------ Plugin Settings ----------
+
+" Load matchit plugin (comes with vim)
+if !exists('g:loaded_matchit')
+    runtime! macros/matchit.vim
+endif
 
 " Polyglot
 let g:polyglot_disabled = ['csv']
