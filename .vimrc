@@ -56,8 +56,8 @@ set backspace=indent,eol,start
 set laststatus=2
 
 " Tags
-set tags+=./.git/tags
 set cpoptions+=d
+set tags=./tags,./.git/tags
 
 " Command history
 set history=200
