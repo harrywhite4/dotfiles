@@ -433,8 +433,9 @@ let g:jedi#show_call_signatures = "0"
 
 " vim-go settings
 let g:go_fmt_autosave = 1
+let g:go_fmt_fail_silently = 1 " Should see errors through ale
 let g:go_version_warning = 0
-let g:go_def_mapping_enabled = 0
+let g:go_def_mapping_enabled = 0 " Overrides tags mappings
 let g:go_template_autocreate = 0
 
 " vim-test settings
@@ -453,7 +454,7 @@ let g:ale_linters_explicit = 1
 let g:ale_linters = {
   \ 'python': ['flake8', 'mypy'],
   \ 'javascript': ['eslint'],
-  \ 'go': ['gofmt', 'govet'],
+  \ 'go': ['gofmt', 'gobuild'],
   \ 'cpp': ['cpplint'],
   \ 'cloudformation': ['cloudformation'],
   \ }
