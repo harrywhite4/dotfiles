@@ -153,11 +153,16 @@ set equalalways
 set eadirection="hor"
 
 " Formatting (see :h fo-table)
-set formatoptions=crql
+set formatoptions=crqnl
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-autocmd FileType text setlocal formatoptions=trq
-autocmd FileType gitcommit setlocal formatoptions=tarq textwidth=72
-autocmd FileType markdown setlocal formatoptions=trq textwidth=100
+autocmd FileType text setlocal formatoptions=tcrqn
+autocmd FileType markdown setlocal formatoptions=tcrqn textwidth=100
+autocmd FileType gitcommit setlocal formatoptions=atcrqn textwidth=72
+
+" Spelling (turn on spell checking for these filetypes)
+autocmd Filetype text setlocal spell
+autocmd Filetype gitcommit setlocal spell
+autocmd Filetype pullrequest setlocal spell
 
 " Colors
 set background=dark
@@ -375,8 +380,8 @@ nnoremap <leader>ge :Gedit :<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Gblame<cr>
 " Grep word under cursor
-nnoremap <leader>r :Lrg <C-r><C-w>
-" Replace word under cursor
+nnoremap <leader>r :Lrg '\b<C-r><C-w>\b'
+" Substitute word under cursor
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 " Test maps
 nnoremap <leader>tn :TestNearest<cr>
@@ -393,7 +398,7 @@ inoremap <expr> <C-k> pumvisible() ? "\<Up>" : "\<C-x>\<C-k>"
 inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
 
 " Visual mode maps
-vnoremap <leader>s :s/<C-r>0/
+vnoremap <leader>s :s/\<<C-r>0\>/
 
 " Filetype mappings
 autocmd filetype python
