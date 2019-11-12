@@ -420,6 +420,7 @@ let g:python_highlight_builtin_types = 1
 let g:python_highlight_class_vars = 1
 let g:python_highlight_operators = 1
 let g:python_highlight_exceptions = 1
+let g:vim_markdown_new_list_item_indent = 0
 
 " FZF
 let g:fzf_layout = { 'down': '~30%' }
