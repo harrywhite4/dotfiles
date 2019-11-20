@@ -122,6 +122,9 @@ set nomodeline
 " Dictionary
 set dictionary=/usr/share/dict/words
 
+" Chars for list mode
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+
 " Indentation
 set expandtab
 set softtabstop=4
@@ -153,11 +156,11 @@ set equalalways
 set eadirection="hor"
 
 " Formatting (see :h fo-table)
-set formatoptions=crqnl
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-autocmd FileType text setlocal formatoptions=tcrqn
-autocmd FileType markdown setlocal formatoptions=tcrqn textwidth=100
-autocmd FileType gitcommit setlocal formatoptions=atcrqn textwidth=72
+set formatoptions=tcrqnlj
+set formatlistpat="\v^\s*(\d+[\]:\.\)\}\t ]|[\-\+\*]\s)\s*"
+autocmd FileType text setlocal formatoptions=tn
+autocmd FileType markdown setlocal textwidth=100
+autocmd FileType gitcommit setlocal textwidth=72
 
 " Spelling (turn on spell checking for these filetypes)
 autocmd Filetype text setlocal spell
