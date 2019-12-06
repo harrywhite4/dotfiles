@@ -1,0 +1,23 @@
+{
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": false,
+    "editor.minimap.enabled": false,
+    "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+    },
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.currentLine.enabled": false,
+    "editor.suggestOnTriggerCharacters": false,
+    "python.pythonPath": "/usr/bin/python3",
+    "editor.wordWrap": "on",
+    "editor.wrappingIndent": "none",
+    "editor.highlightActiveIndentGuide": false,
+    "editor.renderIndentGuides": false,
+    "editor.renderFinalNewline": false,
+    "files.insertFinalNewline": true,
+    "extensions.ignoreRecommendations": true,
+    "gitHistory.showEditorTitleMenuBarIcons": false
+}
