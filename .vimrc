@@ -64,6 +64,9 @@ set showcmd
 " Show incremental search
 set incsearch
 
+" Use popup for previews
+set previewpopup=height:10,width:60
+
 " Patterns ignored when using wildcards
 set wildignore=*.exe,*.dll,*.so,*.pyc
 set wildignore+=*/.git/objects/*
@@ -93,7 +96,7 @@ set wildmode=list:longest,full
 set wildmenu
 
 " Completion
-set completeopt=menu,menuone,preview,noinsert
+set completeopt=menu,menuone,popup,noinsert
 set complete=.,w,b,u,t
 set pumheight=15
 

@@ -2,4 +2,5 @@
     s = status
     branches = branch --sort=-committerdate
     cnt = checkout --no-track
-    smlog = log --oneline -n 20
+    slog = log --stat
+    vcommit = commit -v
