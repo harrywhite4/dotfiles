@@ -11,13 +11,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', {'dir': '~/.fzf'}
 Plug 'janko-m/vim-test'
-Plug 'w0rp/ale'
 Plug 'dikiaap/minimalist'
-Plug 'ajh17/VimCompletesMe'
-
-" Language specific plugins
-Plug 'fatih/vim-go'
-Plug 'davidhalter/jedi-vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
 
 call plug#end()
 
@@ -136,15 +132,9 @@ autocmd FileType cloudformation setlocal shiftwidth=2 softtabstop=2
 autocmd FileType json setlocal shiftwidth=2 softtabstop=2
 autocmd FileType go setlocal tabstop=4
 
-" Format programs
-autocmd Filetype python setlocal formatprg=autopep8\ -
-autocmd Filetype go setlocal formatprg=gofmt
-
 " Lang specific settings
 " Sync vue files from the start
 autocmd FileType vue syntax sync fromstart
-" Use omnifunc from jedi
-autocmd FileType python setlocal omnifunc=jedi#completions
 
 " Folding
 set foldmethod=indent
@@ -403,14 +393,39 @@ inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
 " Visual mode maps
 vnoremap <leader>s :s/\<<C-r>0\>/
 
-" Filetype mappings
-autocmd filetype python
-    \ nnoremap <leader><leader> :call jedi#goto()<cr> |
-    \ nnoremap K :call jedi#show_documentation()<cr>
-autocmd filetype go nnoremap <leader><leader> :GoDef<cr>
-
-
 " -------------------- Plugin Settings --------------------
+
+" Register language servers
+if executable('pyls')
+    autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'pyls',
+            \ 'cmd': {server_info->['pyls']},
+            \ 'whitelist': ['python'],
+            \ })
+    autocmd FileType python setlocal omnifunc=lsp#complete
+endif
+
+if executable('gopls')
+    autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'gopls',
+            \ 'cmd': {server_info->['gopls']},
+            \ 'whitelist': ['go'],
+            \ })
+    autocmd BufWritePre *.go LspDocumentFormatSync
+    autocmd FileType go setlocal omnifunc=lsp#complete
+endif
+
+if executable('typescript-language-server')
+    autocmd User lsp_setup call lsp#register_server({
+      \ 'name': 'javascript support using typescript-language-server',
+      \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+      \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
+      \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact']
+      \ })
+    autocmd FileType javascript setlocal omnifunc=lsp#complete
+endif
+
+
 
 " Load matchit plugin (comes with vim)
 if !exists('g:loaded_matchit')
@@ -433,21 +448,6 @@ let g:vim_markdown_new_list_item_indent = 0
 " FZF
 let g:fzf_layout = { 'down': '~30%' }
 
-" Jedi
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#auto_initialization = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#completions_enabled = 0
-let g:jedi#show_call_signatures = "0"
-" omnifunc is used above
-
-" vim-go settings
-let g:go_fmt_autosave = 1
-let g:go_fmt_fail_silently = 1 " Should see errors through ale
-let g:go_version_warning = 0
-let g:go_def_mapping_enabled = 0 " Overrides tags mappings
-let g:go_template_autocreate = 0
-
 " vim-test settings
 function! SmTerminalStrategy(cmd)
     execute TermExec(a:cmd)
@@ -458,21 +458,6 @@ let test#python#runner = 'djangotest'
 let test#python#djangotest#executable = 'pipenv run python manage.py test'
 let test#go = 'gotest'
 let test#go#gotest#options = '-v'
-
-" ale settings
-let g:ale_linters_explicit = 1
-let g:ale_linters = {
-  \ 'python': ['flake8', 'mypy'],
-  \ 'javascript': ['eslint'],
-  \ 'go': ['gofmt', 'gobuild'],
-  \ 'cpp': ['cpplint'],
-  \ 'cloudformation': ['cloudformation'],
-  \ }
-let g:ale_set_highlights = 0
-let g:ale_disable_lsp = 0
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
-let g:ale_echo_cursor = 1
 
 " Buf explorer
 let g:bufExplorerDisableDefaultKeyMapping=1
