@@ -64,7 +64,7 @@ set showcmd
 set incsearch
 
 " Use popup for previews
-set previewpopup=height:10,width:60
+" set previewpopup=height:10,width:60
 
 " Patterns ignored when using wildcards
 set wildignore=*.exe,*.dll,*.so,*.pyc
@@ -397,12 +397,20 @@ vnoremap <leader>s :s/\<<C-r>0\>/
 
 " -------------------- Plugin Settings --------------------
 
-" Register language servers
+" Language servers
 if executable('pyls')
     autocmd User lsp_setup call lsp#register_server({
             \ 'name': 'pyls',
             \ 'cmd': {server_info->['pyls']},
             \ 'whitelist': ['python'],
+            \ 'workspace_config': {
+            \   'pyls': {
+            \     'configurationSources': ['flake8'],
+            \     'plugins': {
+            \       'pyls_mypy': {'enabled': v:true}
+            \     }
+            \   }
+            \ }
             \ })
     autocmd FileType python setlocal omnifunc=lsp#complete
 endif
@@ -426,6 +434,12 @@ if executable('typescript-language-server')
       \ })
     autocmd FileType javascript setlocal omnifunc=lsp#complete
 endif
+
+let g:lsp_preview_float = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_textprop_enabled = 0
+let g:lsp_peek_alignment = "top"
+let g:lsp_preview_doubletap = 0
 
 
 
