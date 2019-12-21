@@ -419,7 +419,7 @@ let g:LanguageClient_serverCommands = {
     \ 'go': ['gopls'],
     \ }
 
-" Language client diagnostics
+" Language client settings
 let g:LanguageClient_diagnosticsDisplay = {
     \ 1: {
     \     "name": "Error",
@@ -450,6 +450,13 @@ let g:LanguageClient_diagnosticsDisplay = {
     \     "virtualTexthl": "Todo",
     \ },
     \ }
+
+let g:LanguageClient_hoverPreview = "Always"
+let g:LanguageClient_useFloatingHover = 1
+let g:LanguageClient_selectionUI = "Quickfix"
+let g:LanguageClient_diagnosticsList = "Location"
+let g:LanguageClient_fzfContextMenu = 1
+
 
 " Load matchit plugin (comes with vim)
 if !exists('g:loaded_matchit')
