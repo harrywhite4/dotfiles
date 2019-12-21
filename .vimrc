@@ -404,12 +404,12 @@ inoremap <C-]> <C-x><C-]>
 inoremap <C-f> <C-x><C-f>
 inoremap <expr> <C-k> pumvisible() ? "\<Up>" : "\<C-x>\<C-k>"
 inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
-" Language server
-inoremap <leader>lf :call languageClient#textDocument_rangeFormatting()
 
 
 " Visual mode maps
 vnoremap <leader>s :s/\<<C-r>0\>/
+" Language server
+vnoremap <leader>lf :call languageClient#textDocument_rangeFormatting()
 
 " -------------------- Plugin Settings --------------------
 
