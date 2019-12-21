@@ -12,8 +12,10 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', {'dir': '~/.fzf'}
 Plug 'janko-m/vim-test'
 Plug 'dikiaap/minimalist'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 call plug#end()
 
@@ -35,6 +37,9 @@ set autoread
 
 " Show line numbers
 set number
+
+" Show signs in number column
+set signcolumn=number
 
 " Number formats
 set nrformats-=octal
@@ -353,8 +358,8 @@ nnoremap <F2> :call StripTrailingWhitespace()<cr>
 nnoremap <F3> :setlocal spell!<cr>
 " Toggle auto-format
 nnoremap <F4> :call ToggleAutoFormat()<cr>
-" Check files to reload
-nnoremap <F5> :checktime<cr>
+" Language server menu
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " Disable ale for this duffer
 nnoremap <F6> :ALEDisableBuffer<cr>
 " Format file
@@ -398,50 +403,42 @@ vnoremap <leader>s :s/\<<C-r>0\>/
 " -------------------- Plugin Settings --------------------
 
 " Language servers
-if executable('pyls')
-    autocmd User lsp_setup call lsp#register_server({
-            \ 'name': 'pyls',
-            \ 'cmd': {server_info->['pyls']},
-            \ 'whitelist': ['python'],
-            \ 'workspace_config': {
-            \   'pyls': {
-            \     'configurationSources': ['flake8'],
-            \     'plugins': {
-            \       'pyls_mypy': {'enabled': v:true}
-            \     }
-            \   }
-            \ }
-            \ })
-    autocmd FileType python setlocal omnifunc=lsp#complete
-endif
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls'],
+    \ 'go': ['gopls'],
+    \ }
 
-if executable('gopls')
-    autocmd User lsp_setup call lsp#register_server({
-            \ 'name': 'gopls',
-            \ 'cmd': {server_info->['gopls']},
-            \ 'whitelist': ['go'],
-            \ })
-    autocmd BufWritePre *.go LspDocumentFormatSync
-    autocmd FileType go setlocal omnifunc=lsp#complete
-endif
-
-if executable('typescript-language-server')
-    autocmd User lsp_setup call lsp#register_server({
-      \ 'name': 'javascript support using typescript-language-server',
-      \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-      \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
-      \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact']
-      \ })
-    autocmd FileType javascript setlocal omnifunc=lsp#complete
-endif
-
-let g:lsp_preview_float = 1
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_textprop_enabled = 0
-let g:lsp_peek_alignment = "top"
-let g:lsp_preview_doubletap = 0
-
-
+" Language client diagnostics
+let g:LanguageClient_diagnosticsDisplay = {
+    \ 1: {
+    \     "name": "Error",
+    \     "texthl": "SpellBad",
+    \     "signText": "E>",
+    \     "signTexthl": "Error",
+    \     "virtualTexthl": "Error",
+    \ },
+    \ 2: {
+    \     "name": "Warning",
+    \     "texthl": "SpellCap",
+    \     "signText": "W>",
+    \     "signTexthl": "Todo",
+    \     "virtualTexthl": "Todo",
+    \ },
+    \ 3: {
+    \     "name": "Information",
+    \     "texthl": "SpellCap",
+    \     "signText": "I>",
+    \     "signTexthl": "Todo",
+    \     "virtualTexthl": "Todo",
+    \ },
+    \ 4: {
+    \     "name": "Hint",
+    \     "texthl": "SpellCap",
+    \     "signText": "H>",
+    \     "signTexthl": "Todo",
+    \     "virtualTexthl": "Todo",
+    \ },
+    \ }
 
 " Load matchit plugin (comes with vim)
 if !exists('g:loaded_matchit')
