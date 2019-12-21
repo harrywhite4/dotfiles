@@ -388,6 +388,14 @@ nnoremap <leader>tn :TestNearest<cr>
 nnoremap <leader>tl :TestLast<cr>
 " Save
 nnoremap <leader>w :w<cr>
+" Language server
+nnoremap <leader>] :call LanguageClient#textDocument_definition()<cr>
+nnoremap <leader>lh :call LanguageClient#textDocument_hover()<cr>
+nnoremap <leader>ln :call LanguageClient#textDocument_rename()<cr>
+nnoremap <leader>lr :call LanguageClient#textDocument_references()<cr>
+nnoremap <leader>la :call LanguageClient#textDocument_codeAction()<cr>
+nnoremap <leader>ls :call LanguageClient#textDocument_documentSymbol()<cr>
+nnoremap <leader>lw :call LanguageClient#workspace_symbol()<cr>
 
 " Insert mode maps
 imap <C-@> <C-Space>
@@ -396,6 +404,9 @@ inoremap <C-]> <C-x><C-]>
 inoremap <C-f> <C-x><C-f>
 inoremap <expr> <C-k> pumvisible() ? "\<Up>" : "\<C-x>\<C-k>"
 inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
+" Language server
+inoremap <leader>lf :call languageClient#textDocument_rangeFormatting()
+
 
 " Visual mode maps
 vnoremap <leader>s :s/\<<C-r>0\>/
