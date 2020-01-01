@@ -457,6 +457,9 @@ let g:LanguageClient_selectionUI = "Quickfix"
 let g:LanguageClient_diagnosticsList = "Location"
 let g:LanguageClient_fzfContextMenu = 1
 
+" Format go files on save
+autocmd BufWritePre *.go call LanguageClient#textDocument_formatting_sync()
+
 
 " Load matchit plugin (comes with vim)
 if !exists('g:loaded_matchit')
