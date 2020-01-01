@@ -457,6 +457,11 @@ let g:LanguageClient_selectionUI = "Quickfix"
 let g:LanguageClient_diagnosticsList = "Location"
 let g:LanguageClient_fzfContextMenu = 1
 
+let g:LanguageClient_rootMarkers = {
+    \ 'javascript': ['project.json'],
+    \ 'go': ['go.mod'],
+    \ }
+
 " Format go files on save
 autocmd BufWritePre *.go call LanguageClient#textDocument_formatting_sync()
 
