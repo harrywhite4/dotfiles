@@ -456,6 +456,7 @@ let g:LanguageClient_useFloatingHover = 1
 let g:LanguageClient_selectionUI = "Quickfix"
 let g:LanguageClient_diagnosticsList = "Location"
 let g:LanguageClient_fzfContextMenu = 1
+let g:LanguageClient_changeThrottle = 1
 
 let g:LanguageClient_rootMarkers = {
     \ 'javascript': ['project.json'],
