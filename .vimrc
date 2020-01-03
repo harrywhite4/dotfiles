@@ -422,6 +422,7 @@ if executable('gopls')
     autocmd User lsp_setup call lsp#register_server({
             \ 'name': 'gopls',
             \ 'cmd': {server_info->['gopls']},
+            \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'go.mod'))},
             \ 'whitelist': ['go'],
             \ })
     autocmd BufWritePre *.go LspDocumentFormatSync
@@ -432,7 +433,7 @@ if executable('typescript-language-server')
     autocmd User lsp_setup call lsp#register_server({
       \ 'name': 'javascript support using typescript-language-server',
       \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-      \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
+      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
       \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact']
       \ })
     autocmd FileType javascript setlocal omnifunc=lsp#complete
