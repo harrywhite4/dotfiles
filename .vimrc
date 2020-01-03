@@ -99,6 +99,7 @@ set wildmenu
 
 " Completion
 set completeopt=menu,menuone,popup,noinsert
+set completepopup=height:20,width:60
 set complete=.,w,b,u,t
 set pumheight=15
 
@@ -444,8 +445,7 @@ let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_textprop_enabled = 0
 let g:lsp_peek_alignment = "top"
 let g:lsp_preview_doubletap = 0
-
-
+let g:lsp_signature_help_enabled = 0
 
 " Load matchit plugin (comes with vim)
 if !exists('g:loaded_matchit')
