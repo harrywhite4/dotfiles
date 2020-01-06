@@ -387,6 +387,15 @@ nnoremap <leader>tn :TestNearest<cr>
 nnoremap <leader>tl :TestLast<cr>
 " Save
 nnoremap <leader>w :w<cr>
+" Language server
+nnoremap <leader>] :LspDefinition<cr>
+nnoremap <leader>ld :LspDocumentDiagnostics<cr>
+nnoremap <leader>lh :LspHover<cr>
+nnoremap <leader>ln :LspRename<cr>
+nnoremap <leader>lr :LspReferences<cr>
+nnoremap <leader>la :LspCodeAction<cr>
+nnoremap <leader>ls :LspDocumentSymbol<cr>
+nnoremap <leader>lw :LspWorkspaceSymbol<cr>
 
 " Insert mode maps
 imap <C-@> <C-Space>
@@ -398,6 +407,8 @@ inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
 
 " Visual mode maps
 vnoremap <leader>s :s/\<<C-r>0\>/
+" Language server
+vnoremap <leader>lf :LspDocumentRangeFormat<cr>
 
 " -------------------- Plugin Settings --------------------
 
