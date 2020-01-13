@@ -474,7 +474,6 @@ if executable('pyls')
             \   }
             \ }
             \ })
-    autocmd FileType python let b:lsp_diagnostics_enabled = 0
     let g:neomake_python_enabled_makers = []
 endif
 
@@ -511,7 +510,7 @@ if executable('vls')
 endif
 
 " Function called when each buffer enabled
-function! s:on_lsp_buffer_enabled()
+function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
 endfunction
 
