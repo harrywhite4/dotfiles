@@ -474,7 +474,6 @@ if executable('pyls')
             \   }
             \ }
             \ })
-    let g:neomake_python_enabled_makers = []
 endif
 
 if executable('gopls')
@@ -485,7 +484,6 @@ if executable('gopls')
             \ 'whitelist': ['go'],
             \ })
     autocmd BufWritePre *.go LspDocumentFormatSync
-    let g:neomake_go_enabled_makers = []
 endif
 
 if executable('typescript-language-server')
@@ -495,7 +493,6 @@ if executable('typescript-language-server')
       \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
       \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact']
       \ })
-    let g:neomake_javascript_enabled_makers = []
 endif
 
 if executable('vls')
@@ -506,7 +503,6 @@ if executable('vls')
       \ 'whitelist': ['vue'],
       \ 'initialization_options': {}
       \ })
-    let g:neomake_vue_enabled_makers = []
 endif
 
 " Function called when each buffer enabled
@@ -516,6 +512,7 @@ endfunction
 
 autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 
+let g:lsp_diagnostics_enabled = 0
 let g:lsp_preview_float = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_highlights_enabled = 0
