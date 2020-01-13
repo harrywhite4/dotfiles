@@ -415,8 +415,8 @@ vnoremap <leader>lf :LspDocumentRangeFormat<cr>
 
 " Neomake
 
-" Automake when reading a buffer (after 500ms), and when writing.
-call neomake#configure#automake('rw', 500)
+" Automake when reading / editing (after 100ms), and when writing.
+call neomake#configure#automake('nrw', 100)
 
 " Highlights
 let g:neomake_highlight_columns = 0
