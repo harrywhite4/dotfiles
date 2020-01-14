@@ -474,7 +474,8 @@ if executable('pyls')
             \   }
             \ }
             \ })
-    autocmd FileType python setlocal omnifunc=lsp#complete
+    autocmd FileType python let b:lsp_diagnostics_enabled = 0
+    let g:neomake_python_enabled_makers = []
 endif
 
 if executable('gopls')
@@ -485,7 +486,7 @@ if executable('gopls')
             \ 'whitelist': ['go'],
             \ })
     autocmd BufWritePre *.go LspDocumentFormatSync
-    autocmd FileType go setlocal omnifunc=lsp#complete
+    let g:neomake_go_enabled_makers = []
 endif
 
 if executable('typescript-language-server')
@@ -495,7 +496,7 @@ if executable('typescript-language-server')
       \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
       \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact']
       \ })
-    autocmd FileType javascript setlocal omnifunc=lsp#complete
+    let g:neomake_javascript_enabled_makers = []
 endif
 
 if executable('vls')
@@ -506,11 +507,19 @@ if executable('vls')
       \ 'whitelist': ['vue'],
       \ 'initialization_options': {}
       \ })
-    autocmd FileType javascript setlocal omnifunc=lsp#complete
+    let g:neomake_vue_enabled_makers = []
 endif
+
+" Function called when each buffer enabled
+function! s:on_lsp_buffer_enabled()
+    setlocal omnifunc=lsp#complete
+endfunction
+
+autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 
 let g:lsp_preview_float = 1
 let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_highlights_enabled = 0
 let g:lsp_textprop_enabled = 0
 let g:lsp_peek_alignment = "top"
 let g:lsp_preview_doubletap = 0
