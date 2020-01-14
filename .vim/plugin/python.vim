@@ -71,3 +71,5 @@ endfunction
 function! GetImportPath()
     return s:getImportPathStart() . '.' . s:getImportPathEnd()
 endfunction
+
+command ImportPath let @+ = GetImportPath() | echo @+
