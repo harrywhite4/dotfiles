@@ -14,6 +14,7 @@ Plug 'janko-m/vim-test'
 Plug 'dikiaap/minimalist'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
+Plug 'neomake/neomake'
 
 call plug#end()
 
@@ -411,6 +412,52 @@ vnoremap <leader>s :s/\<<C-r>0\>/
 vnoremap <leader>lf :LspDocumentRangeFormat<cr>
 
 " -------------------- Plugin Settings --------------------
+
+" Neomake
+
+" Automake when reading a buffer (after 500ms), and when writing.
+call neomake#configure#automake('rw', 500)
+
+" Highlights
+let g:neomake_highlight_columns = 0
+let g:neomake_error_sign = {
+ \ 'text': 'E>',
+ \ 'texthl': 'Error',
+ \ }
+let g:neomake_warning_sign = {
+ \   'text': 'W>',
+ \   'texthl': 'Todo',
+ \ }
+let g:neomake_message_sign = {
+  \   'text': 'M>',
+  \   'texthl': 'Normal',
+  \ }
+let g:neomake_info_sign = {
+  \ 'text': 'I>',
+  \ 'texthl': 'Normal'
+  \ }
+
+" Custom makers
+let g:neomake_cloudformation_cfnlint_maker = {
+    \ 'exe': 'cfn-lint',
+    \ 'args': ['--template', '%t', '--format', 'parseable'],
+    \ 'append_file': 0,
+    \ 'errorformat': '%f:%l:%c:%*\d:%*\d:%m'
+    \ }
+
+
+" Enabled makers
+let g:neomake_python_enabled_makers = ['flake8', 'mypy']
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_vue_enabled_makers = ['eslint']
+let g:neomake_cloudformation_enabled_makers = ['cfnlint']
+
+" Linter args
+let g:neomake_python_mypy_args = [
+    \ '--show-column-numbers',
+    \ '--check-untyped-defs',
+    \ '--ignore-missing-imports',
+    \ ]
 
 " Language servers
 if executable('pyls')
