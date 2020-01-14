@@ -11,9 +11,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', {'dir': '~/.fzf'}
 Plug 'janko-m/vim-test'
-Plug 'w0rp/ale'
 Plug 'dikiaap/minimalist'
 Plug 'ajh17/VimCompletesMe'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'neomake/neomake'
 
 " Language specific plugins
 Plug 'fatih/vim-go'
@@ -405,14 +407,59 @@ inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
 " Visual mode maps
 vnoremap <leader>s :s/\<<C-r>0\>/
 
+" -------------------- Plugin Settings --------------------
+
 " Filetype mappings
 autocmd filetype python
     \ nnoremap <leader><leader> :call jedi#goto()<cr> |
     \ nnoremap K :call jedi#show_documentation()<cr>
 autocmd filetype go nnoremap <leader><leader> :GoDef<cr>
 
+" Neomake
 
-" -------------------- Plugin Settings --------------------
+" Automake when reading / editing (after 100ms), and when writing.
+call neomake#configure#automake('nrw', 100)
+
+" Highlights
+let g:neomake_highlight_columns = 0
+let g:neomake_error_sign = {
+ \ 'text': 'E>',
+ \ 'texthl': 'Error',
+ \ }
+let g:neomake_warning_sign = {
+ \   'text': 'W>',
+ \   'texthl': 'Todo',
+ \ }
+let g:neomake_message_sign = {
+  \   'text': 'M>',
+  \   'texthl': 'Normal',
+  \ }
+let g:neomake_info_sign = {
+  \ 'text': 'I>',
+  \ 'texthl': 'Normal'
+  \ }
+
+" Custom makers
+let g:neomake_cloudformation_cfnlint_maker = {
+    \ 'exe': 'cfn-lint',
+    \ 'args': ['--template', '%t', '--format', 'parseable'],
+    \ 'append_file': 0,
+    \ 'errorformat': '%f:%l:%c:%*\d:%*\d:%m'
+    \ }
+
+
+" Enabled makers
+let g:neomake_python_enabled_makers = ['flake8', 'mypy']
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_vue_enabled_makers = ['eslint']
+let g:neomake_cloudformation_enabled_makers = ['cfnlint']
+
+" Linter args
+let g:neomake_python_mypy_args = [
+    \ '--show-column-numbers',
+    \ '--check-untyped-defs',
+    \ '--ignore-missing-imports',
+    \ ]
 
 " Load matchit plugin (comes with vim)
 if !exists('g:loaded_matchit')
@@ -460,21 +507,6 @@ let test#python#runner = 'djangotest'
 let test#python#djangotest#executable = 'pipenv run python manage.py test'
 let test#go = 'gotest'
 let test#go#gotest#options = '-v'
-
-" ale settings
-let g:ale_linters_explicit = 1
-let g:ale_linters = {
-  \ 'python': ['flake8', 'mypy'],
-  \ 'javascript': ['eslint'],
-  \ 'go': ['gofmt', 'gobuild'],
-  \ 'cpp': ['cpplint'],
-  \ 'cloudformation': ['cloudformation'],
-  \ }
-let g:ale_set_highlights = 0
-let g:ale_disable_lsp = 0
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
-let g:ale_echo_cursor = 1
 
 " Buf explorer
 let g:bufExplorerDisableDefaultKeyMapping=1
