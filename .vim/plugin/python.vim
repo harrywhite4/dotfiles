@@ -3,6 +3,7 @@
 function! s:getImportPathEnd()
     let cline = line('.')
     let identifiers = []
+    let have_function = 0
     " Iterate from current line backwards
     for linenr in range(cline, 1, -1)
         " Check for function or class definition
@@ -10,9 +11,21 @@ function! s:getImportPathEnd()
         " If we got a match
         if len(matches) > 0
             let indentation = len(matches[1])
+            let type = matches[2]
             let identifier = matches[3]
+
+            " If we already have a function, ignore
+            if have_function && type ==# 'def'
+                continue
+            endif
+            " Add to list
             let identifiers = add(identifiers, identifier)
-            if indentation == 0
+            if type ==# 'def'
+                let have_function = 1
+            endif
+
+            " If at base level or we got a class, stop here
+            if type ==# 'class' || indentation == 0
                 break
             endif
         endif
@@ -52,7 +65,7 @@ function! s:getImportPathStart()
     while 1
         let path = s:getHead(path)
         " If we got to top of file tree
-        if path == '/'
+        if path ==# '/'
             break
         endif
 
