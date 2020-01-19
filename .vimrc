@@ -368,7 +368,7 @@ nnoremap <F4> :call ToggleAutoFormat()<cr>
 " Check files to reload
 nnoremap <F5> :checktime<cr>
 " Disable ale for this duffer
-nnoremap <F6> :ALEDisableBuffer<cr>
+nnoremap <F6> :NeomakeDisableBuffer <bar> NeomakeClean<cr>
 " Format file
 nmap <F8> :call FormatFile()<cr>
 " Change indentation
