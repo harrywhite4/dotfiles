@@ -43,6 +43,9 @@ setopt pushd_silent
 # Cap dir stack size
 DIRSTACKSIZE=10
 
+# Set time format
+TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*Us\nsystem\t%*Ss\ntotal\t%*Es'
+
 # Use modern completion system
 setopt auto_menu
 setopt always_to_end

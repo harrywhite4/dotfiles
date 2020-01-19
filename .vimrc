@@ -361,7 +361,7 @@ nnoremap <F4> :call ToggleAutoFormat()<cr>
 " Check files to reload
 nnoremap <F5> :checktime<cr>
 " Disable ale for this duffer
-nnoremap <F6> :ALEDisableBuffer<cr>
+nnoremap <F6> :NeomakeDisableBuffer <bar> NeomakeClean<cr>
 " Format file
 nmap <F8> :call FormatFile()<cr>
 " Change indentation
@@ -457,6 +457,13 @@ let g:neomake_python_mypy_args = [
     \ '--show-column-numbers',
     \ '--check-untyped-defs',
     \ '--ignore-missing-imports',
+    \ ]
+
+let g:neomake_yaml_yamllint_args = [
+    \ '-d',
+    \ 'relaxed',
+    \ '-f',
+    \ 'parsable',
     \ ]
 
 " Language servers
