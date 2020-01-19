@@ -461,6 +461,13 @@ let g:neomake_python_mypy_args = [
     \ '--ignore-missing-imports',
     \ ]
 
+let g:neomake_yaml_yamllint_args = [
+    \ '-d',
+    \ 'relaxed',
+    \ '-f',
+    \ 'parsable',
+    \ ]
+
 " Load matchit plugin (comes with vim)
 if !exists('g:loaded_matchit')
     runtime! macros/matchit.vim
