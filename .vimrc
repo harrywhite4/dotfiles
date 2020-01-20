@@ -10,6 +10,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', {'dir': '~/.fzf'}
+Plug 'junegunn/fzf.vim'
 Plug 'janko-m/vim-test'
 Plug 'dikiaap/minimalist'
 Plug 'ajh17/VimCompletesMe'
@@ -331,16 +332,15 @@ endfunction
 
 " -------------------- Commands --------------------
 
-command -nargs=* Term :call TermExec("<args>")
-command -nargs=1 -complete=dir Tabdir :tabnew | lcd <args> | Ex
-command -nargs=+ Rg :silent! grep <args> | redraw!
-command -nargs=+ Lrg :silent! grep! <args> | redraw! | botright copen
-command -nargs=1 Type :setlocal filetype=<args>
-command -nargs=1 Fileat :Gedit <args>:%
-command -nargs=+ Pydoc :terminal ++close pipenv run python -m pydoc <args>
-command Mdpreview :terminal ++hidden ++close sh -c "pandoc % -o /tmp/preview.html && firefox /tmp/preview.html"
-command Bufonly :%bd | e#
-command -nargs=1 PipenvOpen :call PipenvOpen("<args>")
+command! -nargs=* Term :call TermExec("<args>")
+command! -nargs=1 -complete=dir Tabdir :tabnew | lcd <args> | Ex
+command! -nargs=+ Lrg :silent! grep! <args> | redraw! | botright copen
+command! -nargs=1 Type :setlocal filetype=<args>
+command! -nargs=1 Fileat :Gedit <args>:%
+command! -nargs=+ Pydoc :terminal ++close pipenv run python -m pydoc <args>
+command! Mdpreview :terminal ++hidden ++close sh -c "pandoc % -o /tmp/preview.html && firefox /tmp/preview.html"
+command! Bufonly :%bd | e#
+command! -nargs=1 PipenvOpen :call PipenvOpen("<args>")
 
 " -------------------- Mappings --------------------
 
