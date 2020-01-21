@@ -105,7 +105,7 @@ set wildmenu
 " Completion
 set completeopt=menu,menuone,popup,noinsert
 set complete=.,w,b,u,t
-set pumheight=15
+set pumheight=10
 
 " Ignore case when searching except when caps used
 set ignorecase
@@ -339,7 +339,7 @@ command! -nargs=+ Lrg :silent! grep! <args> | redraw! | botright copen
 command! -nargs=1 Type :setlocal filetype=<args>
 command! -nargs=1 Fileat :Gedit <args>:%
 command! -nargs=+ Pydoc :terminal ++close pipenv run python -m pydoc <args>
-command! Mdpreview :terminal ++hidden ++close sh -c "pandoc % -o /tmp/preview.html && firefox /tmp/preview.html"
+command! Mdpreview :terminal ++hidden ++close sh -c "pandoc % -o ~/preview.html && firefox ~/preview.html"
 command! Bufonly :%bd | e#
 command! -nargs=1 PipenvOpen :call PipenvOpen("<args>")
 
