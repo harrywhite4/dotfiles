@@ -14,8 +14,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'janko-m/vim-test'
 Plug 'dikiaap/minimalist'
 Plug 'ajh17/VimCompletesMe'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
 Plug 'neomake/neomake'
 
 " Language specific plugins
