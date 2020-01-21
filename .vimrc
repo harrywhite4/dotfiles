@@ -41,6 +41,9 @@ set autoread
 " Show line numbers
 set number
 
+" Show signs in number column
+set signcolumn=number
+
 " Number formats
 set nrformats-=octal
 
