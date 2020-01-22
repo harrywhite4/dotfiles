@@ -342,6 +342,7 @@ command! -nargs=+ Pydoc :terminal ++close pipenv run python -m pydoc <args>
 command! Mdpreview :terminal ++hidden ++close sh -c "pandoc % -o ~/preview.html && firefox ~/preview.html"
 command! Bufonly :%bd | e#
 command! -nargs=1 PipenvOpen :call PipenvOpen("<args>")
+command! SessionSave :mks! ~/session.vim
 
 " -------------------- Mappings --------------------
 
@@ -375,6 +376,8 @@ nmap <F8> :call FormatFile()<cr>
 " Change indentation
 nnoremap <leader>i2 :setlocal shiftwidth=2 softtabstop=2<cr>
 nnoremap <leader>i4 :setlocal shiftwidth=4 softtabstop=4<cr>
+" Buffer explorer
+nnoremap <leader>b :BufExplorer<cr>
 " Open terminal
 nnoremap <leader>cb :bo terminal ++close ++rows=15<cr>
 nnoremap <leader>ct :tab terminal<cr>
