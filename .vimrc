@@ -103,7 +103,7 @@ set wildmenu
 set completeopt=menu,menuone,popup,noinsert
 set completepopup=height:20,width:60
 set complete=.,w,b,u,t
-set pumheight=15
+set pumheight=10
 
 " Ignore case when searching except when caps used
 set ignorecase
@@ -331,9 +331,10 @@ command! -nargs=+ Lrg :silent! grep! <args> | redraw! | botright copen
 command! -nargs=1 Type :setlocal filetype=<args>
 command! -nargs=1 Fileat :Gedit <args>:%
 command! -nargs=+ Pydoc :terminal ++close pipenv run python -m pydoc <args>
-command! Mdpreview :terminal ++hidden ++close sh -c "pandoc % -o /tmp/preview.html && firefox /tmp/preview.html"
+command! Mdpreview :terminal ++hidden ++close sh -c "pandoc % -o ~/preview.html && firefox ~/preview.html"
 command! Bufonly :%bd | e#
 command! -nargs=1 PipenvOpen :call PipenvOpen("<args>")
+command! SessionSave :mks! ~/session.vim
 
 " -------------------- Mappings --------------------
 
@@ -367,13 +368,14 @@ nmap <F8> :call FormatFile()<cr>
 " Change indentation
 nnoremap <leader>i2 :setlocal shiftwidth=2 softtabstop=2<cr>
 nnoremap <leader>i4 :setlocal shiftwidth=4 softtabstop=4<cr>
-" Explore buffers
+" Buffer explorer
 nnoremap <leader>b :BufExplorer<cr>
 " Open terminal
 nnoremap <leader>cb :bo terminal ++close ++rows=15<cr>
 nnoremap <leader>ct :tab terminal<cr>
-" Copy file path to register
-nnoremap <leader>f :let @" = expand("%")<cr>
+" Fzf mappings
+nnoremap <leader>fb :Buffers<cr>
+nnoremap <leader>ft :Tags<cr>
 " Git maps
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>ge :Gedit :<cr>
@@ -386,6 +388,9 @@ nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 " Test maps
 nnoremap <leader>tn :TestNearest<cr>
 nnoremap <leader>tl :TestLast<cr>
+" Copy file path to register
+nnoremap <leader>yf :let @" = expand("%")<cr>
+nnoremap <leader>yi :ImportPath<cr>
 " Save
 nnoremap <leader>w :w<cr>
 " Language server
