@@ -42,7 +42,9 @@ set autoread
 set number
 
 " Show signs in number column
-set signcolumn=number
+if has("patch-8.1.1564")
+    set signcolumn=number
+endif
 
 " Number formats
 set nrformats-=octal
@@ -71,8 +73,10 @@ set showcmd
 " Show incremental search
 set incsearch
 
-" Use popup for previews
-set previewpopup=height:10,width:60
+" Use popup for previews on recent vim
+if has("patch-8.1.1714")
+    set previewpopup=height:10,width:60
+endif
 
 " Patterns ignored when using wildcards
 set wildignore=*.exe,*.dll,*.so,*.pyc
@@ -103,9 +107,13 @@ set wildmode=list:longest,full
 set wildmenu
 
 " Completion
-set completeopt=menu,menuone,popup,noinsert
+set completeopt=menu,menuone,noinsert
 set complete=.,w,b,u,t
 set pumheight=10
+if has("patch-8.1.1880")
+    " Enable popups for completion items in recent vim
+    set completeopt+=popup
+endif
 
 " Ignore case when searching except when caps used
 set ignorecase
