@@ -481,7 +481,13 @@ if executable('pyls')
             \   'pyls': {
             \     'configurationSources': ['flake8'],
             \     'plugins': {
-            \       'pyls_mypy': {'enabled': v:true}
+            \       'pyls_mypy': {'enabled': v:true},
+            \       'jedi_symbols': {'enabled': v:false},
+            \       'pycodestyle': {'enabled': v:false},
+            \       'mccabe': {'enabled': v:false},
+            \       'pyflakes': {'enabled': v:false},
+            \       'pylint': {'enabled': v:false},
+            \       'rope_completion': {'enabled': v:false}
             \     }
             \   }
             \ }
