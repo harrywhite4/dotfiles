@@ -427,8 +427,9 @@ vnoremap <leader>s :s/\<<C-r>0\>/
 " Filetype mappings
 autocmd filetype python
     \ nnoremap <leader>] :call jedi#goto()<cr> |
-    \ nnoremap <leader>k :call jedi#show_documentation()<cr> |
-    \ nnoremap <leader>u :call jedi#usages()<cr>
+    \ nnoremap <leader>lk :call jedi#show_documentation()<cr> |
+    \ nnoremap <leader>lr :call jedi#usages()<cr> |
+    \ nnoremap <leader>ln :call jedi#rename()<cr>
 autocmd filetype go nnoremap <leader>] :GoDef<cr>
 
 " Neomake
