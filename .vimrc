@@ -351,6 +351,7 @@ command! Mdpreview :terminal ++hidden ++close sh -c "pandoc % -o ~/preview.html 
 command! Bufonly :%bd | e#
 command! -nargs=1 PipenvOpen :call PipenvOpen("<args>")
 command! SessionSave :mks! ~/session.vim
+command! Retag !./.git/hooks/ctags
 
 " -------------------- Mappings --------------------
 
