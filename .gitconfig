@@ -1,6 +1,8 @@
 [alias]
     s = status
     branches = branch --sort=-committerdate
+    glog = log --stat --graph
     cnt = checkout --no-track
-    slog = log --stat
-    vcommit = commit -v
+
+[branch]
+    autoSetupMerge = false
