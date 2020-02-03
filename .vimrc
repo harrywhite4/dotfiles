@@ -339,6 +339,12 @@ function! ToggleAutoFormat()
     endif
 endfunction
 
+" Copy value to clipboard and print
+function! CopyAndPrint(value)
+    let @+ = a:value
+    echo @+
+endfunction
+
 " -------------------- Commands --------------------
 
 command! -nargs=* Term :call TermExec("<args>")
@@ -406,7 +412,7 @@ nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <leader>tn :TestNearest<cr>
 nnoremap <leader>tl :TestLast<cr>
 " Copy file path to register
-nnoremap <leader>yf :let @" = expand("%")<cr>
+nnoremap <leader>yf :call CopyAndPrint(expand("%"))<cr>
 nnoremap <leader>yi :ImportPath<cr>
 " Save
 nnoremap <leader>w :w<cr>
