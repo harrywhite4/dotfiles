@@ -343,7 +343,7 @@ endfunction
 
 command! -nargs=* Term :call TermExec("<args>")
 command! -nargs=1 -complete=dir Tabdir :tabnew | lcd <args> | Ex
-command! -nargs=+ Lrg :silent! grep! <args> | redraw! | botright copen
+command! -nargs=+ Rg :silent! grep! <args> | redraw! | botright copen
 command! -nargs=1 Type :setlocal filetype=<args>
 command! -nargs=1 Fileat :Gedit <args>:%
 command! -nargs=+ Pydoc :terminal ++close pipenv run python -m pydoc <args>
@@ -351,6 +351,7 @@ command! Mdpreview :terminal ++hidden ++close sh -c "pandoc % -o ~/preview.html 
 command! Bufonly :%bd | e#
 command! -nargs=1 PipenvOpen :call PipenvOpen("<args>")
 command! SessionSave :mks! ~/session.vim
+command! Retag !./.git/hooks/ctags
 
 " -------------------- Mappings --------------------
 
@@ -398,7 +399,7 @@ nnoremap <leader>ge :Gedit :<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Gblame<cr>
 " Grep word under cursor
-nnoremap <leader>r :Lrg '\b<C-r><C-w>\b'
+nnoremap <leader>r :Rg '\b<cword>\b'
 " Substitute word under cursor
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 " Test maps
@@ -426,8 +427,9 @@ vnoremap <leader>s :s/\<<C-r>0\>/
 " Filetype mappings
 autocmd filetype python
     \ nnoremap <leader>] :call jedi#goto()<cr> |
-    \ nnoremap <leader>k :call jedi#show_documentation()<cr> |
-    \ nnoremap <leader>u :call jedi#usages()<cr>
+    \ nnoremap <leader>lk :call jedi#show_documentation()<cr> |
+    \ nnoremap <leader>lr :call jedi#usages()<cr> |
+    \ nnoremap <leader>ln :call jedi#rename()<cr>
 autocmd filetype go nnoremap <leader>] :GoDef<cr>
 
 " Neomake
