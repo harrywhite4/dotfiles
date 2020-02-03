@@ -480,8 +480,8 @@ let g:neomake_cloudformation_enabled_makers = ['cfnlint']
 " Linter args
 let g:neomake_python_mypy_args = [
     \ '--show-column-numbers',
-    \ '--check-untyped-defs',
-    \ '--ignore-missing-imports',
+    \ '--config-file',
+    \ '~/.config/mypy/config',
     \ ]
 
 let g:neomake_yaml_yamllint_args = [

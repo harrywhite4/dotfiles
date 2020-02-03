@@ -1,5 +1,7 @@
 [mypy]
 ignore_missing_imports = True
-strict_optional = False
+strict_optional = True
 show_column_numbers = True
 warn_unreachable = True
+warn_return_any = True
+disallow_incomplete_defs = True
