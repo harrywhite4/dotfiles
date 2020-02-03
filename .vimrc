@@ -218,7 +218,7 @@ autocmd BufReadPost *
       \ | endif
 
 " Statusline, plus functions used in statusline
-function GetModified()
+function! GetModified()
     if !&modifiable
         return "[NM]"
     endif
@@ -228,7 +228,7 @@ function GetModified()
     return ""
 endfunction
 
-function GetLintErrorCount()
+function! GetLintErrorCount()
     if exists("*ale#statusline#Count")
         let lintErrorCount = ale#statusline#Count(bufnr("%"))['total']
         if lintErrorCount > 0
@@ -238,7 +238,7 @@ function GetLintErrorCount()
     return ''
 endfunction
 
-function GetBranchName()
+function! GetBranchName()
     if exists("*FugitiveHead")
         let branchName = FugitiveHead()
         if len(branchName)
