@@ -37,7 +37,7 @@ if [ -f ~/.fzf.bash ]; then
 fi
 
 # Prompt
-export PS1="[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ "
+export PS1="\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\] \$ "
 
 # include common files
 source $HOME/.common.sh
