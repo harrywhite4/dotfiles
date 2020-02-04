@@ -52,6 +52,9 @@ set nrformats-=octal
 " Enable mouse support
 set mouse=a
 
+" Disable terminal bell
+set visualbell
+
 " Leader
 let mapleader = "\<Space>"
 
