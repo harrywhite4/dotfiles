@@ -25,7 +25,9 @@ cd $TOP
 echo "Copying dotfiles..."
 
 # Merge gitconfig with gitname if avaliable
-mv ~/.gitconfig ~/.gitconfig~
+if [[ -f ~/.gitconfig ]]; then
+    mv ~/.gitconfig ~/.gitconfig~
+fi
 if [[ -f ~/.gitname ]]; then
     cat ~/.gitname .gitconfig > ~/.gitconfig
 else
