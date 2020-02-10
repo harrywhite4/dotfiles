@@ -425,6 +425,7 @@ imap <C-@> <C-Space>
 imap <C-Space> <C-x><C-o>
 inoremap <C-]> <C-x><C-]>
 inoremap <C-f> <C-x><C-f>
+inoremap <C-l> <C-x><C-l>
 inoremap <expr> <C-k> pumvisible() ? "\<Up>" : "\<C-x>\<C-k>"
 inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
 
