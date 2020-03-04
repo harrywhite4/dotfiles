@@ -76,7 +76,7 @@ bindkey -M menuselect '^o' accept-and-infer-next-history
 
 # AWS completion
 AWS_COMPLETER="$HOME/.local/bin/aws_zsh_completer.sh"
-if [ -f $AWS_COMPLETER ]; then
+if [[ -f "$AWS_COMPLETER" ]]; then
     source $AWS_COMPLETER
 fi
 
@@ -86,7 +86,7 @@ if which zeus > /dev/null; then
 fi
 
 # Load fzf if available
-if [ -f ~/.fzf.zsh ]; then
+if [[ -f ~/.fzf.zsh ]]; then
     export FZF_DEFAULT_COMMAND='rg --files'
     source ~/.fzf.zsh
 fi
