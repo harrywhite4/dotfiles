@@ -74,12 +74,6 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # Complete menu binding
 bindkey -M menuselect '^o' accept-and-infer-next-history
 
-# AWS completion
-AWS_COMPLETER="$HOME/.local/bin/aws_zsh_completer.sh"
-if [[ -f "$AWS_COMPLETER" ]]; then
-    source $AWS_COMPLETER
-fi
-
 # Zeus completion
 if which zeus > /dev/null; then
     eval "$(_ZEUS_COMPLETE=source_zsh zeus)"
@@ -100,3 +94,9 @@ alias calc="zcalc -f"
 
 # Common config
 source $HOME/.common.sh
+
+# AWS completion (needs to be after common)
+AWS_COMPLETER="$HOME/.local/bin/aws_zsh_completer.sh"
+if [[ -f "$AWS_COMPLETER" ]]; then
+    source $AWS_COMPLETER
+fi
