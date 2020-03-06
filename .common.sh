@@ -50,6 +50,9 @@ alias doco="docker-compose"
 alias dcadmin="docker-compose exec web django-admin"
 alias dcsql="docker-compose exec db psql --user postgres"
 
+# Json
+alias jview="jq -C . | less -R"
+
 # ---------- Variables ----------
 
 # Default editor
