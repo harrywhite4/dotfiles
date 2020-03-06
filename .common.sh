@@ -67,12 +67,6 @@ export BC_ENV_ARGS="${HOME}/.bc"
 # Git
 export GIT_TEMPLATE_DIR=~/.git_template
 
-# Functions
-random_string() {
-    CHARS="${1:-20}"
-    python3 -c "import string,secrets;print(\"\".join(secrets.choice(string.ascii_letters+string.digits+string.punctuation) for i in range($CHARS)))"
-}
-
 # ---------- Loading ---------
 
 export NVM_DIR="$HOME/.nvm"
