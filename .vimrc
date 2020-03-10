@@ -180,7 +180,6 @@ autocmd FileType markdown setlocal textwidth=100
 autocmd FileType gitcommit setlocal textwidth=72
 
 " Spelling (turn on spell checking for these filetypes)
-autocmd Filetype text setlocal spell
 autocmd Filetype gitcommit setlocal spell
 autocmd Filetype pullrequest setlocal spell
 
