@@ -444,9 +444,7 @@ autocmd filetype go nnoremap <leader>] :GoDef<cr>
 " Neomake
 
 " Automake when reading / editing (after 100ms), and when writing.
-if exists("neomake")
-    call neomake#configure#automake('nrw', 100)
-endif
+call neomake#configure#automake('nrw', 100)
 
 " Highlights
 let g:neomake_highlight_columns = 0
