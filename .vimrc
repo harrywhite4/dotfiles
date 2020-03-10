@@ -178,6 +178,7 @@ set formatlistpat="\v^\s*(\d+[\]:\.\)\}\t ]|[\-\+\*]\s)\s*"
 autocmd FileType text setlocal formatoptions=tn
 autocmd FileType markdown setlocal textwidth=100
 autocmd FileType gitcommit setlocal textwidth=72
+autocmd FileType python setlocal textwidth=100
 
 " Spelling (turn on spell checking for these filetypes)
 autocmd Filetype gitcommit setlocal spell
