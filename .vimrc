@@ -479,6 +479,7 @@ let g:neomake_python_enabled_makers = ['flake8', 'mypy']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_vue_enabled_makers = ['eslint']
 let g:neomake_cloudformation_enabled_makers = ['cfnlint']
+let g:neomake_go_enabled_makers = ['go', 'govet']
 
 " Linter args
 let g:neomake_python_mypy_args = [
@@ -525,10 +526,14 @@ let g:jedi#show_call_signatures = "0"
 
 " vim-go settings
 let g:go_fmt_autosave = 1
-let g:go_fmt_fail_silently = 1 " Should see errors through ale
+let g:go_fmt_fail_silently = 1 " Should see errors through other means
 let g:go_version_warning = 0
 let g:go_def_mapping_enabled = 0 " Overrides tags mappings
 let g:go_template_autocreate = 0
+" vim-go syntax
+let g:go_highlight_string_spellcheck = 0
+let g:go_highlight_diagnostic_errors = 0
+let g:go_highlight_diagnostic_warnings = 0
 
 " vim-test settings
 function! SmTerminalStrategy(cmd)
