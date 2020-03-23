@@ -513,7 +513,7 @@ let g:python_highlight_exceptions = 1
 let g:vim_markdown_new_list_item_indent = 0
 
 " FZF
-let g:fzf_layout = { 'down': '~30%' }
+let g:fzf_layout = {'window': {'width': 0.8, 'height': 0.6}}
 
 " Jedi
 let g:jedi#auto_vim_configuration = 0
