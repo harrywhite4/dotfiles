@@ -360,6 +360,8 @@ command! Bufonly :%bd | e#
 command! -nargs=1 PipenvOpen :call PipenvOpen("<args>")
 command! SessionSave :mks! ~/session.vim
 command! Retag !./.git/hooks/ctags
+" Import sort (sort by second word)
+command! -range Isort <line1>,<line2>sort /\w\+ /
 
 " -------------------- Mappings --------------------
 
