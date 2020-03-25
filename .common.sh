@@ -27,10 +27,6 @@ if [ -f $LESS_SCRIPT ]; then
     alias vless="$LESS_SCRIPT"
 fi
 
-# Compilers
-alias g++="g++-8"
-export CXX="g++-8"
-
 # AWK one liners
 alias mostused="history | awk '{usage[\$2]+=1}END{for(key in usage){print key, usage[key]}}' | sort -nrk 2 | head"
 alias gitopen="firefox \$(git remote -v | awk '/origin/{print substr(\$2,0,length(\$2)-4);exit}')"
