@@ -50,8 +50,13 @@ TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*Us\nsystem\t%*Ss\ntotal\t%*Es'
 setopt auto_menu
 setopt always_to_end
 
+# Load zsh completion
 autoload -Uz compinit
 compinit
+
+# Load bash completion
+autoload -Uz bashcompinit
+bashcompinit
 
 zmodload -i zsh/complist
 
@@ -94,9 +99,3 @@ alias calc="zcalc -f"
 
 # Common config
 source $HOME/.common.sh
-
-# AWS completion (needs to be after common)
-AWS_COMPLETER="$HOME/.local/bin/aws_zsh_completer.sh"
-if [[ -f "$AWS_COMPLETER" ]]; then
-    source $AWS_COMPLETER
-fi

@@ -68,3 +68,10 @@ export GIT_TEMPLATE_DIR=~/.git_template
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# ---------- Completion ----------
+
+AWS_COMPLETER="$HOME/.local/bin/aws_completer"
+if [[ -x "$AWS_COMPLETER" ]]; then
+    complete -C "$AWS_COMPLETER" aws
+fi
