@@ -86,8 +86,9 @@ fi
 
 # Load fzf if available
 if [[ -f ~/.fzf.zsh ]]; then
-    export FZF_DEFAULT_COMMAND='rg --files'
     source ~/.fzf.zsh
+elif [[ -f /usr/share/zsh/vendor-completions/_fzf ]]; then
+    source /usr/share/zsh/vendor-completions/_fzf
 fi
 
 # Skip compinit in global config

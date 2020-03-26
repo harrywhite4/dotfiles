@@ -63,6 +63,9 @@ export BC_ENV_ARGS="${HOME}/.bc"
 # Git
 export GIT_TEMPLATE_DIR=~/.git_template
 
+# FZF
+export FZF_DEFAULT_COMMAND='rg --files'
+
 # ---------- Loading ---------
 
 export NVM_DIR="$HOME/.nvm"

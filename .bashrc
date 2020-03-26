@@ -24,10 +24,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Load fzf if avaliable set default command
-if [ -f ~/.fzf.bash ]; then
-    export FZF_DEFAULT_COMMAND='rg --files'
+# Load fzf bash completions if avaliable
+if [[ -f ~/.fzf.bash ]]; then
     source ~/.fzf.bash
+elif [[ -f /usr/share/bash-completion/completions/fzf ]]; then
+    source /usr/share/bash-completion/completions/fzf
 fi
 
 # Prompt
