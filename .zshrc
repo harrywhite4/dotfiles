@@ -60,6 +60,7 @@ bashcompinit
 
 zmodload -i zsh/complist
 
+# Taken from /etc/zsh/newuser.zsh.recommended
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
@@ -78,11 +79,6 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # Complete menu binding
 bindkey -M menuselect '^o' accept-and-infer-next-history
-
-# Zeus completion
-if which zeus > /dev/null; then
-    eval "$(_ZEUS_COMPLETE=source_zsh zeus)"
-fi
 
 # Load fzf if available
 if [[ -f ~/.fzf.zsh ]]; then
