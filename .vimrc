@@ -9,7 +9,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'junegunn/fzf', {'dir': '~/.fzf'}
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'janko-m/vim-test'
 Plug 'dikiaap/minimalist'
@@ -524,7 +524,6 @@ let g:jedi#auto_initialization = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures = "0"
-" omnifunc is used above
 
 " vim-go settings
 let g:go_fmt_autosave = 1
