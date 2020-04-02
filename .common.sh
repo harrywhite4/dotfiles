@@ -23,7 +23,7 @@ alias stime="/usr/bin/time -p"
 
 # Pagers
 LESS_SCRIPT="/usr/local/share/vim/vim81/macros/less.sh"
-if [ -f $LESS_SCRIPT ]; then
+if [ -f "$LESS_SCRIPT" ]; then
     alias vless="$LESS_SCRIPT"
 fi
 
@@ -48,6 +48,11 @@ alias dcsql="docker-compose exec db psql --user postgres"
 
 # Json
 alias jview="jq -C . | less -R"
+
+# fd alias if installed as fdfind
+if [ "$(command -v fdfind)" ] && [ -z "$(command -v fd)" ]; then
+    alias fd="fdfind"
+fi
 
 # ---------- Variables ----------
 
@@ -81,6 +86,6 @@ fi
 # ---------- Completion ----------
 
 AWS_COMPLETER="$HOME/.local/bin/aws_completer"
-if [[ -x "$AWS_COMPLETER" ]]; then
+if [ -x "$AWS_COMPLETER" ]; then
     complete -C "$AWS_COMPLETER" aws
 fi
