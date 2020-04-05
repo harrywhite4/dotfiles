@@ -491,8 +491,6 @@ let g:neomake_python_mypy_args = [
     \ ]
 
 let g:neomake_yaml_yamllint_args = [
-    \ '-d',
-    \ 'relaxed',
     \ '-f',
     \ 'parsable',
     \ ]
