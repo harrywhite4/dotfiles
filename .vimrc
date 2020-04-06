@@ -482,6 +482,7 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_vue_enabled_makers = ['eslint']
 let g:neomake_cloudformation_enabled_makers = ['cfnlint']
 let g:neomake_go_enabled_makers = ['go', 'govet']
+let g:neomake_cpp_enabled_makers = ['cppcheck', 'cpplint']
 
 " Linter args
 let g:neomake_python_mypy_args = [
