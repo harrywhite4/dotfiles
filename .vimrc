@@ -389,7 +389,7 @@ nnoremap <F4> :call ToggleAutoFormat()<cr>
 " Check files to reload
 nnoremap <F5> :checktime<cr>
 " Disable ale for this duffer
-nnoremap <F6> :NeomakeDisableBuffer <bar> NeomakeClean<cr>
+nnoremap <F6> :NeomakeToggleBuffer <bar> NeomakeClean<cr>
 " Format file
 nmap <F8> :call FormatFile()<cr>
 " Change indentation
@@ -552,5 +552,4 @@ let g:bufExplorerDisableDefaultKeyMapping=1
 let g:vcm_omni_pattern = '\m\.$'
 let g:vcm_direction = 'p'
 
-"End augroup
 augroup END
