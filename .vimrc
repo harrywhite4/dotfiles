@@ -33,6 +33,9 @@ autocmd!
 " Syntax highlighting
 syntax enable
 
+" Load a .vimrc from current directory as well if present
+set exrc
+
 " Key timeouts
 set ttimeout
 set ttimeoutlen=100
