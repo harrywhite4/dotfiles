@@ -6,7 +6,7 @@ USAGE="$0 [options]\nOptions:\n${OPTIONS}"
 VERBOSE=0
 
 # Flag arg parsing
-for i in $@; do
+for i in "$@"; do
     case $i in
         "--help")
             echo -e "$USAGE"
@@ -20,7 +20,7 @@ done
 
 # Go to top of git repo
 TOP="$(git rev-parse --show-toplevel)"
-cd $TOP
+cd "$TOP"
 
 echo "Copying dotfiles..."
 
@@ -41,9 +41,9 @@ fi
 # Copy dotfiles
 DOTFILES="$(find . -maxdepth 1 -type f -regex '\./\..*' -a -not -name '.gitconfig')"
 for DF in $DOTFILES; do
-    cp --backup $DF $HOME
+    cp "$DF" "$HOME"
     if [[ $VERBOSE -eq 1 ]]; then
-        echo "Copied $DF"
+        echo "Copied ${DF}"
     fi
 done
 
@@ -52,7 +52,7 @@ echo "Copying dotdirs..."
 # Copy dot dirs
 DOTDIRS="$(find . -maxdepth 1 -type d -regex '\./\..*' -a -not -name '.git')"
 for DD in $DOTDIRS; do
-    cp --recursive $DD $HOME
+    cp --recursive "$DD" "$HOME"
     if [[ $VERBOSE -eq 1 ]]; then
         echo "Copied $DD"
     fi
