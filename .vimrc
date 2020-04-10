@@ -1,3 +1,5 @@
+set nocompatible
+
 call plug#begin('~/.vim/plugged')
 
 " Plugins
@@ -52,8 +54,8 @@ set nrformats-=octal
 " Enable mouse support
 set mouse=a
 
-" Disable terminal bell
-set visualbell
+" Never use the bell
+set belloff=all
 
 " Leader
 let mapleader = "\<Space>"
