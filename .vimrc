@@ -367,6 +367,8 @@ command! SessionSave :mks! ~/session.vim
 command! Retag !./.git/hooks/ctags
 " Import sort (sort by second word)
 command! -range Isort <line1>,<line2>sort /\w\+ /
+" Wrapper on neomake
+command! Make Neomake! | bo copen
 
 " -------------------- Mappings --------------------
 
