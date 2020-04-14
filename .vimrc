@@ -492,15 +492,17 @@ let g:neomake_go_enabled_makers = ['go', 'govet']
 let g:neomake_cpp_enabled_makers = ['cppcheck', 'cpplint']
 
 " Linter args
-let g:neomake_python_mypy_args = [
+let g:neomake_mypy_args = [
     \ '--show-column-numbers',
     \ '--config-file',
     \ '~/.config/mypy/config',
     \ ]
-
-let g:neomake_yaml_yamllint_args = [
+let g:neomake_yamllint_args = [
     \ '-f',
     \ 'parsable',
+    \ ]
+let g:neomake_eslint_args = [
+    \ '--format=compact'
     \ ]
 
 " Load matchit plugin (comes with vim)
