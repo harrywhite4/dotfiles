@@ -15,7 +15,6 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'janko-m/vim-test'
 Plug 'dikiaap/minimalist'
-Plug 'ajh17/VimCompletesMe'
 Plug 'neomake/neomake'
 
 " Language specific plugins
@@ -558,9 +557,5 @@ let test#go#gotest#options = '-v'
 
 " Buf explorer
 let g:bufExplorerDisableDefaultKeyMapping=1
-
-" VCM
-let g:vcm_omni_pattern = '\m\.$'
-let g:vcm_direction = 'p'
 
 augroup END
