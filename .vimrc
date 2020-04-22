@@ -13,7 +13,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'janko-m/vim-test'
 Plug 'dikiaap/minimalist'
 Plug 'neomake/neomake'
 
@@ -419,9 +418,6 @@ nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>r :Rg '\b<cword>\b'
 " Substitute word under cursor
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
-" Test maps
-nnoremap <leader>tn :TestNearest<cr>
-nnoremap <leader>tl :TestLast<cr>
 " Copy file path to register
 nnoremap <leader>yf :call CopyAndPrint(expand("%"))<cr>
 nnoremap <leader>yi :ImportPath<cr>
@@ -543,17 +539,6 @@ let g:go_template_autocreate = 0
 let g:go_highlight_string_spellcheck = 0
 let g:go_highlight_diagnostic_errors = 0
 let g:go_highlight_diagnostic_warnings = 0
-
-" vim-test settings
-function! SmTerminalStrategy(cmd)
-    execute TermExec(a:cmd)
-endfunction
-let g:test#custom_strategies = {'smterminal': function('SmTerminalStrategy')}
-let test#strategy = 'smterminal'
-let test#python#runner = 'djangotest'
-let test#python#djangotest#executable = 'pipenv run python manage.py test'
-let test#go = 'gotest'
-let test#go#gotest#options = '-v'
 
 " Buf explorer
 let g:bufExplorerDisableDefaultKeyMapping=1
