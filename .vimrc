@@ -401,6 +401,8 @@ nmap <F8> :call FormatFile()<cr>
 " Change indentation
 nnoremap <leader>i2 :setlocal shiftwidth=2 softtabstop=2<cr>
 nnoremap <leader>i4 :setlocal shiftwidth=4 softtabstop=4<cr>
+" Paste
+nnoremap <leader>p "+]p
 " Buffer explorer
 nnoremap <leader>b :BufExplorer<cr>
 " Open terminal
@@ -435,6 +437,7 @@ inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
 
 " Visual mode maps
 vnoremap <leader>s :s/\<<C-r>0\>/
+vnoremap <leader>y "+y
 
 " -------------------- Plugin Settings --------------------
 
