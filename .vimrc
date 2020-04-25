@@ -15,6 +15,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'dikiaap/minimalist'
 Plug 'neomake/neomake'
+Plug 'liuchengxu/vim-which-key'
 
 " Language specific plugins
 Plug 'fatih/vim-go'
@@ -37,6 +38,8 @@ set exrc
 " Key timeouts
 set ttimeout
 set ttimeoutlen=100
+set timeout
+set timeoutlen=500
 
 " Auto reload buffers
 set autoread
@@ -371,6 +374,8 @@ command! Make Neomake! | bo copen
 
 " -------------------- Mappings --------------------
 
+let g:which_key_map =  {}
+
 " Formatting
 map Q gq
 " FZF
@@ -380,12 +385,6 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
-" Tabs
-nnoremap <leader>1 :1tabn<cr>
-nnoremap <leader>2 :2tabn<cr>
-nnoremap <leader>3 :3tabn<cr>
-nnoremap <leader>4 :4tabn<cr>
-nnoremap <leader>5 :5tabn<cr>
 " Strip whitespace
 nnoremap <F2> :call StripTrailingWhitespace()<cr>
 " Toggle spellcheck
@@ -399,31 +398,47 @@ nnoremap <F6> :NeomakeToggleBuffer <bar> NeomakeClean<cr>
 " Format file
 nmap <F8> :call FormatFile()<cr>
 " Change indentation
+let g:which_key_map.i = {'name': 'Indentation'}
+let g:which_key_map.i.2 = '2 spaces'
 nnoremap <leader>i2 :setlocal shiftwidth=2 softtabstop=2<cr>
+let g:which_key_map.i.4 = '4 spaces'
 nnoremap <leader>i4 :setlocal shiftwidth=4 softtabstop=4<cr>
 " Paste
+let g:which_key_map.p = 'Clipboard paste'
 nnoremap <leader>p "+]p
 " Buffer explorer
+let g:which_key_map.b = 'Buffer menu'
 nnoremap <leader>b :BufExplorer<cr>
 " Open terminal
-nnoremap <leader>cb :bo terminal ++close ++rows=15<cr>
-nnoremap <leader>ct :tab terminal<cr>
+let g:which_key_map.t = {'name': 'Terminal'}
+let g:which_key_map.t.b = 'Terminal below'
+nnoremap <leader>tb :bo terminal ++close ++rows=15<cr>
+let g:which_key_map.t.t = 'Terminal tab'
+nnoremap <leader>tt :tab terminal<cr>
 " Fzf mappings
+let g:which_key_map.f = {'name': 'Find'}
 nnoremap <leader>fb :Buffers<cr>
 nnoremap <leader>ft :Tags<cr>
 " Git maps
+let g:which_key_map.g = {'name': 'Git'}
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>ge :Gedit :<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Gblame<cr>
 " Grep word under cursor
-nnoremap <leader>r :Rg '\b<cword>\b'
+let g:which_key_map.r = 'Search for word'
+nnoremap <leader>r :Rg -w '<cword>'
 " Substitute word under cursor
-nnoremap <leader>s :%s/\<<C-r><C-w>\>/
+let g:which_key_map.s = 'Substitute word'
+nnoremap <leader>s :%s/\<<cword>\>/
 " Copy file path to register
+let g:which_key_map.y = {'name': 'Yank'}
+let g:which_key_map.y.f = 'Copy filename'
 nnoremap <leader>yf :call CopyAndPrint(expand("%"))<cr>
+let g:which_key_map.y.i = 'Copy import path'
 nnoremap <leader>yi :ImportPath<cr>
 " Save
+let g:which_key_map.w = 'Save'
 nnoremap <leader>w :w<cr>
 
 " Insert mode maps
@@ -434,20 +449,32 @@ inoremap <C-f> <C-x><C-f>
 inoremap <C-l> <C-x><C-l>
 inoremap <expr> <C-k> pumvisible() ? "\<Up>" : "\<C-x>\<C-k>"
 inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
+inoremap <expr> <C-n> pumvisible() ? "\<Down>" : "\<C-n>"
+inoremap <expr> <C-p> pumvisible() ? "\<Up>" : "\<C-p>"
 
 " Visual mode maps
 vnoremap <leader>s :s/\<<C-r>0\>/
 vnoremap <leader>y "+y
 
+" Which key
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+
 " -------------------- Plugin Settings --------------------
 
 " Filetype mappings
+let g:which_key_map.l = {'name': 'Language specific'}
+let g:which_key_map[']'] = 'Goto'
 autocmd filetype python
-    \ nnoremap <leader>] :call jedi#goto()<cr> |
-    \ nnoremap <leader>lk :call jedi#show_documentation()<cr> |
-    \ nnoremap <leader>lr :call jedi#usages()<cr> |
-    \ nnoremap <leader>ln :call jedi#rename()<cr>
-autocmd filetype go nnoremap <leader>] :GoDef<cr>
+    \ nnoremap <buffer> <leader>] :call jedi#goto()<cr> |
+    \ nnoremap <buffer> <leader>lk :call jedi#show_documentation()<cr> |
+    \ nnoremap <buffer> <leader>lr :call jedi#usages()<cr> |
+    \ nnoremap <buffer> <leader>ln :call jedi#rename()<cr>
+autocmd filetype go nnoremap <buffer> <leader>] :GoDef<cr>
+
+" Which key
+let g:which_key_use_floating_win = 1
+call which_key#register('<Space>', "g:which_key_map")
 
 " Neomake
 
