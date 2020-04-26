@@ -215,7 +215,7 @@ autocmd colorscheme minimalist
 try
     colorscheme minimalist
 catch
-    colorscheme slate
+    colorscheme desert
 endtry
 
 " Show column at textwidth +1 if textwidth is set
