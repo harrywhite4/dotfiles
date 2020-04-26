@@ -1,27 +1,30 @@
 set nocompatible
 
-call plug#begin('~/.vim/plugged')
+runtime autoload/plug.vim
+if exists("*plug#begin")
+    call plug#begin('~/.vim/plugged')
 
-" Plugins
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'jlanzarotta/bufexplorer'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'dikiaap/minimalist'
-Plug 'neomake/neomake'
-Plug 'liuchengxu/vim-which-key'
+    " Plugins
+    Plug 'sheerun/vim-polyglot'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-rhubarb'
+    Plug 'tpope/vim-vinegar'
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-unimpaired'
+    Plug 'jlanzarotta/bufexplorer'
+    Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf.vim'
+    Plug 'dikiaap/minimalist'
+    Plug 'neomake/neomake'
+    Plug 'liuchengxu/vim-which-key'
 
-" Language specific plugins
-Plug 'fatih/vim-go'
-Plug 'davidhalter/jedi-vim'
+    " Language specific plugins
+    Plug 'fatih/vim-go'
+    Plug 'davidhalter/jedi-vim'
 
-call plug#end()
+    call plug#end()
+endif
 
 " -------------------- Base settings --------------------
 
@@ -281,7 +284,6 @@ let g:netrw_altfile = 1
 let g:netrw_sizestyle = "h"
 let g:netrw_fastbrowse = 0
 
-
 " -------------------- Functions --------------------
 
 " Stips whitespace while maintaining cursor position
@@ -456,10 +458,6 @@ inoremap <expr> <C-p> pumvisible() ? "\<Up>" : "\<C-p>"
 vnoremap <leader>s :s/\<<C-r>0\>/
 vnoremap <leader>y "+y
 
-" Which key
-nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
-vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
-
 " -------------------- Plugin Settings --------------------
 
 " Filetype mappings
@@ -474,12 +472,21 @@ autocmd filetype go nnoremap <buffer> <leader>] :GoDef<cr>
 
 " Which key
 let g:which_key_use_floating_win = 1
-call which_key#register('<Space>', "g:which_key_map")
+runtime autoload/which_key.vim
+if exists('*which_key#register')
+    call which_key#register('<Space>', "g:which_key_map")
+    " Only setup these maps if registration occured
+    nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+    vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+endif
 
 " Neomake
 
 " Automake when reading / editing (after 100ms), and when writing.
-call neomake#configure#automake('nrw', 100)
+runtime autoload/neomkae/configure.vim
+if exists('*neomake#configure#automake')
+    call neomake#configure#automake('nrw', 100)
+endif
 
 " Highlights
 let g:neomake_highlight_columns = 0
