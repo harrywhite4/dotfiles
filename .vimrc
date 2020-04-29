@@ -483,7 +483,7 @@ endif
 " Neomake
 
 " Automake when reading / editing (after 100ms), and when writing.
-runtime autoload/neomkae/configure.vim
+runtime autoload/neomake/configure.vim
 if exists('*neomake#configure#automake')
     call neomake#configure#automake('nrw', 100)
 endif
