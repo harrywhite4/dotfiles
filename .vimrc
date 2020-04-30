@@ -315,29 +315,6 @@ function! CloseWin(pos)
     endif
 endfunction
 
-" Open terminal reusing existing
-function! TermExec(command)
-    " Get all terminal buffers
-    let tlist = term_list()
-    for bufn in tlist
-        " If status is finished
-        let status = term_getstatus(bufn)
-        if status == "finished"
-            " If has a window on this tabpage
-            let window = bufwinnr(bufn)
-            if window != -1
-                " Reuse window
-                execute window . "wincmd w"
-                execute "terminal ++curwin" a:command
-                return bufnr("%")
-            endif
-        endif
-    endfor
-    " Create new window
-    execute "bo terminal ++rows=15" a:command
-    return bufnr("%")
-endfunction
-
 " Toggle auto formatting
 function! ToggleAutoFormat()
     if stridx(&formatoptions, "a") == -1
@@ -357,7 +334,6 @@ endfunction
 
 " -------------------- Commands --------------------
 
-command! -nargs=* Term :call TermExec("<args>")
 command! -nargs=1 -complete=dir Tabdir :tabnew | lcd <args> | Ex
 command! -nargs=+ Rg :silent! grep! <args> | redraw! | botright copen
 command! -nargs=1 Type :setlocal filetype=<args>
@@ -414,9 +390,9 @@ nnoremap <leader>b :BufExplorer<cr>
 " Open terminal
 let g:which_key_map.t = {'name': 'Terminal'}
 let g:which_key_map.t.b = 'Terminal below'
-nnoremap <leader>tb :bo terminal ++close ++rows=15<cr>
+nnoremap <leader>tb :Term<cr>
 let g:which_key_map.t.t = 'Terminal tab'
-nnoremap <leader>tt :tab terminal<cr>
+nnoremap <leader>tt :TabTerm<cr>
 " Fzf mappings
 let g:which_key_map.f = {'name': 'Find'}
 nnoremap <leader>fb :Buffers<cr>
