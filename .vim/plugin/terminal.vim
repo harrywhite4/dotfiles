@@ -1,16 +1,6 @@
 " Functions and commands for using terminal windows
 
-" Function for getting options with my defaults
-function! s:getOptions()
-    let options = {"term_finish": "close"}
-    " Always use netrw dir if avaliable
-    if exists("b:netrw_curdir")
-        let options["cwd"] = b:netrw_curdir
-    endif
-    return options
-endfunction
-
-" Open terminal reusing existing
+" Run command reusing existing terminal window
 function! TermExec(command)
     " Get all terminal buffers
     let tlist = term_list()
@@ -33,14 +23,24 @@ function! TermExec(command)
     return bufnr("%")
 endfunction
 
+" Function for getting options with my defaults
+function! s:getTermOptions()
+    let options = {"term_finish": "close", "term_kill": "hup"}
+    " Always use netrw dir if avaliable
+    if exists("b:netrw_curdir")
+        let options["cwd"] = b:netrw_curdir
+    endif
+    return options
+endfunction
+
 function! TerminalBelow()
-    let options = s:getOptions()
+    let options = s:getTermOptions()
     let options["term_rows"] = 20
     botright call term_start(&shell, options)
 endfunction
 
 function! TerminalTab()
-    let options = s:getOptions()
+    let options = s:getTermOptions()
     $tab call term_start(&shell, options)
 endfunction
 
