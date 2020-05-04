@@ -151,6 +151,12 @@ set dictionary=/usr/share/dict/words
 " Chars for list mode
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 
+" Always show how many lines affected
+set report=0
+
+" Let vim set window title
+set title
+
 " Indentation
 set expandtab
 set softtabstop=-1
