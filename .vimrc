@@ -153,13 +153,13 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 
 " Indentation
 set expandtab
-set softtabstop=4
+set softtabstop=-1
 set shiftwidth=4
-autocmd FileType html setlocal shiftwidth=2 softtabstop=2
-autocmd FileType htmldjango setlocal shiftwidth=2 softtabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
-autocmd FileType cloudformation setlocal shiftwidth=2 softtabstop=2
-autocmd FileType json setlocal shiftwidth=2 softtabstop=2
+autocmd FileType html setlocal shiftwidth=2
+autocmd FileType htmldjango setlocal shiftwidth=2
+autocmd FileType yaml setlocal shiftwidth=2
+autocmd FileType cloudformation setlocal shiftwidth=2
+autocmd FileType json setlocal shiftwidth=2
 autocmd FileType go setlocal tabstop=4
 
 " Format programs
@@ -378,9 +378,9 @@ nmap <F8> :call FormatFile()<cr>
 " Change indentation
 let g:which_key_map.i = {'name': 'Indentation'}
 let g:which_key_map.i.2 = '2 spaces'
-nnoremap <leader>i2 :setlocal shiftwidth=2 softtabstop=2<cr>
+nnoremap <leader>i2 :setlocal shiftwidth=2<cr>
 let g:which_key_map.i.4 = '4 spaces'
-nnoremap <leader>i4 :setlocal shiftwidth=4 softtabstop=4<cr>
+nnoremap <leader>i4 :setlocal shiftwidth=4<cr>
 " Paste
 let g:which_key_map.p = 'Clipboard paste'
 nnoremap <leader>p "+]p
