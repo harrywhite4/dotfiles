@@ -347,6 +347,7 @@ command! -nargs=1 Fileat :Gedit <args>:%
 command! -nargs=+ Pydoc :terminal ++close pipenv run python -m pydoc <args>
 command! MdPreview :terminal ++hidden ++close sh -c "pandoc % -o ~/preview.html && firefox ~/preview.html"
 command! GfmPreview :terminal ++hidden ++close sh -c "grip % --export ~/preview.html && firefox ~/preview.html"
+command! PrTemplate read .github/pull_request_template.md
 command! Bufonly :%bd | e#
 command! -nargs=1 PipenvOpen :call PipenvOpen("<args>")
 command! SessionSave :mks! ~/session.vim
