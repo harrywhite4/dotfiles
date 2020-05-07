@@ -87,7 +87,7 @@ set incsearch
 
 " Use popup for previews on recent vim
 if has("patch-8.1.1714")
-    set previewpopup=height:10,width:60
+    set previewpopup=height:20,width:100
 endif
 
 " Patterns ignored when using wildcards
