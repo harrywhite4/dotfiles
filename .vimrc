@@ -372,8 +372,6 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 " Strip whitespace
 nnoremap <F2> :call StripTrailingWhitespace()<cr>
-" Toggle spellcheck
-nnoremap <F3> :setlocal spell!<cr>
 " Toggle auto-format
 nnoremap <F4> :call ToggleAutoFormat()<cr>
 " Check files to reload
