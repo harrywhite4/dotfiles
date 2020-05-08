@@ -248,16 +248,6 @@ function! GetModified()
     return ""
 endfunction
 
-function! GetLintErrorCount()
-    if exists("*ale#statusline#Count")
-        let lintErrorCount = ale#statusline#Count(bufnr("%"))['total']
-        if lintErrorCount > 0
-            return lintErrorCount
-        endif
-    endif
-    return ''
-endfunction
-
 function! GetBranchName()
     if exists("*FugitiveHead")
         let branchName = FugitiveHead()
@@ -275,7 +265,7 @@ set statusline+=%{GetBranchName()}\        " Git branch
 set statusline+=%2*
 set statusline+=%(\ %h%w%q\ %)             " Flags
 set statusline+=%3*
-set statusline+=%(\ %{GetLintErrorCount()}%{GetModified()}%r%)  " Error Flags
+set statusline+=%(\ %{GetModified()}%r%)  " Error Flags
 set statusline+=%<%0*
 set statusline+=\ %f                       " File name
 set statusline+=%=                         " Seperate left and right
