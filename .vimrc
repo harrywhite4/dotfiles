@@ -191,7 +191,7 @@ set eadirection="hor"
 set colorcolumn=+1
 
 " GUI
-set guioptions=!PdeimgtrL
+set guioptions=PdimgtrL
 
 " Formatting (see :h fo-table)
 set formatoptions=crqnlj
