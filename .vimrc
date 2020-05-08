@@ -187,6 +187,12 @@ set foldlevelstart=20
 set equalalways
 set eadirection="hor"
 
+" Show column at textwidth +1 if textwidth is set
+set colorcolumn=+1
+
+" GUI
+set guioptions=!PdeimgtrL
+
 " Formatting (see :h fo-table)
 set formatoptions=crqnlj
 set formatlistpat="\v^\s*(\d+[\]:\.\)\}\t ]|[\-\+\*]\s)\s*"
@@ -223,9 +229,6 @@ try
 catch
     colorscheme desert
 endtry
-
-" Show column at textwidth +1 if textwidth is set
-set colorcolumn=+1
 
 " Move cursor to last position when opening file if appropriate
 " Taken from defaults.vim
