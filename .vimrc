@@ -210,8 +210,8 @@ set background=dark
 " Highlights
 autocmd colorscheme *
     \ highlight link Terminal Normal |
-    \ highlight DiffAdded cterm=NONE ctermfg=green |
-    \ highlight DiffRemoved cterm=NONE ctermfg=red |
+    \ highlight DiffAdded cterm=NONE ctermfg=64 gui=NONE guifg=#5f8700 |
+    \ highlight DiffRemoved cterm=NONE ctermfg=167 gui=NONE guifg=#d75f5f |
     \ highlight link pythonClassVar Function |
     \ highlight StatusLineTerm cterm=bold ctermfg=150 ctermbg=239 gui=bold guifg=#afd787 guibg=#4e4e4e |
     \ highlight StatusLineTermNC cterm=NONE ctermfg=150 ctermbg=239 gui=NONE guifg=#afd787 guibg=#4e4e4e |
