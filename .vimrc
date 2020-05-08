@@ -207,11 +207,11 @@ autocmd colorscheme *
     \ highlight DiffAdded cterm=NONE ctermfg=green |
     \ highlight DiffRemoved cterm=NONE ctermfg=red |
     \ highlight link pythonClassVar Function |
-    \ highlight StatusLineTerm cterm=NONE ctermfg=2 ctermbg=239 |
-    \ highlight StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=239 |
-    \ highlight User1 cterm=bold ctermfg=255 ctermbg=59 |
-    \ highlight User2 cterm=bold ctermbg=24 |
-    \ highlight User3 cterm=bold ctermbg=239 ctermfg=167
+    \ highlight StatusLineTerm cterm=bold ctermfg=150 ctermbg=239 guifg=#afd787 guibg=#4e4e4e |
+    \ highlight StatusLineTermNC cterm=NONE ctermfg=150 ctermbg=239 guifg=#afd787 guibg=#4e4e4e |
+    \ highlight User1 cterm=bold ctermfg=255 ctermbg=59 guifg=#eeeeee guibg=#5f5f5f |
+    \ highlight User2 cterm=bold ctermbg=24 guibg=#005f87 |
+    \ highlight User3 cterm=bold ctermbg=239 ctermfg=167 guibg=#4e4e4e guifg=#d75f5f
 
 autocmd colorscheme minimalist
     \ highlight SignColumn ctermbg=234 |
