@@ -18,8 +18,10 @@ endfunction
 
 function! s:getSitePath()
     let envpath = s:getEnvPath()
+    echom "Env path is " envpath
     if envpath != ""
-        return finddir("site-packages", envpath . "/**/")
+        let splist = glob(envpath . "/lib/*/site-packages", 1, 1)
+        return splist[0]
     endif
 
     return ""
@@ -32,8 +34,13 @@ function! PipenvOpen(package)
         let package_path = sitepath . "/" . a:package
         if isdirectory(package_path)
             execute "tabe" package_path
+            execute "tcd" package_path
         else
             echoerr a:package "is not installed"
         endif
+    else
+        echoerr "Could not find site path"
     endif
 endfunction
+
+command! -nargs=1 PipenvOpen call PipenvOpen("<args>")

@@ -187,6 +187,12 @@ set foldlevelstart=20
 set equalalways
 set eadirection="hor"
 
+" Show column at textwidth +1 if textwidth is set
+set colorcolumn=+1
+
+" GUI
+set guioptions=PdimgtrL
+
 " Formatting (see :h fo-table)
 set formatoptions=crqnlj
 set formatlistpat="\v^\s*(\d+[\]:\.\)\}\t ]|[\-\+\*]\s)\s*"
@@ -204,14 +210,14 @@ set background=dark
 " Highlights
 autocmd colorscheme *
     \ highlight link Terminal Normal |
-    \ highlight DiffAdded cterm=NONE ctermfg=green |
-    \ highlight DiffRemoved cterm=NONE ctermfg=red |
+    \ highlight DiffAdded cterm=NONE ctermfg=64 gui=NONE guifg=#5f8700 |
+    \ highlight DiffRemoved cterm=NONE ctermfg=167 gui=NONE guifg=#d75f5f |
     \ highlight link pythonClassVar Function |
-    \ highlight StatusLineTerm cterm=NONE ctermfg=2 ctermbg=239 |
-    \ highlight StatusLineTermNC cterm=NONE ctermfg=6 ctermbg=239 |
-    \ highlight User1 cterm=bold ctermfg=255 ctermbg=59 |
-    \ highlight User2 cterm=bold ctermbg=24 |
-    \ highlight User3 cterm=bold ctermbg=239 ctermfg=167
+    \ highlight StatusLineTerm cterm=bold ctermfg=150 ctermbg=239 gui=bold guifg=#afd787 guibg=#4e4e4e |
+    \ highlight StatusLineTermNC cterm=NONE ctermfg=150 ctermbg=239 gui=NONE guifg=#afd787 guibg=#4e4e4e |
+    \ highlight User1 cterm=bold ctermfg=255 ctermbg=59 gui=bold guifg=#eeeeee guibg=#5f5f5f |
+    \ highlight User2 cterm=bold ctermbg=24 gui=bold guibg=#005f87 |
+    \ highlight User3 cterm=bold ctermbg=239 ctermfg=167 gui=bold guibg=#4e4e4e guifg=#d75f5f
 
 autocmd colorscheme minimalist
     \ highlight SignColumn ctermbg=234 |
@@ -223,9 +229,6 @@ try
 catch
     colorscheme desert
 endtry
-
-" Show column at textwidth +1 if textwidth is set
-set colorcolumn=+1
 
 " Move cursor to last position when opening file if appropriate
 " Taken from defaults.vim
@@ -245,16 +248,6 @@ function! GetModified()
     return ""
 endfunction
 
-function! GetLintErrorCount()
-    if exists("*ale#statusline#Count")
-        let lintErrorCount = ale#statusline#Count(bufnr("%"))['total']
-        if lintErrorCount > 0
-            return lintErrorCount
-        endif
-    endif
-    return ''
-endfunction
-
 function! GetBranchName()
     if exists("*FugitiveHead")
         let branchName = FugitiveHead()
@@ -272,7 +265,7 @@ set statusline+=%{GetBranchName()}\        " Git branch
 set statusline+=%2*
 set statusline+=%(\ %h%w%q\ %)             " Flags
 set statusline+=%3*
-set statusline+=%(\ %{GetLintErrorCount()}%{GetModified()}%r%)  " Error Flags
+set statusline+=%(\ %{GetModified()}%r%)  " Error Flags
 set statusline+=%<%0*
 set statusline+=\ %f                       " File name
 set statusline+=%=                         " Seperate left and right
@@ -341,17 +334,17 @@ endfunction
 " -------------------- Commands --------------------
 
 command! -nargs=1 -complete=dir Tabdir :tabnew | lcd <args> | Ex
-command! -nargs=+ Rg :silent! grep! <args> | redraw! | botright copen
-command! -nargs=1 Type :setlocal filetype=<args>
-command! -nargs=1 Fileat :Gedit <args>:%
-command! -nargs=+ Pydoc :terminal ++close pipenv run python -m pydoc <args>
-command! MdPreview :terminal ++hidden ++close sh -c "pandoc % -o ~/preview.html && firefox ~/preview.html"
-command! GfmPreview :terminal ++hidden ++close sh -c "grip % --export ~/preview.html && firefox ~/preview.html"
+command! -nargs=+ Rg silent! grep! <args> | redraw! | botright copen
+command! -nargs=+ Rgw Rg -w <args>
+command! -nargs=1 Type setlocal filetype=<args>
+command! -nargs=1 Fileat Gedit <args>:%
+command! -nargs=+ Pydoc terminal ++close pipenv run python -m pydoc <args>
+command! MdPreview terminal ++hidden ++close sh -c "pandoc % -o ~/preview.html && firefox ~/preview.html"
+command! GfmPreview terminal ++hidden ++close sh -c "grip % --export ~/preview.html && firefox ~/preview.html"
 command! PrTemplate read .github/pull_request_template.md
-command! Bufonly :%bd | e#
-command! -nargs=1 PipenvOpen :call PipenvOpen("<args>")
-command! SessionSave :mks! ~/session.vim
-command! Retag !./.git/hooks/ctags
+command! Bufonly %bd | e#
+command! SessionSave mks! ~/session.vim
+command! Retag Run ./.git/hooks/ctags
 " Import sort (sort by second word)
 command! -range Isort <line1>,<line2>sort /\w\+ /
 " Wrapper on neomake
@@ -410,7 +403,7 @@ nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Gblame<cr>
 " Grep word under cursor
 let g:which_key_map.r = 'Search for word'
-nnoremap <leader>r :Rg -w '<cword>'
+nnoremap <leader>r :Rgw <C-r><C-w>
 " Substitute word under cursor
 let g:which_key_map.s = 'Substitute word'
 nnoremap <leader>s :%s/\<<cword>\>/
