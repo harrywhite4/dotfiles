@@ -345,7 +345,7 @@ command! PrTemplate read .github/pull_request_template.md
 command! Bufonly %bd | e#
 command! -nargs=1 PipenvOpen :call PipenvOpen("<args>")
 command! SessionSave mks! ~/session.vim
-command! Retag !./.git/hooks/ctags
+command! Retag Run ./.git/hooks/ctags
 " Import sort (sort by second word)
 command! -range Isort <line1>,<line2>sort /\w\+ /
 " Wrapper on neomake
