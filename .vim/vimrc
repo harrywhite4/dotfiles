@@ -87,7 +87,7 @@ set incsearch
 
 " Use popup for previews on recent vim
 if has("patch-8.1.1714")
-    set previewpopup=height:10,width:60
+    set previewpopup=height:20,width:100
 endif
 
 " Patterns ignored when using wildcards
@@ -365,8 +365,6 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 " Strip whitespace
 nnoremap <F2> :call StripTrailingWhitespace()<cr>
-" Toggle spellcheck
-nnoremap <F3> :setlocal spell!<cr>
 " Toggle auto-format
 nnoremap <F4> :call ToggleAutoFormat()<cr>
 " Check files to reload
