@@ -18,7 +18,6 @@ endfunction
 
 function! s:getSitePath()
     let envpath = s:getEnvPath()
-    echom "Env path is " envpath
     if envpath != ""
         let splist = glob(envpath . "/lib/*/site-packages", 1, 1)
         return splist[0]
