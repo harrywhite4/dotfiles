@@ -11,14 +11,13 @@ alias diff="diff --color=auto"
 alias ll="ls -lah"
 alias la="ls -a"
 alias x="exit"
-alias rgrep="grep -nr"
-alias lzg="lazygit"
-alias lzd="lazydocker"
+alias rgrep="grep -n -r"
 alias rovim="vim -MR"
 alias fvim='vim $(fzf)'
 alias jcurl="curl -H 'Content-Type: application/json'"
 alias myip="curl checkip.amazonaws.com"
 alias space="df -h -t ext4"
+alias howbig="du -sh"
 alias stime="/usr/bin/time -p"
 
 # Pagers
