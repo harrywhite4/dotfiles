@@ -334,16 +334,17 @@ endfunction
 " -------------------- Commands --------------------
 
 command! -nargs=1 -complete=dir Tabdir :tabnew | lcd <args> | Ex
-command! -nargs=+ Rg :silent! grep! <args> | redraw! | botright copen
-command! -nargs=1 Type :setlocal filetype=<args>
-command! -nargs=1 Fileat :Gedit <args>:%
-command! -nargs=+ Pydoc :terminal ++close pipenv run python -m pydoc <args>
-command! MdPreview :terminal ++hidden ++close sh -c "pandoc % -o ~/preview.html && firefox ~/preview.html"
-command! GfmPreview :terminal ++hidden ++close sh -c "grip % --export ~/preview.html && firefox ~/preview.html"
+command! -nargs=+ Rg silent! grep! <args> | redraw! | botright copen
+command! -nargs=+ Rgw Rg -w <args>
+command! -nargs=1 Type setlocal filetype=<args>
+command! -nargs=1 Fileat Gedit <args>:%
+command! -nargs=+ Pydoc terminal ++close pipenv run python -m pydoc <args>
+command! MdPreview terminal ++hidden ++close sh -c "pandoc % -o ~/preview.html && firefox ~/preview.html"
+command! GfmPreview terminal ++hidden ++close sh -c "grip % --export ~/preview.html && firefox ~/preview.html"
 command! PrTemplate read .github/pull_request_template.md
-command! Bufonly :%bd | e#
+command! Bufonly %bd | e#
 command! -nargs=1 PipenvOpen :call PipenvOpen("<args>")
-command! SessionSave :mks! ~/session.vim
+command! SessionSave mks! ~/session.vim
 command! Retag !./.git/hooks/ctags
 " Import sort (sort by second word)
 command! -range Isort <line1>,<line2>sort /\w\+ /
@@ -405,7 +406,7 @@ nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Gblame<cr>
 " Grep word under cursor
 let g:which_key_map.r = 'Search for word'
-nnoremap <leader>r :Rg -w '<cword>'
+nnoremap <leader>r :Rgw <C-r><C-w>
 " Substitute word under cursor
 let g:which_key_map.s = 'Substitute word'
 nnoremap <leader>s :%s/\<<cword>\>/
