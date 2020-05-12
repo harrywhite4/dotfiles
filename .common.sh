@@ -85,6 +85,11 @@ if [ -s "$NVM_DIR/bash_completion" ]; then
     source "$NVM_DIR/bash_completion"
 fi
 
+# Add ruby user installs to PATH
+if [ "$(command -v ruby)" ] && [ "$(command -v gem)" ]; then
+    export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:${PATH}"
+fi
+
 # ---------- Completion ----------
 
 AWS_COMPLETER="$HOME/.local/bin/aws_completer"
