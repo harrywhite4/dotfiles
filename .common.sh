@@ -70,6 +70,9 @@ export GIT_TEMPLATE_DIR=~/.git_template
 # FZF
 export FZF_DEFAULT_COMMAND='rg --files'
 
+# Pipenv
+export PIPENV_VENV_IN_PROJECT=1
+
 # ---------- Loading ---------
 
 export NVM_DIR="$HOME/.nvm"
