@@ -358,7 +358,7 @@ let g:which_key_map =  {}
 " Formatting
 map Q gq
 " FZF
-nnoremap <C-p> :FZF<cr>
+nnoremap <C-p> :Files<cr>
 "  Move around
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
