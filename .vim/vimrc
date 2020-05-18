@@ -345,6 +345,7 @@ command! PrTemplate read .github/pull_request_template.md
 command! Bufonly %bd | e#
 command! SessionSave mks! ~/session.vim
 command! Retag Run ./.git/hooks/ctags
+command! Changed execute "args! " . join(systemlist("git diff --name-only"), " ")
 " Import sort (sort by second word)
 command! -range Isort <line1>,<line2>sort /\w\+ /
 " Wrapper on neomake
