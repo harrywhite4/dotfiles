@@ -168,6 +168,9 @@ autocmd FileType cloudformation setlocal shiftwidth=2
 autocmd FileType json setlocal shiftwidth=2
 autocmd FileType go setlocal tabstop=4
 
+" Comments
+autocmd Filetype vue setlocal commentstring=//%s
+
 " Format programs
 autocmd Filetype python setlocal formatprg=autopep8\ -
 autocmd Filetype go setlocal formatprg=gofmt
