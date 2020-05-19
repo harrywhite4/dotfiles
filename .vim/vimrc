@@ -171,6 +171,7 @@ autocmd FileType go setlocal tabstop=4
 " Format programs
 autocmd Filetype python setlocal formatprg=autopep8\ -
 autocmd Filetype go setlocal formatprg=gofmt
+autocmd Filetype json setlocal formatprg=jq
 
 " Lang specific settings
 " Sync vue files from the start
