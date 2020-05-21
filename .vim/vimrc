@@ -38,6 +38,9 @@ syntax enable
 " Load a .vimrc from current directory as well if present
 set exrc
 
+" Restict what can be done in current dir vimrc
+set secure
+
 " Key timeouts
 set ttimeout
 set ttimeoutlen=100
