@@ -1,10 +1,10 @@
 [alias]
     s = status
+    cv = commit -v
     branches = branch --sort=-committerdate
     glog = log --stat --graph
     mine = log --all --author 'Harry White'
     stat = diff --stat
-    cnt = checkout --no-track
 
 [branch]
     autoSetupMerge = false
