@@ -188,6 +188,9 @@ autocmd FileType vue syntax sync fromstart
 " Use omnifunc from jedi
 autocmd FileType python setlocal omnifunc=jedi#completions
 
+" Definition
+autocmd FileType python let &l:define='^\s*\(def\|class\)'
+
 " Folding
 set foldmethod=indent
 set foldnestmax=20
