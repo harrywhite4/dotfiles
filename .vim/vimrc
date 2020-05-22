@@ -118,8 +118,12 @@ if executable("rg")
 endif
 
 " Command completion
-set wildmode=list:longest,full
 set wildmenu
+if has("patch-8.1.2225")
+    set wildmode=list:lastused
+else
+    set wildmode=list
+endif
 
 " Completion
 set completeopt=menu,menuone,noinsert
