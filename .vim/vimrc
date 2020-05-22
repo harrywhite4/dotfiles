@@ -165,7 +165,7 @@ set report=0
 set title
 
 " Data saved with session
-set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
+set sessionoptions-=options
 
 " Indentation
 set expandtab
