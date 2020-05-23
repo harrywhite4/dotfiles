@@ -183,18 +183,11 @@ autocmd FileType go setlocal tabstop=4
 autocmd Filetype vue setlocal commentstring=//%s
 
 " Format programs
-autocmd Filetype python setlocal formatprg=autopep8\ -
 autocmd Filetype go setlocal formatprg=gofmt
 autocmd Filetype json setlocal formatprg=jq
 
-" Lang specific settings
 " Sync vue files from the start
 autocmd FileType vue syntax sync fromstart
-" Use omnifunc from jedi
-autocmd FileType python setlocal omnifunc=jedi#completions
-
-" Definition
-autocmd FileType python let &l:define='^\s*\(def\|class\)'
 
 " Folding
 set foldmethod=indent
@@ -215,7 +208,7 @@ set guioptions=PdimgtrL
 set formatoptions=crqnlj
 set formatlistpat="\v^\s*(\d+[\]:\.\)\}\t ]|[\-\+\*]\s)\s*"
 autocmd FileType text,markdown,gitcommit setlocal formatoptions+=t
-autocmd FileType markdown,python setlocal textwidth=100
+autocmd FileType markdown setlocal textwidth=100
 autocmd FileType gitcommit setlocal textwidth=72
 
 " Spelling (turn on spell checking for these filetypes)
@@ -356,7 +349,6 @@ command! -nargs=+ Rg silent! grep! <args> | redraw! | botright copen
 command! -nargs=+ Rgw Rg -w <args>
 command! -nargs=1 Type setlocal filetype=<args>
 command! -nargs=1 Fileat Gedit <args>:%
-command! -nargs=+ Pydoc terminal ++close pipenv run python -m pydoc <args>
 command! MdPreview terminal ++hidden ++close sh -c "pandoc % -o ~/preview.html && firefox ~/preview.html"
 command! GfmPreview terminal ++hidden ++close sh -c "grip % --export ~/preview.html && firefox ~/preview.html"
 command! PrTemplate read .github/pull_request_template.md
@@ -457,11 +449,6 @@ vnoremap <leader>y "+y
 " Filetype mappings
 let g:which_key_map.l = {'name': 'Language specific'}
 let g:which_key_map[']'] = 'Goto'
-autocmd filetype python
-    \ nnoremap <buffer> <leader>] :call jedi#goto()<cr> |
-    \ nnoremap <buffer> <leader>lk :call jedi#show_documentation()<cr> |
-    \ nnoremap <buffer> <leader>lr :call jedi#usages()<cr> |
-    \ nnoremap <buffer> <leader>ln :call jedi#rename()<cr>
 autocmd filetype go nnoremap <buffer> <leader>] :GoDef<cr>
 
 " Which key
