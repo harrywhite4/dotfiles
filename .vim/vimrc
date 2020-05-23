@@ -423,8 +423,6 @@ nnoremap <leader>s :%s/\<<cword>\>/
 let g:which_key_map.y = {'name': 'Yank'}
 let g:which_key_map.y.f = 'Copy filename'
 nnoremap <leader>yf :call CopyAndPrint(expand("%"))<cr>
-let g:which_key_map.y.i = 'Copy import path'
-nnoremap <leader>yi :ImportPath<cr>
 " Save
 let g:which_key_map.w = 'Save'
 nnoremap <leader>w :w<cr>

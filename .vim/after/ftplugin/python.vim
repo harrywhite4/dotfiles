@@ -14,3 +14,5 @@ nnoremap <buffer> <leader>] :call jedi#goto()<cr>
 nnoremap <buffer> <leader>lk :call jedi#show_documentation()<cr>
 nnoremap <buffer> <leader>lr :call jedi#usages()<cr>
 nnoremap <buffer> <leader>ln :call jedi#rename()<cr>
+
+map <buffer> <leader>yi <Plug>PyimportCopyPath
