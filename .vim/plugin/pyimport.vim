@@ -86,7 +86,6 @@ function! s:GetImportPath()
 endfunction
 
 function! s:CopyImportPath()
-    echom "Called pyimport copy path"
     let @+ = s:GetImportPath() | echo @+
 endfunction
 
