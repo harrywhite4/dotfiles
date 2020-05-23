@@ -120,9 +120,9 @@ endif
 " Command completion
 set wildmenu
 if has("patch-8.1.2225")
-    set wildmode=list:lastused
+    set wildmode=list:lastused,full
 else
-    set wildmode=list
+    set wildmode=list,full
 endif
 
 " Completion
