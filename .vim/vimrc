@@ -112,7 +112,8 @@ set path=.,**
 " Line display
 set display=lastline
 
-" Use ripgrep if avaliable
+" Grep settings
+set grepformat=%f:%l:%c:%m,%f:%l:%m
 if executable("rg")
     set grepprg=rg\ --vimgrep\ --smart-case
 endif
