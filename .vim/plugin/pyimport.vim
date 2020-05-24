@@ -81,8 +81,13 @@ function! s:getImportPathStart()
 endfunction
 
 " Get import path for closest definition
-function! GetImportPath()
+function! s:GetImportPath()
     return s:getImportPathStart() . '.' . s:getImportPathEnd()
 endfunction
 
-command ImportPath let @+ = GetImportPath() | echo @+
+function! s:CopyImportPath()
+    let @+ = s:GetImportPath() | echo @+
+endfunction
+
+noremap <unique> <script> <Plug>PyimportCopyPath <SID>CopyImportPath
+noremap <SID>CopyImportPath :call <SID>CopyImportPath()<cr>

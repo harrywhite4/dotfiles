@@ -112,14 +112,19 @@ set path=.,**
 " Line display
 set display=lastline
 
-" Use ripgrep if avaliable
+" Grep settings
+set grepformat=%f:%l:%c:%m,%f:%l:%m
 if executable("rg")
     set grepprg=rg\ --vimgrep\ --smart-case
 endif
 
 " Command completion
-set wildmode=list:longest,full
 set wildmenu
+if has("patch-8.1.2225")
+    set wildmode=list:lastused,full
+else
+    set wildmode=list,full
+endif
 
 " Completion
 set completeopt=menu,menuone,noinsert
@@ -161,7 +166,7 @@ set report=0
 set title
 
 " Data saved with session
-set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
+set sessionoptions-=options
 
 " Indentation
 set expandtab
@@ -178,18 +183,11 @@ autocmd FileType go setlocal tabstop=4
 autocmd Filetype vue setlocal commentstring=//%s
 
 " Format programs
-autocmd Filetype python setlocal formatprg=autopep8\ -
 autocmd Filetype go setlocal formatprg=gofmt
 autocmd Filetype json setlocal formatprg=jq
 
-" Lang specific settings
 " Sync vue files from the start
 autocmd FileType vue syntax sync fromstart
-" Use omnifunc from jedi
-autocmd FileType python setlocal omnifunc=jedi#completions
-
-" Definition
-autocmd FileType python let &l:define='^\s*\(def\|class\)'
 
 " Folding
 set foldmethod=indent
@@ -210,7 +208,7 @@ set guioptions=PdimgtrL
 set formatoptions=crqnlj
 set formatlistpat="\v^\s*(\d+[\]:\.\)\}\t ]|[\-\+\*]\s)\s*"
 autocmd FileType text,markdown,gitcommit setlocal formatoptions+=t
-autocmd FileType markdown,python setlocal textwidth=100
+autocmd FileType markdown setlocal textwidth=100
 autocmd FileType gitcommit setlocal textwidth=72
 
 " Spelling (turn on spell checking for these filetypes)
@@ -242,6 +240,17 @@ try
 catch
     colorscheme desert
 endtry
+
+" WSL
+let s:version_file = '/proc/version'
+if (filereadable(s:version_file))
+    let s:content = readfile(s:version_file)[0]
+    " If 'Microsoft' in /proc/version
+    if (match(s:content, 'Microsoft') != -1)
+        set t_ut=
+        set ttyscroll=1
+    endif
+endif
 
 " Move cursor to last position when opening file if appropriate
 " Taken from defaults.vim
@@ -351,7 +360,6 @@ command! -nargs=+ Rg silent! grep! <args> | redraw! | botright copen
 command! -nargs=+ Rgw Rg -w <args>
 command! -nargs=1 Type setlocal filetype=<args>
 command! -nargs=1 Fileat Gedit <args>:%
-command! -nargs=+ Pydoc terminal ++close pipenv run python -m pydoc <args>
 command! MdPreview terminal ++hidden ++close sh -c "pandoc % -o ~/preview.html && firefox ~/preview.html"
 command! GfmPreview terminal ++hidden ++close sh -c "grip % --export ~/preview.html && firefox ~/preview.html"
 command! PrTemplate read .github/pull_request_template.md
@@ -426,8 +434,6 @@ nnoremap <leader>s :%s/\<<cword>\>/
 let g:which_key_map.y = {'name': 'Yank'}
 let g:which_key_map.y.f = 'Copy filename'
 nnoremap <leader>yf :call CopyAndPrint(expand("%"))<cr>
-let g:which_key_map.y.i = 'Copy import path'
-nnoremap <leader>yi :ImportPath<cr>
 " Save
 let g:which_key_map.w = 'Save'
 nnoremap <leader>w :w<cr>
@@ -452,11 +458,6 @@ vnoremap <leader>y "+y
 " Filetype mappings
 let g:which_key_map.l = {'name': 'Language specific'}
 let g:which_key_map[']'] = 'Goto'
-autocmd filetype python
-    \ nnoremap <buffer> <leader>] :call jedi#goto()<cr> |
-    \ nnoremap <buffer> <leader>lk :call jedi#show_documentation()<cr> |
-    \ nnoremap <buffer> <leader>lr :call jedi#usages()<cr> |
-    \ nnoremap <buffer> <leader>ln :call jedi#rename()<cr>
 autocmd filetype go nnoremap <buffer> <leader>] :GoDef<cr>
 
 " Which key
