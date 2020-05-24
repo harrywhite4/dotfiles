@@ -241,6 +241,17 @@ catch
     colorscheme desert
 endtry
 
+" WSL
+let s:version_file = '/proc/version'
+if (filereadable(s:version_file))
+    let s:content = readfile(s:version_file)[0]
+    " If 'Microsoft' in /proc/version
+    if (match(s:content, 'Microsoft') != -1)
+        set t_ut=
+        set ttyscroll=1
+    endif
+endif
+
 " Move cursor to last position when opening file if appropriate
 " Taken from defaults.vim
 autocmd BufReadPost *
