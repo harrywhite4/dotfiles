@@ -1,4 +1,4 @@
 # My dotfiles
 
-- Install with ``./install.sh``
-- Update with ``./update.sh``
+- Install with `./install.sh`
+- Update with `./update.sh`
