@@ -168,26 +168,10 @@ set title
 " Data saved with session
 set sessionoptions-=options
 
-" Indentation
+" Indentation defaults
 set expandtab
 set softtabstop=-1
 set shiftwidth=4
-autocmd FileType html setlocal shiftwidth=2
-autocmd FileType htmldjango setlocal shiftwidth=2
-autocmd FileType yaml setlocal shiftwidth=2
-autocmd FileType cloudformation setlocal shiftwidth=2
-autocmd FileType json setlocal shiftwidth=2
-autocmd FileType go setlocal tabstop=4
-
-" Comments
-autocmd Filetype vue setlocal commentstring=//%s
-
-" Format programs
-autocmd Filetype go setlocal formatprg=gofmt
-autocmd Filetype json setlocal formatprg=jq
-
-" Sync vue files from the start
-autocmd FileType vue syntax sync fromstart
 
 " Folding
 set foldmethod=indent
@@ -207,13 +191,6 @@ set guioptions=PdimgtrL
 " Formatting (see :h fo-table)
 set formatoptions=crqnlj
 set formatlistpat="\v^\s*(\d+[\]:\.\)\}\t ]|[\-\+\*]\s)\s*"
-autocmd FileType text,markdown,gitcommit setlocal formatoptions+=t
-autocmd FileType markdown setlocal textwidth=100
-autocmd FileType gitcommit setlocal textwidth=72
-
-" Spelling (turn on spell checking for these filetypes)
-autocmd Filetype gitcommit setlocal spell
-autocmd Filetype pullrequest setlocal spell
 
 " Colors
 set background=dark
@@ -458,7 +435,6 @@ vnoremap <leader>y "+y
 " Filetype mappings
 let g:which_key_map.l = {'name': 'Language specific'}
 let g:which_key_map[']'] = 'Goto'
-autocmd filetype go nnoremap <buffer> <leader>] :GoDef<cr>
 
 " Which key
 let g:which_key_use_floating_win = 1
