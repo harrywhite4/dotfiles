@@ -15,7 +15,7 @@ function! s:getRunOptions()
 endfunction
 
 " Run command reusing existing terminal window
-function! TermExec(command)
+function! s:TermExec(command)
     let cmdlist = [&shell, &shellcmdflag, a:command]
     let options = s:getRunOptions()
     " Get all terminal buffers
@@ -46,17 +46,24 @@ function! s:getTermOptions()
     return options
 endfunction
 
-function! TerminalBelow()
+function! s:TerminalBelow()
     let options = s:getTermOptions()
     let options["term_rows"] = 20
     botright call term_start(&shell, options)
 endfunction
 
-function! TerminalTab()
+function! s:TerminalTab()
     let options = s:getTermOptions()
     $tab call term_start(&shell, options)
 endfunction
 
-command! -nargs=* Run :call TermExec("<args>")
-command! Term call TerminalBelow()
-command! TabTerm call TerminalTab()
+function! s:TerminalHere()
+    let options = s:getTermOptions()
+    let options["curwin"] = 1
+    call term_start(&shell, options)
+endfunction
+
+command! -nargs=* Run call s:TermExec("<args>")
+command! Term call s:TerminalBelow()
+command! TabTerm call s:TerminalTab()
+command! HereTerm call s:TerminalHere()
