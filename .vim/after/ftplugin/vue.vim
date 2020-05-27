@@ -8,3 +8,5 @@ setlocal includeexpr=substitute(v:fname,'^/','','')
 setlocal commentstring=//%s
 
 syntax sync fromstart
+
+let html_no_rendering=1
