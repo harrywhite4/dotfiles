@@ -393,6 +393,7 @@ let g:which_key_map.t.t = 'Terminal tab'
 nnoremap <leader>tt :TabTerm<cr>
 " Fzf mappings
 let g:which_key_map.f = {'name': 'Find'}
+nnoremap <leader>ff :find **/*
 nnoremap <leader>fb :Buffers<cr>
 nnoremap <leader>ft :Tags<cr>
 " Git maps
