@@ -19,5 +19,23 @@
     "editor.renderFinalNewline": false,
     "files.insertFinalNewline": true,
     "extensions.ignoreRecommendations": true,
-    "gitHistory.showEditorTitleMenuBarIcons": false
+    "gitHistory.showEditorTitleMenuBarIcons": false,
+    "explorer.confirmDelete": false,
+    "editor.autoClosingBrackets": "never",
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-f>": false,
+        "<C-b>": false,
+        "<C-t>": false,
+    },
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["leader", "w"],
+            "commands": ["workbench.action.files.save"]
+        },
+        {
+            "before": ["leader", "e"],
+            "commands": ["workbench.view.explorer"]
+        }
+    ]
 }
