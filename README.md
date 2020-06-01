@@ -1,4 +1,3 @@
 # My dotfiles
 
-- Install with `./install.sh`
-- Update with `./update.sh`
+- Install to home with `./install.sh`
