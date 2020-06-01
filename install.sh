@@ -41,14 +41,6 @@ if [ -d "${VIM_PLUGINS_DIR}" ] && [ "${clean}" -eq 1 ]; then
     rm -r "${VIM_PLUGINS_DIR}"
 fi
 
-# Install vim-plug if required
-if [ ! -f "${VIM_PLUG_FILE}" ]; then
-    echo "Installing vim-plug..."
-    # Install vim-plug
-    curl -fLo "${VIM_PLUG_FILE}" --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
 # Print if verbose
 # Argument 1: String to print
 vprint() {
@@ -94,8 +86,18 @@ done
 # Symlinked directories
 makelink ".git_template" "${TODIR}"
 
-# Run PlugInstall then quit
-echo "Installing vim plugins..."
-vim +PlugInstall +qall
+# Install vim-plug if required
+if [ ! -f "${VIM_PLUG_FILE}" ]; then
+    echo "Installing vim-plug..."
+    # Install vim-plug
+    curl -fLo "${VIM_PLUG_FILE}" --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
+# Run PlugInstall if required
+if [ ! -d "${VIM_PLUGINS_DIR}" ]; then
+    echo "Installing vim plugins..."
+    vim +PlugInstall +qall
+fi
 
 echo "Done!"
