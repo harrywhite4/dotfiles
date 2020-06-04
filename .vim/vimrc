@@ -179,7 +179,7 @@ set shiftwidth=4
 " Folding
 set foldmethod=indent
 set foldnestmax=20
-set foldlevelstart=20
+set foldlevelstart=99
 
 " Windows
 set equalalways
@@ -489,6 +489,8 @@ if !exists('g:loaded_matchit')
     runtime! macros/matchit.vim
 endif
 
+" Load :Man command (comes with vim)
+runtime! ftplugin/man.vim
 
 " FZF
 let g:fzf_layout = {'window': {'width': 0.8, 'height': 0.6}}
