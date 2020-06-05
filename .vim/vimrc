@@ -23,6 +23,7 @@ if exists("*plug#begin")
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'pangloss/vim-javascript'
     Plug 'posva/vim-vue'
+    Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'fatih/vim-go'
     Plug 'davidhalter/jedi-vim'
 
@@ -425,6 +426,9 @@ let g:python_highlight_builtin_types = 1
 let g:python_highlight_class_vars = 1
 let g:python_highlight_operators = 1
 let g:python_highlight_exceptions = 1
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
 
 " Neomake
 
@@ -508,6 +512,7 @@ let g:go_fmt_fail_silently = 1 " Should see errors through other means
 let g:go_version_warning = 0
 let g:go_def_mapping_enabled = 0 " Overrides tags mappings
 let g:go_template_autocreate = 0
+
 " vim-go syntax
 let g:go_highlight_string_spellcheck = 0
 let g:go_highlight_diagnostic_errors = 0
