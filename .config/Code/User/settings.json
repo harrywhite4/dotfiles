@@ -37,5 +37,7 @@
             "before": ["leader", "e"],
             "commands": ["workbench.view.explorer"]
         }
-    ]
+    ],
+    "workbench.colorTheme": "Solarized Dark",
+    "terminal.integrated.drawBoldTextInBrightColors": false
 }
