@@ -26,7 +26,7 @@
     "vim.handleKeys": {
         "<C-f>": false,
         "<C-b>": false,
-        "<C-t>": false,
+        "<C-t>": false
     },
     "vim.normalModeKeyBindingsNonRecursive": [
         {
