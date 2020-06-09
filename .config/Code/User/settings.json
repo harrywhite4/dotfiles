@@ -38,6 +38,10 @@
             "commands": ["workbench.view.explorer"]
         }
     ],
-    "workbench.colorTheme": "Solarized Dark",
-    "terminal.integrated.drawBoldTextInBrightColors": false
+    "terminal.integrated.drawBoldTextInBrightColors": false,
+    "editor.parameterHints.enabled": false,
+    "terminal.integrated.env.linux": {
+        "GIT_EDITOR": "code --wait"
+    },
+    "eslint.run": "onSave"
 }
