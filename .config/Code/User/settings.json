@@ -43,5 +43,8 @@
     "terminal.integrated.env.linux": {
         "GIT_EDITOR": "code --wait"
     },
-    "eslint.run": "onSave"
+    "eslint.run": "onSave",
+    "eslint.workingDirectories": [
+        "assets"
+    ]
 }
