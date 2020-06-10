@@ -46,5 +46,6 @@
     "eslint.run": "onSave",
     "eslint.workingDirectories": [
         "assets"
-    ]
+    ],
+    "python.workspaceSymbols.enabled": true
 }
