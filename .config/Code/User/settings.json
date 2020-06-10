@@ -26,7 +26,8 @@
     "vim.handleKeys": {
         "<C-f>": false,
         "<C-b>": false,
-        "<C-t>": false
+        "<C-t>": false,
+        "<C-k>": false
     },
     "vim.normalModeKeyBindingsNonRecursive": [
         {
@@ -36,6 +37,10 @@
         {
             "before": ["leader", "e"],
             "commands": ["workbench.view.explorer"]
+        },
+        {
+          "before": ["leader", "q"],
+          "commands": ["workbench.action.closeActiveEditor"]
         }
     ],
     "terminal.integrated.drawBoldTextInBrightColors": false,
@@ -47,5 +52,6 @@
     "eslint.workingDirectories": [
         "assets"
     ],
-    "python.workspaceSymbols.enabled": true
+    "python.workspaceSymbols.enabled": true,
+    "editor.autoClosingQuotes": "never"
 }
