@@ -37,6 +37,10 @@
         {
             "before": ["leader", "e"],
             "commands": ["workbench.view.explorer"]
+        },
+        {
+          "before": ["leader", "q"],
+          "commands": ["workbench.action.closeActiveEditor"]
         }
     ],
     "terminal.integrated.drawBoldTextInBrightColors": false,
