@@ -53,5 +53,11 @@
         "assets"
     ],
     "python.workspaceSymbols.enabled": true,
-    "editor.autoClosingQuotes": "never"
+    "editor.autoClosingQuotes": "never",
+    "editor.rulers": [
+        100
+    ],
+    "vetur.validation.template": false,
+    "vetur.validation.style": false,
+    "vetur.validation.script": false
 }
