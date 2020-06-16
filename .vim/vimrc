@@ -335,6 +335,12 @@ function! CopyAndPrint(value)
     echo @+
 endfunction
 
+" Make session and quit
+function! SaveAndQuit()
+    mks! ~/session.vim
+    qall
+endfunction
+
 " -------------------- Commands --------------------
 
 command! -nargs=1 -complete=dir Tabdir :tabnew | lcd <args> | Ex
@@ -347,6 +353,7 @@ command! GfmPreview terminal ++hidden ++close sh -c "grip % --export ~/preview.h
 command! PrTemplate read .github/pull_request_template.md
 command! Bufonly %bd | e#
 command! SessionSave mks! ~/session.vim
+command! Quit call SaveAndQuit()
 command! Retag Run ./.git/hooks/ctags
 " Set argument list to files edited in a git diff
 command! -nargs=* Changed execute "args! " . join(systemlist("git diff --name-only <args>"), " ")
