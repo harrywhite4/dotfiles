@@ -92,7 +92,6 @@ fi
 
 # ---------- Completion ----------
 
-AWS_COMPLETER="$HOME/.local/bin/aws_completer"
-if [ -x "$AWS_COMPLETER" ]; then
-    complete -C "$AWS_COMPLETER" aws
+if [ "$(command -v aws_completer)" ]; then
+    complete -C "aws_completer" aws
 fi
