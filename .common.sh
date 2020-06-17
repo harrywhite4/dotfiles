@@ -61,17 +61,12 @@ export EDITOR="vim"
 # Default browser
 export BROWSER="firefox"
 
-# BC
+# Program defaults
 export BC_ENV_ARGS="${HOME}/.bc"
-
-# Git
 export GIT_TEMPLATE_DIR=~/.git_template
-
-# FZF
 export FZF_DEFAULT_COMMAND='rg --files'
-
-# Pipenv
 export PIPENV_VENV_IN_PROJECT=1
+export LESS="-R --no-init --mouse"
 
 # ---------- Loading ---------
 
