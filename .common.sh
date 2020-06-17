@@ -66,7 +66,7 @@ export BC_ENV_ARGS="${HOME}/.bc"
 export GIT_TEMPLATE_DIR=~/.git_template
 export FZF_DEFAULT_COMMAND='rg --files'
 export PIPENV_VENV_IN_PROJECT=1
-export LESS="-R --no-init --mouse"
+export LESS="-R --quit-if-one-screen --no-init --mouse"
 
 # ---------- Loading ---------
 
