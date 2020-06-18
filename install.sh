@@ -73,7 +73,7 @@ done
 mkdir -p "${TODIR}/.vim"
 for vpath in "${PWD}"/.vim/*; do
     vfile=$(basename "${vpath}")
-    makelink "${vfile}" "${TODIR}/.vim"
+    makelink ".vim/${vfile}" "${TODIR}"
 done
 
 # Link .config files
