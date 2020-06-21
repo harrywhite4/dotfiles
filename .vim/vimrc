@@ -176,8 +176,14 @@ set shiftwidth=4
 
 " Folding
 set foldmethod=indent
-set foldnestmax=20
 set foldlevelstart=99
+set foldnestmax=20
+
+augroup stdinfold
+    autocmd!
+    " Set fold level to foldlevel start when reading from stdin
+    autocmd StdinReadPre * let &l:foldlevel=&foldlevelstart
+augroup END
 
 " Windows
 set equalalways
