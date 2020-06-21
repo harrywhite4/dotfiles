@@ -32,10 +32,6 @@ endif
 
 " -------------------- Base settings --------------------
 
-" Open augroup
-augroup mygroup
-autocmd!
-
 " Syntax highlighting
 syntax enable
 
@@ -201,20 +197,23 @@ set formatlistpat="\v^\s*(\d+[\]:\.\)\}\t ]|[\-\+\*]\s)\s*"
 set background=dark
 
 " Highlights
-autocmd colorscheme *
-    \ highlight link Terminal Normal |
-    \ highlight DiffAdded cterm=NONE ctermfg=64 gui=NONE guifg=#5f8700 |
-    \ highlight DiffRemoved cterm=NONE ctermfg=167 gui=NONE guifg=#d75f5f |
-    \ highlight link pythonClassVar Function |
-    \ highlight StatusLineTerm cterm=bold ctermfg=150 ctermbg=239 gui=bold guifg=#afd787 guibg=#4e4e4e |
-    \ highlight StatusLineTermNC cterm=NONE ctermfg=150 ctermbg=239 gui=NONE guifg=#afd787 guibg=#4e4e4e |
-    \ highlight User1 cterm=bold ctermfg=255 ctermbg=59 gui=bold guifg=#eeeeee guibg=#5f5f5f |
-    \ highlight User2 cterm=bold ctermbg=24 gui=bold guibg=#005f87 |
-    \ highlight User3 cterm=bold ctermbg=239 ctermfg=167 gui=bold guibg=#4e4e4e guifg=#d75f5f
+augroup highlights
+    autocmd!
+    autocmd colorscheme *
+        \ highlight link Terminal Normal |
+        \ highlight DiffAdded cterm=NONE ctermfg=64 gui=NONE guifg=#5f8700 |
+        \ highlight DiffRemoved cterm=NONE ctermfg=167 gui=NONE guifg=#d75f5f |
+        \ highlight link pythonClassVar Function |
+        \ highlight StatusLineTerm cterm=bold ctermfg=150 ctermbg=239 gui=bold guifg=#afd787 guibg=#4e4e4e |
+        \ highlight StatusLineTermNC cterm=NONE ctermfg=150 ctermbg=239 gui=NONE guifg=#afd787 guibg=#4e4e4e |
+        \ highlight User1 cterm=bold ctermfg=255 ctermbg=59 gui=bold guifg=#eeeeee guibg=#5f5f5f |
+        \ highlight User2 cterm=bold ctermbg=24 gui=bold guibg=#005f87 |
+        \ highlight User3 cterm=bold ctermbg=239 ctermfg=167 gui=bold guibg=#4e4e4e guifg=#d75f5f
 
-autocmd colorscheme minimalist
-    \ highlight SignColumn ctermbg=234 |
-    \ highlight PMenu ctermbg=237
+    autocmd colorscheme minimalist
+        \ highlight SignColumn ctermbg=234 |
+        \ highlight PMenu ctermbg=237
+augroup END
 
 " Colorscheme with fallback
 try
@@ -236,10 +235,13 @@ endif
 
 " Move cursor to last position when opening file if appropriate
 " Taken from defaults.vim
-autocmd BufReadPost *
-      \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-      \ |   exe "normal! g`\""
-      \ | endif
+augroup position
+    autocmd!
+    autocmd BufReadPost *
+          \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+          \ |   exe "normal! g`\""
+          \ | endif
+augroup END
 
 " Statusline, plus functions used in statusline
 function! GetModified()
@@ -527,5 +529,3 @@ let g:go_highlight_diagnostic_warnings = 0
 
 " Buf explorer
 let g:bufExplorerDisableDefaultKeyMapping=1
-
-augroup END
