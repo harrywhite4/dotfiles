@@ -21,7 +21,7 @@ alias howbig="du -sh"
 alias stime="/usr/bin/time -p"
 
 # Pagers
-LESS_SCRIPT="/usr/local/share/vim/vim81/macros/less.sh"
+LESS_SCRIPT="/usr/local/share/vim/vim82/macros/less.sh"
 if [ -f "$LESS_SCRIPT" ]; then
     alias vless="$LESS_SCRIPT"
 fi
