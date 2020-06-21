@@ -414,8 +414,7 @@ nnoremap <leader>w :w<cr>
 " Insert mode maps
 imap <C-@> <C-Space>
 imap <C-Space> <C-x><C-o>
-inoremap <C-l> <C-x><C-l>
-inoremap <expr> <C-k> pumvisible() ? "\<Up>" : "\<C-x>\<C-k>"
+inoremap <expr> <C-k> pumvisible() ? "\<Up>" : "\<C-k>"
 inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
 
 " Visual mode maps
