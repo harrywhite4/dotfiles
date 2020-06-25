@@ -358,7 +358,7 @@ command! SessionSave mks! ~/session.vim
 command! Quit call SaveAndQuit()
 command! Retag Run ./.git/hooks/ctags
 " Set argument list to files edited in a git diff
-command! -nargs=* Changed execute "args! " . join(systemlist("git diff --name-only <args>"), " ")
+command! Changed execute "args! " . join(systemlist("git ls-files --modified --others --exclude-standard"), " ")
 " Import sort (sort by second word)
 command! -range Isort <line1>,<line2>sort /\w\+ /
 " Wrapper on neomake
