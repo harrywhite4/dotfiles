@@ -399,8 +399,8 @@ nnoremap <leader>p "+]p
 " Buffer explorer
 nnoremap <leader>b :BufExplorer<cr>
 " Open terminal
-nnoremap <leader>tb :Term<cr>
-nnoremap <leader>tt :TabTerm<cr>
+nnoremap <leader>tb :TmuxSplit<cr>
+nnoremap <leader>tt :TmuxWindow<cr>
 " Fzf mappings
 nnoremap <leader>ff :find **/*
 nnoremap <leader>fb :Buffers<cr>
