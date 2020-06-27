@@ -175,15 +175,9 @@ set softtabstop=-1
 set shiftwidth=4
 
 " Folding
+set foldlevel=99
 set foldmethod=indent
-set foldlevelstart=99
 set foldnestmax=20
-
-augroup stdinfold
-    autocmd!
-    " Set fold level to foldlevel start when reading from stdin
-    autocmd StdinReadPre * let &l:foldlevel=&foldlevelstart
-augroup END
 
 " Windows
 set equalalways
@@ -364,7 +358,7 @@ command! SessionSave mks! ~/session.vim
 command! Quit call SaveAndQuit()
 command! Retag Run ./.git/hooks/ctags
 " Set argument list to files edited in a git diff
-command! -nargs=* Changed execute "args! " . join(systemlist("git diff --name-only <args>"), " ")
+command! Changed execute "args! " . join(systemlist("git ls-files --modified --others --exclude-standard"), " ")
 " Import sort (sort by second word)
 command! -range Isort <line1>,<line2>sort /\w\+ /
 " Wrapper on neomake
