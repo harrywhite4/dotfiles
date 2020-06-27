@@ -1,11 +1,12 @@
 " Commands for creating tmux windows / panes with dir
 
 " Get final directory from directory passed to command
-" Uses current dirs if not provided
+" Uses current dir if not provided
 function! s:GetDir(userDir)
     " Use user provided dir if avaliable
     if strlen(a:userDir)
-        return a:userDir
+        " Make relative paths absolute
+        return fnamemodify(a:userDir, ':p')
     endif
     " Use newrw dir if in that buffer
     if exists("b:netrw_curdir")
@@ -24,7 +25,6 @@ endfunction
 function! s:TmuxSplit(dir)
     let termdir = s:GetDir(a:dir)
     let cmd = 'tmux split-window -p 33 -c ' . termdir
-    echom cmd
     call s:Execute(cmd)
 endfunction
 
@@ -32,7 +32,6 @@ endfunction
 function! s:TmuxWindow(dir)
     let termdir = s:GetDir(a:dir)
     let cmd = 'tmux new-window -c ' . termdir
-    echom cmd
     call s:Execute(cmd)
 endfunction
 
