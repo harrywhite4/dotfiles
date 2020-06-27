@@ -35,5 +35,5 @@ function! s:TmuxWindow(dir)
     call s:Execute(cmd)
 endfunction
 
-command! -nargs=? TmuxSplit call s:TmuxSplit(expand("<args>"))
-command! -nargs=? TmuxWindow call s:TmuxWindow(expand("<args>"))
+command! -nargs=? -complete=dir TmuxSplit call s:TmuxSplit(expand("<args>"))
+command! -nargs=? -complete=dir TmuxWindow call s:TmuxWindow(expand("<args>"))
