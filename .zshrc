@@ -80,6 +80,9 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # Complete menu binding
 bindkey -M menuselect '^o' accept-and-infer-next-history
 
+# Disable flow control (ctrl-s ctrl-q)
+stty -ixon
+
 # Load fzf if available
 if [[ -f ~/.fzf.zsh ]]; then
     source ~/.fzf.zsh
