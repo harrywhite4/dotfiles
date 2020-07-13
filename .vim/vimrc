@@ -370,7 +370,7 @@ command! Make Neomake! | bo copen
 map Q gq
 " FZF
 nnoremap <C-p> :FZF<cr>
-"  Move around
+" Move around
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
@@ -385,6 +385,9 @@ nnoremap <F5> :checktime<cr>
 nnoremap <F6> :NeomakeToggleBuffer <bar> NeomakeClean<cr>
 " Format file
 nmap <F8> :call FormatFile()<cr>
+" Edit
+nnoremap <leader>e :e **/*
+nmap <leader>ef <Plug>NavigateEditCursor
 " Change indentation
 nnoremap <leader>i2 :setlocal shiftwidth=2<cr>
 nnoremap <leader>i4 :setlocal shiftwidth=4<cr>
@@ -395,13 +398,12 @@ nnoremap <leader>b :BufExplorer<cr>
 " Open terminal
 nnoremap <leader>tb :TmuxSplit<cr>
 nnoremap <leader>tt :TmuxWindow<cr>
-" Fzf mappings
+" Search mappings
 nnoremap <leader>ff :find **/*
 nnoremap <leader>fb :Buffers<cr>
 nnoremap <leader>ft :Tags<cr>
 " Git maps
 nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>ge :Gedit :<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Gblame<cr>
 " Grep word under cursor
