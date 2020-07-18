@@ -11,3 +11,6 @@
 
 [include]
     path = ~/.gitname
+
+[credential]
+    helper = netrc -f ~/.netrc.gpg
