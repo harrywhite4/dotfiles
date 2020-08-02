@@ -46,7 +46,7 @@ alias dcadmin="docker-compose exec web django-admin"
 alias dcsql="docker-compose exec db psql --user postgres"
 
 # Json
-alias jview="jq -C . | less -R"
+alias jview="view -c 'set ft=json' -"
 
 # fd alias if installed as fdfind
 if [ "$(command -v fdfind)" ] && [ -z "$(command -v fd)" ]; then
