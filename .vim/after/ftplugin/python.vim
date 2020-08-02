@@ -1,6 +1,6 @@
 setlocal textwidth=100
 
-let &l:define='^\s*\(def\|class\)'
+let &l:define='^\s*\(def\|async def\|class\)'
 
 if executable("autopep8")
     setlocal formatprg=autopep8\ -
