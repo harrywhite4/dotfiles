@@ -18,6 +18,11 @@ if exists("*plug#begin")
     Plug 'dikiaap/minimalist'
     Plug 'neomake/neomake'
 
+    " LSP
+    Plug 'prabirshrestha/async.vim'
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'mattn/vim-lsp-settings'
+
     " Language specific plugins
     Plug 'vim-python/python-syntax'
     Plug 'Vimjas/vim-python-pep8-indent'
@@ -25,7 +30,6 @@ if exists("*plug#begin")
     Plug 'posva/vim-vue'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'fatih/vim-go'
-    Plug 'davidhalter/jedi-vim'
 
     call plug#end()
 endif
@@ -409,6 +413,15 @@ nnoremap <leader>s :%s/\<<cword>\>/
 nnoremap <leader>yf :call CopyAndPrint(expand("%"))<cr>
 " Save
 nnoremap <leader>w :w<cr>
+" Language server
+nnoremap <leader>] :LspDefinition<cr>
+nnoremap <leader>ld :LspDocumentDiagnostics<cr>
+nnoremap <leader>lh :LspHover<cr>
+nnoremap <leader>ln :LspRename<cr>
+nnoremap <leader>lr :LspReferences<cr>
+nnoremap <leader>la :LspCodeAction<cr>
+nnoremap <leader>ls :LspDocumentSymbol<cr>
+nnoremap <leader>lw :LspWorkspaceSymbol<cr>
 
 " Insert mode maps
 imap <C-@> <C-Space>
@@ -435,6 +448,26 @@ let g:python_highlight_exceptions = 1
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
+
+" LSP
+
+let g:lsp_settings_whitelist = ['python']
+
+" Function called when each buffer enabled
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+endfunction
+
+autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+
+let g:lsp_diagnostics_enabled = 0
+let g:lsp_preview_float = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_highlights_enabled = 0
+let g:lsp_textprop_enabled = 0
+let g:lsp_peek_alignment = "top"
+let g:lsp_preview_doubletap = 0
+let g:lsp_signature_help_enabled = 0
 
 " Neomake
 
