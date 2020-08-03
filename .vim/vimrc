@@ -451,7 +451,7 @@ let g:cpp_class_decl_highlight = 1
 
 " LSP
 
-let g:lsp_settings_whitelist = ['python']
+let g:lsp_settings_enable_suggestions = 0
 
 " Function called when each buffer enabled
 function! s:on_lsp_buffer_enabled() abort
