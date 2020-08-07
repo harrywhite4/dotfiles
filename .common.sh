@@ -61,9 +61,6 @@ export EDITOR="vim"
 # Default browser
 export BROWSER="firefox"
 
-# Man pager
-export MANPAGER="vim -M +MANPAGER -"
-
 # Program defaults
 export BC_ENV_ARGS="${HOME}/.bc"
 export GIT_TEMPLATE_DIR=~/.git_template
