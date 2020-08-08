@@ -86,18 +86,22 @@ done
 # Symlinked directories
 makelink ".git_template" "${TODIR}"
 
-# Install vim-plug if required
-if [ ! -f "${VIM_PLUG_FILE}" ]; then
-    echo "Installing vim-plug..."
-    # Install vim-plug
-    curl -fLo "${VIM_PLUG_FILE}" --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
+if [ -x "$(command -v curl)" ]; then
+    # Install vim-plug if required
+    if [ ! -f "${VIM_PLUG_FILE}" ]; then
+	echo "Installing vim-plug..."
+	# Install vim-plug
+	curl -fLo "${VIM_PLUG_FILE}" --create-dirs \
+	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    fi
 
-# Run PlugInstall if required
-if [ ! -d "${VIM_PLUGINS_DIR}" ]; then
-    echo "Installing vim plugins..."
-    vim +PlugInstall +qall
+    # Run PlugInstall if required
+    if [ ! -d "${VIM_PLUGINS_DIR}" ]; then
+	echo "Installing vim plugins..."
+	vim +PlugInstall +qall
+    fi
+else
+    echo "curl not installed, vim plugin setup skipped"
 fi
 
 echo "Done!"
