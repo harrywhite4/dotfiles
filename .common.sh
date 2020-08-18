@@ -53,6 +53,11 @@ if [ "$(command -v fdfind)" ] && [ -z "$(command -v fd)" ]; then
     alias fd="fdfind"
 fi
 
+# Clipboard alias
+if [ "$(command -v xsel)" ]; then
+    alias clip="xsel -b"
+fi
+
 # ---------- Variables ----------
 
 # Default editor
