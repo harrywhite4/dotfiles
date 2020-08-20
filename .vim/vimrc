@@ -100,11 +100,7 @@ set wildignore+=*/.git/logs/*
 set wildignore+=*/.git/refs/*
 set wildignore+=*/__pycache__/*
 set wildignore+=*__pycache__
-set wildignore+=*/.venv/*
-set wildignore+=*/.tox/*
 set wildignore+=*/.mypy_cache/*
-set wildignore+=*/node_modules/*
-set wildignore+=*/dist/*
 
 " Path
 set path=.,**
