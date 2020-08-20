@@ -149,7 +149,9 @@ set scrolloff=7
 " Turn off modelines
 set nomodeline
 
-" Dictionary
+" Spelling
+set spelllang=en_au
+set spelloptions=camel
 set dictionary=/usr/share/dict/words
 
 " Chars for list mode
