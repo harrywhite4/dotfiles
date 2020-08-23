@@ -514,12 +514,27 @@ let g:neomake_cloudformation_cfnlint_maker = {
 
 
 " Enabled makers
-let g:neomake_python_enabled_makers = ['flake8', 'mypy']
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_vue_enabled_makers = ['eslint']
-let g:neomake_cloudformation_enabled_makers = ['cfnlint']
-let g:neomake_go_enabled_makers = ['go', 'govet']
-let g:neomake_cpp_enabled_makers = ['cppcheck', 'cpplint']
+function! s:addLinterIfExists(list, linter)
+    if executable(a:linter)
+        call add(a:list, a:linter)
+    endif
+endfunction
+
+let g:neomake_python_enabled_makers = []
+call s:addLinterIfExists(g:neomake_python_enabled_makers, 'flake8')
+call s:addLinterIfExists(g:neomake_python_enabled_makers, 'mypy')
+let g:neomake_javascript_enabled_makers = []
+call s:addLinterIfExists(g:neomake_javascript_enabled_makers, 'eslint')
+let g:neomake_vue_enabled_makers = []
+call s:addLinterIfExists(g:neomake_vue_enabled_makers, 'eslint')
+let g:neomake_cloudformation_enabled_makers = []
+call s:addLinterIfExists(g:neomake_cloudformation_enabled_makers, 'cfnlint')
+let g:neomake_go_enabled_makers = []
+call s:addLinterIfExists(g:neomake_go_enabled_makers, 'go')
+call s:addLinterIfExists(g:neomake_go_enabled_makers, 'govet')
+let g:neomake_cpp_enabled_makers = []
+call s:addLinterIfExists(g:neomake_cpp_enabled_makers, 'cppcheck')
+call s:addLinterIfExists(g:neomake_cpp_enabled_makers, 'cpplint')
 
 " Linter args
 let g:neomake_mypy_args = [
