@@ -73,23 +73,6 @@ export FZF_DEFAULT_COMMAND='rg --files'
 export PIPENV_VENV_IN_PROJECT=1
 export LESS="-R --quit-if-one-screen --no-init --mouse --wheel-lines 3"
 
-# ---------- Loading ---------
-
-export NVM_DIR="$HOME/.nvm"
-if [ -s "$NVM_DIR/nvm.sh" ]; then
-    # Load nvm
-    source "$NVM_DIR/nvm.sh"
-fi
-if [ -s "$NVM_DIR/bash_completion" ]; then
-    # Load nvm completion
-    source "$NVM_DIR/bash_completion"
-fi
-
-# Add ruby user installs to PATH
-if [ "$(command -v ruby)" ] && [ "$(command -v gem)" ]; then
-    export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:${PATH}"
-fi
-
 # ---------- Completion ----------
 
 if [ "$(command -v aws_completer)" ]; then
