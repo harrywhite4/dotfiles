@@ -440,6 +440,12 @@ inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
 vnoremap <leader>s :s/\<<C-r>0\>/
 vnoremap <leader>y "+y
 
+" Fix for c-left and c-right under tmux
+map  <Esc>[1;5D <C-Left>
+map  <Esc>[1;5C <C-Right>
+cmap  <Esc>[1;5D <C-Left>
+cmap  <Esc>[1;5C <C-Right>
+
 " -------------------- Plugin Settings --------------------
 
 " Syntax
