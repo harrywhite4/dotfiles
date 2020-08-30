@@ -97,5 +97,8 @@ skip_global_compinit=1
 autoload zcalc
 alias calc="zcalc -f"
 
+# Better history command
+alias allhistory="fc -l -i 0"
+
 # Common config
 source $HOME/.common.sh
