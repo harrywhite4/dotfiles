@@ -482,6 +482,8 @@ let g:lsp_documentation_float = 0
 let g:lsp_preview_float = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_peek_alignment = "top"
+let g:lsp_highlight_references_enabled = 0
+
 
 " Neomake
 
