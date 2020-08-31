@@ -487,6 +487,9 @@ let g:lsp_highlight_references_enabled = 0
 
 " Neomake
 
+" Temp file location
+let g:neomake_tempfile_dir = '/tmp/neomake%:p:h'
+
 " Automake when reading / editing (after 100ms), and when writing.
 runtime autoload/neomake/configure.vim
 if exists('*neomake#configure#automake')
