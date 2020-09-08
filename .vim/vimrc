@@ -150,7 +150,7 @@ set scrolloff=7
 set nomodeline
 
 " Spelling
-set spelllang=en_au
+set spelllang=en_au,en_us
 set spelloptions=camel
 set dictionary=/usr/share/dict/words
 
