@@ -10,13 +10,13 @@ ${0} [OPTION]...
 Install dotfiles
 
 Options:
---help      Show help
---clean     Remove installed vim-plug plugins
---verbose   Print additional info
+--help     Show help
+--clean    Remove installed vim-plug plugins
+--quiet    Print less detailed info
 EOF
 }
 
-verbose=0
+quiet=0
 clean=0
 
 # Flag arg parsing
@@ -26,8 +26,8 @@ for i in "$@"; do
             show_help
             exit 0
             ;;
-        --verbose)
-            verbose=1
+        --quiet)
+            quiet=1
             ;;
         --clean)
             clean=1
@@ -44,7 +44,7 @@ fi
 # Print if verbose
 # Argument 1: String to print
 vprint() {
-    if [ "${verbose}" -eq 1 ]; then
+    if [ "${quiet}" -eq 0 ]; then
         echo "${1}"
     fi
 }
