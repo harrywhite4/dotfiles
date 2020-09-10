@@ -39,7 +39,7 @@ alias pr="pipenv run"
 alias prp="pipenv run python"
 
 # Docker
-alias doco="docker-compose"
+alias doco="sudo docker-compose"
 
 # Docker project specific
 alias dcadmin="docker-compose exec web django-admin"
