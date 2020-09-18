@@ -17,6 +17,7 @@ if exists("*plug#begin")
     Plug 'junegunn/fzf.vim'
     Plug 'dikiaap/minimalist'
     Plug 'neomake/neomake'
+    Plug 'editorconfig/editorconfig-vim'
 
     " LSP
     Plug 'prabirshrestha/async.vim'
@@ -571,6 +572,9 @@ runtime! ftplugin/man.vim
 
 " FZF
 let g:fzf_layout = {'window': {'width': 0.8, 'height': 0.6}}
+
+" Editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Jedi
 let g:jedi#auto_vim_configuration = 0
