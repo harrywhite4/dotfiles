@@ -12,7 +12,6 @@ if exists("*plug#begin")
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
-    Plug 'jlanzarotta/bufexplorer'
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
     Plug 'dikiaap/minimalist'
@@ -400,8 +399,6 @@ nnoremap <leader>i2 :setlocal shiftwidth=2<cr>
 nnoremap <leader>i4 :setlocal shiftwidth=4<cr>
 " Paste
 nnoremap <leader>p "+]p
-" Buffer explorer
-nnoremap <leader>b :BufExplorer<cr>
 " Open terminal
 nnoremap <leader>tb :TmuxSplit<cr>
 nnoremap <leader>tt :TmuxWindow<cr>
@@ -594,6 +591,3 @@ let g:go_template_autocreate = 0
 let g:go_highlight_string_spellcheck = 0
 let g:go_highlight_diagnostic_errors = 0
 let g:go_highlight_diagnostic_warnings = 0
-
-" Buf explorer
-let g:bufExplorerDisableDefaultKeyMapping=1
