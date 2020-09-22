@@ -197,6 +197,11 @@ set background=dark
 let &t_AU = "\e[58;5;%dm"
 let &t_Cs = "\e[4:3m"
 let &t_Ce = "\e[4:0m"
+" Use background colour on clear
+let &t_ut = ""
+
+" Always redraw screen on scroll
+set ttyscroll=1
 
 " Highlights
 augroup highlights
@@ -227,17 +232,6 @@ try
 catch
     colorscheme desert
 endtry
-
-" WSL
-let s:version_file = '/proc/version'
-if (filereadable(s:version_file))
-    let s:content = readfile(s:version_file)[0]
-    " If 'Microsoft' in /proc/version
-    if (match(s:content, 'Microsoft') != -1)
-        set t_ut=
-        set ttyscroll=1
-    endif
-endif
 
 " Move cursor to last position when opening file if appropriate
 " Taken from defaults.vim
