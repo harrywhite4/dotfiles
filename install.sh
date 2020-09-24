@@ -85,6 +85,7 @@ done
 
 # Symlinked directories
 makelink ".git_template" "${TODIR}"
+makelink ".pandoc" "${TODIR}"
 
 if [ -x "$(command -v wget)" ]; then
     # Install vim-plug if required
