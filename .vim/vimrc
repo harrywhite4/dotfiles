@@ -361,6 +361,8 @@ command! Changed execute "args! " . join(systemlist("git ls-files --modified --o
 command! -range Isort <line1>,<line2>sort /\w\+ /
 " Wrapper on neomake
 command! Make Neomake! | bo copen
+" Prompt for markdown checkboxes
+command! Check %s/\[ \]/[x]/gc
 
 " -------------------- Mappings --------------------
 
