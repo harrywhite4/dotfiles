@@ -1,5 +1,3 @@
-set nocompatible
-
 runtime autoload/plug.vim
 if exists("*plug#begin")
     call plug#begin('~/.vim/plugged')
