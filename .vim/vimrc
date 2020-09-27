@@ -110,7 +110,9 @@ set display=lastline
 
 " Grep settings
 set grepformat=%f:%l:%c:%m,%f:%l:%m
-if executable("rg")
+if isdirectory(".git")
+    set grepprg=git\ grep\ --perl-regexp\ --line-number\ --column
+elseif executable("rg")
     set grepprg=rg\ --vimgrep\ --smart-case
 endif
 
@@ -346,8 +348,8 @@ endfunction
 " -------------------- Commands --------------------
 
 command! -nargs=1 -complete=dir Tabdir :tabnew | lcd <args> | Ex
-command! -nargs=+ Rg silent! grep! <args> | redraw! | botright copen
-command! -nargs=+ Rgw Rg -w <args>
+command! -nargs=+ Gp silent! grep! <args> | redraw! | botright copen
+command! -nargs=+ Gpw Gp -w <args>
 command! -nargs=1 Type setlocal filetype=<args>
 command! -nargs=1 Fileat Gedit <args>:%
 command! PrTemplate read .github/pull_request_template.md
@@ -369,7 +371,7 @@ command! Check %s/\[ \]/[x]/gc
 " Formatting
 map Q gq
 " FZF
-nnoremap <C-p> :FZF<cr>
+nnoremap <C-p> :GFiles<cr>
 " Move around
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
@@ -405,7 +407,7 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Gblame<cr>
 " Grep word under cursor
-nnoremap <leader>r :Rgw <C-r><C-w>
+nnoremap <leader>r :Gpw <C-r><C-w>
 " Substitute word under cursor
 nnoremap <leader>s :%s/\<<cword>\>/
 " Copy file path to register
@@ -563,6 +565,7 @@ runtime! ftplugin/man.vim
 
 " FZF
 let g:fzf_layout = {'window': {'width': 0.8, 'height': 0.6}}
+let g:fzf_preview_window = ''
 
 " Editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
