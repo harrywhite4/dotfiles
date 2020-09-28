@@ -101,7 +101,7 @@ if [ -x "$(command -v wget)" ]; then
     # Run PlugInstall if required
     if [ ! -d "${VIM_PLUGINS_DIR}" ]; then
 	echo "Installing vim plugins..."
-	vim +PlugInstall +qall
+	vim --not-a-term +PlugInstall +qall > /dev/null
     fi
 else
     echo "wget not installed, vim plugin setup skipped"

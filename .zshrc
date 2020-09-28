@@ -34,7 +34,9 @@ zle -N down-line-or-beginning-search
 bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 
 # Set LS_COLORS
-eval "$(dircolors -b)"
+if [[ "$(command -v dircolors)" ]]; then
+    eval "$(dircolors -b)"
+fi
 
 # Auto pushd
 setopt auto_pushd
