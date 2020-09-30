@@ -108,7 +108,7 @@ set display=lastline
 " Grep settings
 set grepformat=%f:%l:%c:%m,%f:%l:%m
 if isdirectory(".git")
-    set grepprg=git\ grep\ --perl-regexp\ --line-number\ --column
+    set grepprg=git\ grep\ --untracked\ --perl-regexp\ --line-number\ --column
 elseif executable("rg")
     set grepprg=rg\ --vimgrep\ --smart-case
 endif
