@@ -527,7 +527,9 @@ let g:neomake_cloudformation_cfnlint_maker = {
 " Enabled makers
 function! s:addLinterIfExists(list, linter)
     if executable(a:linter)
-        call add(a:list, a:linter)
+        " Assume maker name is same as program with - and _ removed
+        let maker_name = substitute(a:linter, '-\|_', '', 'g')
+        call add(a:list, maker_name)
     endif
 endfunction
 
@@ -539,7 +541,7 @@ call s:addLinterIfExists(g:neomake_javascript_enabled_makers, 'eslint')
 let g:neomake_vue_enabled_makers = []
 call s:addLinterIfExists(g:neomake_vue_enabled_makers, 'eslint')
 let g:neomake_cloudformation_enabled_makers = []
-call s:addLinterIfExists(g:neomake_cloudformation_enabled_makers, 'cfnlint')
+call s:addLinterIfExists(g:neomake_cloudformation_enabled_makers, 'cfn-lint')
 let g:neomake_go_enabled_makers = []
 call s:addLinterIfExists(g:neomake_go_enabled_makers, 'go')
 call s:addLinterIfExists(g:neomake_go_enabled_makers, 'govet')
