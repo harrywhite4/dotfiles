@@ -23,5 +23,6 @@ COPY --chown=harry:harry . /home/harry/dotfiles
 RUN cd /home/harry/dotfiles && ./install.sh
 
 ENV PAGER=less
+ENV TERM=xterm-256color
 WORKDIR /home/harry
 CMD ["zsh"]
