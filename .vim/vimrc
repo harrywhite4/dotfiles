@@ -577,22 +577,3 @@ let g:fzf_preview_window = ''
 
 " Editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-" Jedi
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#auto_initialization = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#completions_enabled = 0
-let g:jedi#show_call_signatures = "0"
-
-" vim-go settings
-let g:go_fmt_autosave = 1
-let g:go_fmt_fail_silently = 1 " Should see errors through other means
-let g:go_version_warning = 0
-let g:go_def_mapping_enabled = 0 " Overrides tags mappings
-let g:go_template_autocreate = 0
-
-" vim-go syntax
-let g:go_highlight_string_spellcheck = 0
-let g:go_highlight_diagnostic_errors = 0
-let g:go_highlight_diagnostic_warnings = 0
