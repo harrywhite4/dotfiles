@@ -204,7 +204,9 @@ let &t_Ce = "\e[4:0m"
 let &t_ut = ""
 
 " Always redraw screen on scroll
-set ttyscroll=1
+if exists('&ttyscroll')
+    set ttyscroll=1
+endif
 
 " Highlights
 augroup highlights
