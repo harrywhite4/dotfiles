@@ -196,7 +196,9 @@ set formatlistpat="\v^\s*(\d+[\]:\.\)\}\t ]|[\-\+\*]\s)\s*"
 set background=dark
 
 " Set underline curl and color sequences
-let &t_AU = "\e[58;5;%dm"
+if has('patch-8.2.0863')
+    let &t_AU = "\e[58;5;%dm"
+endif
 let &t_Cs = "\e[4:3m"
 let &t_Ce = "\e[4:0m"
 " Use background colour on clear
