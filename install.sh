@@ -1,4 +1,6 @@
 #!/bin/sh
+# Script to install dotfiles
+# Written in POSIX sh for compatibility
 set -e
 TODIR="${HOME}"
 VIM_PLUGINS_DIR=~/.vim/plugged
@@ -11,12 +13,10 @@ Install dotfiles
 
 Options:
 --help     Show help
---clean    Remove installed vim-plug plugins
---quiet    Print less detailed info
+--clean    Remove installed vim-plug plugins before installing
 EOF
 }
 
-quiet=0
 clean=0
 
 # Flag arg parsing
@@ -25,9 +25,6 @@ for i in "$@"; do
         --help)
             show_help
             exit 0
-            ;;
-        --quiet)
-            quiet=1
             ;;
         --clean)
             clean=1
@@ -41,12 +38,16 @@ if [ -d "${VIM_PLUGINS_DIR}" ] && [ "${clean}" -eq 1 ]; then
     rm -r "${VIM_PLUGINS_DIR}"
 fi
 
-# Print if verbose
-# Argument 1: String to print
-vprint() {
-    if [ "${quiet}" -eq 0 ]; then
-        echo "${1}"
+# Backup an exiting file
+# Argment 1: File path
+backup_file() {
+    backup_file="${1}.bak"
+    if [ -e "${backup_file}" ]; then
+        echo "Could not backup ${1} to ${backup_file} file already exists"
+        exit 1
     fi
+    echo "Backing up ${1} to ${backup_file}"
+    mv "${1}" "${1}.bak"
 }
 
 # Create a symlink to file under current dir
@@ -54,12 +55,14 @@ vprint() {
 # Argument 2: Path to directory link should be placed in
 makelink() {
     linkname="${2}/${1}"
-    # If not already a symlink
-    if [ ! -h "${linkname}" ]; then
-        ln -s "${PWD}/${1}" "${linkname}"
-        vprint "Linked ${linkname} to ${PWD}/${1}"
+    if [ -h "${linkname}" ]; then
+        echo "${linkname} was already a symlink"
     else
-        vprint "${linkname} was already a symlink"
+        if [ -f "${linkname}" ]; then
+            backup_file "${linkname}"
+        fi
+        ln -s "${PWD}/${1}" "${linkname}"
+        echo "Linked ${linkname} to ${PWD}/${1}"
     fi
 }
 
@@ -104,7 +107,7 @@ if [ -x "$(command -v wget)" ]; then
 	vim --not-a-term +PlugInstall +qall > /dev/null
     fi
 else
-    echo "wget not installed, vim plugin setup skipped"
+    echo "wget is not installed, vim plugin setup skipped"
 fi
 
 echo "Done!"
