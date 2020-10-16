@@ -90,5 +90,7 @@
         "!Split",
         "!Split sequence"
     ],
-    "yaml.validate": false
+    "yaml.validate": false,
+    "javascript.validate.enable": false,
+    "javascript.suggest.autoImports": false
 }
