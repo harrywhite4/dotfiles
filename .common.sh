@@ -28,9 +28,11 @@ fi
 
 # AWK one liners
 alias mostused="history | awk '{usage[\$2]+=1}END{for(key in usage){print key, usage[key]}}' | sort -nrk 2 | head"
-alias gitopen="firefox \$(git remote -v | awk '/origin/{print substr(\$2,0,length(\$2)-4);exit}')"
 alias paths="echo \$PATH | awk -F ':' '{for (i=1;i<NF;i++){print \$i}}'"
 alias temps="cat /sys/class/thermal/thermal_zone*/temp | awk '{print \"Thermal Zone \" NR-1 \" \" \$1/1000 \"C\"}'"
+
+# Git
+alias gittop='cd $(git rev-parse --show-toplevel)'
 
 # Python
 alias python="python3"
@@ -71,7 +73,7 @@ export BC_ENV_ARGS="${HOME}/.bc"
 export GIT_TEMPLATE_DIR=~/.git_template
 export FZF_DEFAULT_COMMAND='rg --files'
 export PIPENV_VENV_IN_PROJECT=1
-export LESS="-R --quit-if-one-screen --no-init --mouse --wheel-lines 3"
+export LESS="--RAW-CONTROL-CHARS --quit-if-one-screen --no-init --mouse --wheel-lines 3"
 
 # ---------- Completion ----------
 
