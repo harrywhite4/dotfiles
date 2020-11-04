@@ -4,7 +4,7 @@
     branches = branch --sort=-committerdate
     glog = log --stat --graph
     mine = log --all --author 'Harry White'
-    stat = diff --stat
+    sum = diff --compact-summary
 
 [branch]
     autoSetupMerge = false
