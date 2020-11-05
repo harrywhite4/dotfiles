@@ -359,12 +359,13 @@ command! -nargs=+ Gp silent! grep! <args> | redraw! | botright copen
 command! -nargs=+ Gpw Gp -w <args>
 command! -nargs=1 Type setlocal filetype=<args>
 command! -nargs=1 Fileat Gedit <args>:%
+command! AutoFormat call ToggleAutoFormat()
 command! PrTemplate read .github/pull_request_template.md
 command! Bufonly %bd | e#
 command! SessionSave mks! ~/session.vim
 command! Quit call SaveAndQuit()
 command! Retag Run ./.git/hooks/ctags
-" Set argument list to files edited in a git diff
+" Set argument list to files edited
 command! Changed execute "args! " . join(systemlist("git ls-files --modified --others --exclude-standard"), " ")
 " Import sort (sort by second word)
 command! -range Isort <line1>,<line2>sort /\w\+ /
@@ -386,8 +387,6 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 " Strip whitespace
 nnoremap <F2> :call StripTrailingWhitespace()<cr>
-" Toggle auto-format
-nnoremap <F4> :call ToggleAutoFormat()<cr>
 " Check files to reload
 nnoremap <F5> :checktime<cr>
 " Disable ale for this duffer
