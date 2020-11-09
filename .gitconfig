@@ -2,7 +2,7 @@
     s = status
     cv = commit -v
     branches = branch --sort=-committerdate
-    glog = log --stat --graph
+    glog = log --compact-summary --graph
     mine = log --all --author 'Harry White'
     sum = diff --compact-summary
 
