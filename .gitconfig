@@ -1,8 +1,9 @@
 [alias]
     s = status
     cv = commit -v
+    lg = log --compact-summary --graph
+    gp = grep --untracked --perl-regexp --line-number --column
     branches = branch --sort=-committerdate
-    glog = log --compact-summary --graph
     mine = log --all --author 'Harry White'
     sum = diff --compact-summary
 
