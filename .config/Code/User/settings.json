@@ -91,5 +91,6 @@
     "yaml.validate": false,
     "javascript.validate.enable": false,
     "javascript.suggest.autoImports": false,
-    "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'"
+    "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "search.useGlobalIgnoreFiles": true
 }
