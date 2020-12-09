@@ -11,7 +11,6 @@
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.currentLine.enabled": false,
     "editor.suggestOnTriggerCharacters": false,
-    "editor.wordWrap": "on",
     "editor.wrappingIndent": "none",
     "editor.highlightActiveIndentGuide": false,
     "editor.renderIndentGuides": false,
