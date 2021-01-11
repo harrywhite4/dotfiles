@@ -461,6 +461,7 @@ let g:python_highlight_exceptions = 1
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
+let g:go_highlight_trailing_whitespace_error = 0
 
 " LSP
 let g:lsp_settings_enable_suggestions = 0
