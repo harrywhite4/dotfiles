@@ -15,3 +15,6 @@
 
 [credential]
     helper = netrc -f ~/.netrc.gpg
+
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
