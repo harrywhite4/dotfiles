@@ -92,5 +92,10 @@
     "javascript.validate.enable": false,
     "javascript.suggest.autoImports": false,
     "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "search.useGlobalIgnoreFiles": true
+    "search.useGlobalIgnoreFiles": true,
+    "eslint.options": {
+      "rules": {
+        "no-empty": 0
+      }
+    }
 }
