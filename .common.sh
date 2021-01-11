@@ -19,6 +19,7 @@ alias myip="curl checkip.amazonaws.com"
 alias space="df -h -t ext4"
 alias howbig="du -sh"
 alias stime="/usr/bin/time -p"
+alias open="xdg-open"
 
 # Pagers
 LESS_SCRIPT="/usr/local/share/vim/vim82/macros/less.sh"
