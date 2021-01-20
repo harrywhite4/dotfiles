@@ -317,7 +317,7 @@ function! FormatFile()
     normal Hmy
     normal gggqG
     normal 'yz<cr>
-    normal 'z
+    normal `z
 endfunction
 
 " If there is a window at pos close it
