@@ -20,6 +20,7 @@ alias space="df -h -t ext4"
 alias howbig="du -sh"
 alias stime="/usr/bin/time -p"
 alias open="xdg-open"
+alias randpw="tr -dc '[:graph:]' < /dev/urandom | head -c 30 | sed '\$a\\'"
 
 # Pagers
 LESS_SCRIPT="/usr/local/share/vim/vim82/macros/less.sh"
