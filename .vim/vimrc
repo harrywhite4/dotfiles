@@ -306,7 +306,8 @@ function! StripTrailingWhitespace()
     normal mz
     normal Hmy
     %s/\s\+$//e
-    normal 'yz<CR>
+    normal 'y
+    normal zt
     normal `z
   endif
 endfunction
@@ -316,7 +317,8 @@ function! FormatFile()
     normal mz
     normal Hmy
     normal gggqG
-    normal 'yz<cr>
+    normal 'y
+    normal zt
     normal `z
 endfunction
 
@@ -360,6 +362,7 @@ command! -nargs=+ Gpw Gp -w <args>
 command! -nargs=1 Type setlocal filetype=<args>
 command! -nargs=1 Fileat Gedit <args>:%
 command! AutoFormat call ToggleAutoFormat()
+command! FormatFile call FormatFile()
 command! PrTemplate read .github/pull_request_template.md
 command! Bufonly %bd | e#
 command! SessionSave mks! ~/session.vim
