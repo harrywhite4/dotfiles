@@ -97,5 +97,6 @@
       "rules": {
         "no-empty": 0
       }
-    }
+    },
+    "python.languageServer": "Pylance"
 }
