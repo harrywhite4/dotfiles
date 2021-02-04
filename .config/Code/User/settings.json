@@ -1,102 +1,117 @@
 {
-    "python.linting.flake8Enabled": true,
-    "python.linting.mypyEnabled": true,
-    "python.linting.pylintEnabled": false,
-    "editor.minimap.enabled": false,
-    "editor.quickSuggestions": {
-        "other": false,
-        "comments": false,
-        "strings": false
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingQuotes": "never",
+  "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.highlightActiveIndentGuide": false,
+  "editor.minimap.enabled": false,
+  "editor.parameterHints.enabled": false,
+  "editor.quickSuggestions": {
+    "comments": false,
+    "other": false,
+    "strings": false
+  },
+  "editor.renderFinalNewline": false,
+  "editor.renderIndentGuides": false,
+  "editor.rulers": [
+    100
+  ],
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.wrappingIndent": "none",
+  "eslint.options": {
+    "rules": {
+      "no-empty": 0
+    }
+  },
+  "eslint.run": "onSave",
+  "eslint.workingDirectories": [
+    "assets"
+  ],
+  "explorer.confirmDelete": false,
+  "extensions.ignoreRecommendations": true,
+  "files.insertFinalNewline": true,
+  "gitHistory.showEditorTitleMenuBarIcons": false,
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "javascript.suggest.autoImports": false,
+  "javascript.validate.enable": false,
+  "python.languageServer": "Pylance",
+  "python.linting.flake8Enabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.showStartPage": false,
+  "python.workspaceSymbols.enabled": true,
+  "search.useGlobalIgnoreFiles": true,
+  "terminal.integrated.drawBoldTextInBrightColors": false,
+  "terminal.integrated.env.linux": {
+    "GIT_EDITOR": "code --wait"
+  },
+  "vetur.validation.script": false,
+  "vetur.validation.style": false,
+  "vetur.validation.template": false,
+  "vim.handleKeys": {
+    "<C-b>": false,
+    "<C-f>": false,
+    "<C-k>": false,
+    "<C-t>": false
+  },
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "leader",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ]
     },
-    "gitlens.hovers.currentLine.over": "line",
-    "gitlens.currentLine.enabled": false,
-    "editor.suggestOnTriggerCharacters": false,
-    "editor.wrappingIndent": "none",
-    "editor.highlightActiveIndentGuide": false,
-    "editor.renderIndentGuides": false,
-    "editor.renderFinalNewline": false,
-    "files.insertFinalNewline": true,
-    "extensions.ignoreRecommendations": true,
-    "gitHistory.showEditorTitleMenuBarIcons": false,
-    "explorer.confirmDelete": false,
-    "editor.autoClosingBrackets": "never",
-    "vim.leader": "<space>",
-    "vim.handleKeys": {
-        "<C-f>": false,
-        "<C-b>": false,
-        "<C-t>": false,
-        "<C-k>": false
+    {
+      "before": [
+        "leader",
+        "e"
+      ],
+      "commands": [
+        "workbench.view.explorer"
+      ]
     },
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": ["leader", "w"],
-            "commands": ["workbench.action.files.save"]
-        },
-        {
-            "before": ["leader", "e"],
-            "commands": ["workbench.view.explorer"]
-        },
-        {
-          "before": ["leader", "q"],
-          "commands": ["workbench.action.closeActiveEditor"]
-        }
-    ],
-    "terminal.integrated.drawBoldTextInBrightColors": false,
-    "editor.parameterHints.enabled": false,
-    "terminal.integrated.env.linux": {
-        "GIT_EDITOR": "code --wait"
-    },
-    "eslint.run": "onSave",
-    "eslint.workingDirectories": [
-        "assets"
-    ],
-    "python.workspaceSymbols.enabled": true,
-    "editor.autoClosingQuotes": "never",
-    "editor.rulers": [
-        100
-    ],
-    "vetur.validation.template": false,
-    "vetur.validation.style": false,
-    "vetur.validation.script": false,
-    "python.showStartPage": false,
-    "yaml.customTags": [
-        "!And",
-        "!And sequence",
-        "!If",
-        "!If sequence",
-        "!Not",
-        "!Not sequence",
-        "!Equals",
-        "!Equals sequence",
-        "!Or",
-        "!Or sequence",
-        "!FindInMap",
-        "!FindInMap sequence",
-        "!Base64",
-        "!Join",
-        "!Join sequence",
-        "!Cidr",
-        "!Ref",
-        "!Sub",
-        "!Sub sequence",
-        "!GetAtt",
-        "!GetAZs",
-        "!ImportValue",
-        "!ImportValue sequence",
-        "!Select",
-        "!Select sequence",
-        "!Split",
-        "!Split sequence"
-    ],
-    "yaml.validate": false,
-    "javascript.validate.enable": false,
-    "javascript.suggest.autoImports": false,
-    "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "search.useGlobalIgnoreFiles": true,
-    "eslint.options": {
-      "rules": {
-        "no-empty": 0
-      }
-    },
-    "python.languageServer": "Pylance"
+    {
+      "before": [
+        "leader",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
+    }
+  ],
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ],
+  "yaml.validate": false
 }
