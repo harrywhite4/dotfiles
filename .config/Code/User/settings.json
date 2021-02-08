@@ -113,5 +113,7 @@
     "!Split",
     "!Split sequence"
   ],
-  "yaml.validate": false
+  "yaml.validate": false,
+  "editor.suggest.localityBonus": true,
+  "workbench.editor.wrapTabs": true
 }
