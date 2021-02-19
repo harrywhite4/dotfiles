@@ -3,7 +3,6 @@
   "editor.autoClosingQuotes": "never",
   "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.highlightActiveIndentGuide": false,
-  "editor.minimap.enabled": false,
   "editor.parameterHints.enabled": false,
   "editor.quickSuggestions": {
     "comments": false,
@@ -115,5 +114,7 @@
   ],
   "yaml.validate": false,
   "editor.suggest.localityBonus": true,
-  "workbench.editor.wrapTabs": true
+  "workbench.editor.wrapTabs": true,
+  "emmet.triggerExpansionOnTab": true,
+  "editor.minimap.enabled": false
 }
