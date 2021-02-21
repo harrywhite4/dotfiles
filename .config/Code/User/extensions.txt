@@ -1,0 +1,14 @@
+This isn't actually read by vscode, but these can be installed with
+`code --install-extension`
+
+batisteo.vscode-django
+bungcip.better-toml
+dbaeumer.vscode-eslint
+EditorConfig.EditorConfig
+kddejong.vscode-cfn-lint
+ms-python.python
+ms-python.vscode-pylance
+ms-toolsai.jupyter
+octref.vetur
+redhat.vscode-yaml
+vscodevim.vim
