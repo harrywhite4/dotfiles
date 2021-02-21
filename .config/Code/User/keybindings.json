@@ -7,5 +7,15 @@
     {
         "key": "ctrl+shift+e",
         "command": "-workbench.view.explorer"
-    }
+    },
+    {
+        "key": "alt+]",
+        "command": "workbench.action.editor.nextChange",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+[",
+        "command": "workbench.action.editor.previousChange",
+        "when": "editorTextFocus"
+    },
 ]
