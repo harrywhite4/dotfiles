@@ -30,7 +30,6 @@
   "files.insertFinalNewline": true,
   "gitHistory.showEditorTitleMenuBarIcons": false,
   "gitlens.currentLine.enabled": false,
-  "gitlens.hovers.currentLine.over": "line",
   "javascript.suggest.autoImports": false,
   "javascript.validate.enable": false,
   "python.languageServer": "Pylance",
@@ -116,5 +115,9 @@
   "editor.suggest.localityBonus": true,
   "workbench.editor.wrapTabs": true,
   "emmet.triggerExpansionOnTab": true,
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "gitlens.blame.format": "${id} ${author|15} ${agoOrDate|14-}",
+  "gitlens.showWelcomeOnInstall": false,
+  "gitlens.menus": false,
+  "gitlens.codeLens.enabled": false
 }
