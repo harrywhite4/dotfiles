@@ -119,5 +119,13 @@
   "gitlens.blame.format": "${id} ${author|15} ${agoOrDate|14-}",
   "gitlens.showWelcomeOnInstall": false,
   "gitlens.menus": false,
-  "gitlens.codeLens.enabled": false
+  "gitlens.codeLens.enabled": false,
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false
 }
