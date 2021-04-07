@@ -27,7 +27,6 @@
   ],
   "explorer.confirmDelete": false,
   "extensions.ignoreRecommendations": true,
-  "files.insertFinalNewline": true,
   "gitHistory.showEditorTitleMenuBarIcons": false,
   "gitlens.currentLine.enabled": false,
   "javascript.suggest.autoImports": false,
