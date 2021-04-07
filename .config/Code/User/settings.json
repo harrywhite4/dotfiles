@@ -145,5 +145,6 @@
     "**/*.zshenv": true,
     "**/zshenv": true,
     "**/*.zsh-theme": true
-  }
+  },
+  "problems.decorations.enabled": false
 }
