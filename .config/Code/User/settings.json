@@ -146,5 +146,11 @@
     "**/zshenv": true,
     "**/*.zsh-theme": true
   },
-  "problems.decorations.enabled": false
+  "problems.decorations.enabled": false,
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  }
 }
