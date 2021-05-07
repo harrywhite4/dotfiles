@@ -2,10 +2,15 @@
 
 # ---------- Aliases ----------
 
+osname="$(uname)"
+
 # Color aliases
-alias ls="ls --color=auto"
 alias grep="grep --color=auto"
-alias diff="diff --color=auto"
+if [[ "${osname}" = "Linux" ]]; then
+    # Assume gnu ls and diff which have --color
+    alias ls="ls --color=auto"
+    alias diff="diff --color=auto"
+fi
 
 # General aliases
 alias ll="ls -lah"
@@ -75,7 +80,9 @@ export BC_ENV_ARGS="${HOME}/.bc"
 export GIT_TEMPLATE_DIR=~/.git_template
 export FZF_DEFAULT_COMMAND='rg --files'
 export PIPENV_VENV_IN_PROJECT=1
-export LESS="--RAW-CONTROL-CHARS --quit-if-one-screen --no-init --mouse --wheel-lines 3"
+export LESS="--RAW-CONTROL-CHARS --quit-if-one-screen --no-init"
+# This is picked up by Macos / Free BSD `ls`
+export CLICOLOR=1
 
 # ---------- Completion ----------
 
