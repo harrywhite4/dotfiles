@@ -1,8 +1,12 @@
 # Common config for .bashrc and .zshrc
 
-# ---------- Aliases ----------
-
 osname="$(uname)"
+lessv=0
+if [[ "$(command -v less)" ]]; then
+    lessv=$(less --version | awk 'NR == 1{print $2}')
+fi
+
+# ---------- Aliases ----------
 
 # Color aliases
 alias grep="grep --color=auto"
@@ -81,6 +85,10 @@ export GIT_TEMPLATE_DIR=~/.git_template
 export FZF_DEFAULT_COMMAND='rg --files'
 export PIPENV_VENV_IN_PROJECT=1
 export LESS="--RAW-CONTROL-CHARS --quit-if-one-screen --no-init"
+if [[ "${lessv}" -ge 551 ]]; then
+    # These options aren't available on older less versions
+    LESS="${LESS} --mouse --wheel-lines 3"
+fi
 # This is picked up by Macos / Free BSD `ls`
 export CLICOLOR=1
 
