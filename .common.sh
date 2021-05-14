@@ -28,7 +28,6 @@ alias myip="curl checkip.amazonaws.com"
 alias space="df -h -t ext4"
 alias howbig="du -sh"
 alias stime="/usr/bin/time -p"
-alias open="xdg-open"
 alias randpw="tr -dc '[:graph:]' < /dev/urandom | head -c 30 | sed '\$a\\'"
 
 # Pagers
@@ -60,6 +59,11 @@ alias dcsql="docker-compose exec db psql --user postgres"
 
 # Json
 alias jview="view -c 'set ft=json' -"
+
+# Open alias
+if [ "$(command -v xdg-open)" ]; then
+    alias open="xdg-open"
+fi
 
 # fd alias if installed as fdfind
 if [ "$(command -v fdfind)" ] && [ -z "$(command -v fd)" ]; then
