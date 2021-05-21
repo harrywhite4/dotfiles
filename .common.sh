@@ -103,3 +103,10 @@ if [ "$(command -v aws_completer)" ]; then
 fi
 
 export MANPAGER=less
+
+# ---------- Extra ----------
+
+# Load extra config specific to this machine
+if [ -f "${HOME}/.thisrc.sh" ]; then
+    source "${HOME}/.thisrc.sh"
+fi
