@@ -1,1 +1,29 @@
-source ~/.vim/vimrc
+" Leader
+let mapleader = "\<Space>"
+" Give cursor 7 lines
+set scrolloff=7
+" Show incremental search
+set incsearch
+" Ignore case when searching except when caps used
+set ignorecase
+set smartcase
+" Echo commands
+set showcmd
+" Show current mode
+set showmode
+
+" ---------- Plugins ----------
+
+set commentary
+set surround
+
+" ---------- Mappings ----------
+
+" Formatting
+map Q gq
+" Save
+nnoremap <leader>w :w<cr>
+" Paste
+nnoremap <leader>p "+]p
+" Visual copy
+vnoremap <leader>y "+y
