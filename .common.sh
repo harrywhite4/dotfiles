@@ -101,3 +101,5 @@ export CLICOLOR=1
 if [ "$(command -v aws_completer)" ]; then
     complete -C "aws_completer" aws
 fi
+
+export MANPAGER=less
