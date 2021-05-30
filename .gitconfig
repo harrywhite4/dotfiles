@@ -1,6 +1,6 @@
 [alias]
     s = status
-    sn = status --untracked-files no
+    sn = status --untracked-files=no
     cv = commit --verbose
     lg = log --compact-summary --graph
     gp = grep --untracked --perl-regexp --line-number --column
