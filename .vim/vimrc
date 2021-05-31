@@ -562,6 +562,7 @@ call s:addLinterIfExists(g:neomake_go_enabled_makers, 'govet')
 let g:neomake_cpp_enabled_makers = []
 call s:addLinterIfExists(g:neomake_cpp_enabled_makers, 'cppcheck')
 call s:addLinterIfExists(g:neomake_cpp_enabled_makers, 'cpplint')
+let g:neomake_java_enabled_makers = []
 
 " Linter args
 let g:neomake_mypy_args = [
