@@ -11,6 +11,9 @@
 [branch]
     autoSetupMerge = false
 
+[pull]
+    ff = only
+
 [include]
     path = ~/.gitname
 
