@@ -64,7 +64,10 @@ set nrformats-=octal
 
 " Enable mouse support
 set mouse=a
-set ttymouse=xterm2
+if !has('nvim')
+    " This option was removed in neovim
+    set ttymouse=xterm2
+endif
 
 " Never use the bell
 set belloff=all
