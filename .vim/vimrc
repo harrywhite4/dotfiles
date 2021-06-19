@@ -64,7 +64,7 @@ set nrformats-=octal
 
 " Enable mouse support
 set mouse=a
-if !has('nvim')
+if exists('&ttymouse')
     " This option was removed in neovim
     set ttymouse=xterm2
 endif
