@@ -149,5 +149,8 @@
     "**/.project": true,
     "**/.settings": true,
     "**/.factorypath": true
+  },
+  "[terraform]": {
+    "editor.tabSize": 2
   }
 }
