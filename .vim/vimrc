@@ -27,6 +27,8 @@ if exists("*plug#begin")
     Plug 'pangloss/vim-javascript'
     Plug 'posva/vim-vue'
     Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'mustache/vim-mustache-handlebars'
+    Plug 'udalov/kotlin-vim'
 
     call plug#end()
 endif
