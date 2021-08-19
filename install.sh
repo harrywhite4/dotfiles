@@ -82,6 +82,7 @@ done
 # Link .config files
 find .config -type f | while read -r cpath; do
     cdir=$(dirname "${cpath}")
+    # TODO: handle putting vscode config in ~/Library/Application Support/Code on Macos
     mkdir -p "${TODIR}/${cdir}"
     makelink "${cpath}" "${TODIR}"
 done
