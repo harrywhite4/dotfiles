@@ -390,6 +390,8 @@ command! -range Isort <line1>,<line2>sort /\w\+ /
 command! Make Neomake! | bo copen
 " Prompt for markdown checkboxes
 command! Check %s/\[ \]/[x]/gc
+" Insert the current date
+command! Date r !date "+\%a \%d \%b \%Y"
 
 " -------------------- Mappings --------------------
 
