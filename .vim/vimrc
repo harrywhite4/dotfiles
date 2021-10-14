@@ -112,7 +112,8 @@ set display=lastline
 
 " Grep settings
 set grepformat=%f:%l:%c:%m,%f:%l:%m
-if isdirectory(".git")
+" Check if we are in a git repo (in a git worktree .git is just a file)
+if isdirectory(".git") || filereadable(".git")
     set grepprg=git\ grep\ --untracked\ --perl-regexp\ --line-number\ --column
 elseif executable("rg")
     set grepprg=rg\ --vimgrep\ --smart-case
