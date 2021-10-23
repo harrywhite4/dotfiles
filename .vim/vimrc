@@ -17,9 +17,9 @@ if exists("*plug#begin")
     Plug 'editorconfig/editorconfig-vim'
 
     " LSP
-    Plug 'prabirshrestha/async.vim'
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'mattn/vim-lsp-settings'
+    if has('nvim')
+        Plug 'neovim/nvim-lspconfig'
+    endif
 
     " Language specific plugins
     Plug 'vim-python/python-syntax'
@@ -57,7 +57,7 @@ set autoread
 set number
 
 " Show signs in number column
-if has("patch-8.1.1564")
+if has("patch-8.1.1564") || has('nvim')
     set signcolumn=number
 endif
 
@@ -94,6 +94,8 @@ set showcmd
 
 " Show incremental search
 set incsearch
+" Dont maintain highlighted search
+set nohlsearch
 
 " Patterns ignored when using wildcards
 set wildignore=*.exe,*.dll,*.so,*.pyc
@@ -440,15 +442,6 @@ nnoremap <leader>s :%s/\<<cword>\>/
 nnoremap <leader>yf :call CopyAndPrint(expand("%"))<cr>
 " Save
 nnoremap <leader>w :w<cr>
-" Language server
-nnoremap <leader>] :LspDefinition<cr>
-nnoremap <leader>ld :LspDocumentDiagnostics<cr>
-nnoremap <leader>lh :LspHover<cr>
-nnoremap <leader>ln :LspRename<cr>
-nnoremap <leader>lr :LspReferences<cr>
-nnoremap <leader>la :LspCodeAction<cr>
-nnoremap <leader>ls :LspDocumentSymbol<cr>
-nnoremap <leader>lw :LspWorkspaceSymbol<cr>
 
 " Insert mode maps
 imap <C-@> <C-Space>
@@ -483,30 +476,6 @@ let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:go_highlight_trailing_whitespace_error = 0
 
-" LSP
-let g:lsp_settings_enable_suggestions = 0
-
-" Function called when each buffer enabled
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-endfunction
-
-autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-
-let g:lsp_diagnostics_enabled = 0
-let g:lsp_highlights_enabled = 0
-let g:lsp_textprop_enabled = 0
-let g:lsp_preview_doubletap = 0
-let g:lsp_signature_help_enabled = 0
-let g:lsp_documentation_float = 0
-let g:lsp_preview_float = 1
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_peek_alignment = "top"
-let g:lsp_highlight_references_enabled = 0
-
-" Format go files on save
-autocmd BufWritePre *.go :silent LspDocumentFormatSync
-
 " Neomake
 
 " Temp file location
@@ -536,6 +505,9 @@ let g:neomake_info_sign = {
   \ 'text': 'I>',
   \ 'texthl': 'Normal'
   \ }
+
+" Error display
+let g:neomake_virtualtext_current_error = 0
 
 " Custom makers
 let g:neomake_cloudformation_cfnlint_maker = {
