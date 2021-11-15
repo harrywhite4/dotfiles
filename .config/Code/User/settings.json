@@ -30,7 +30,6 @@
   "gitHistory.showEditorTitleMenuBarIcons": false,
   "gitlens.currentLine.enabled": false,
   "javascript.suggest.autoImports": false,
-  "javascript.validate.enable": false,
   "python.languageServer": "Pylance",
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
