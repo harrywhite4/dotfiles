@@ -3,7 +3,7 @@
     sn = status --untracked-files=no
     cv = commit --verbose
     lg = log --compact-summary --graph
-    gp = grep --untracked --perl-regexp --line-number --column
+    gp = grep --untracked --perl-regexp --line-number --heading
     branches = branch --sort=-committerdate
     mine = log --all --author 'Harry White'
     sum = diff --compact-summary
