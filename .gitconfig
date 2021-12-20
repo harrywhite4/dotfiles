@@ -7,6 +7,7 @@
     branches = branch --sort=-committerdate
     mine = log --all --author 'Harry White'
     sum = diff --compact-summary
+    howmany = rev-list --count HEAD
 
 [branch]
     autoSetupMerge = false
