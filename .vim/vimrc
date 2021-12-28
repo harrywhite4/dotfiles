@@ -431,7 +431,7 @@ nnoremap <leader>ff :find **/*
 nnoremap <leader>fb :Buffers<cr>
 nnoremap <leader>ft :Tags<cr>
 " Git maps
-nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gs :Git<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Gblame<cr>
 " Grep word under cursor
