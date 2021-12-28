@@ -1,10 +1,14 @@
+-- Load vimrc
+vim.cmd [[
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vim/vimrc
+]]
 
-" LSP setup
+-- Faster cursorhold time
+vim.opt.updatetime = 300
 
-lua << EOF
+-- LSP setup
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -46,7 +50,7 @@ local on_attach = function(client, bufnr)
 
   -- Print diagnostics to message area
   -- Adapted from https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
-  local cleared = false
+  local cleared = true
   function PrintDiagnostics(opts, bufnr, line_nr, client_id)
     opts = opts or {}
   
@@ -65,7 +69,7 @@ local on_attach = function(client, bufnr)
     -- Echo the first error
     local diagnostic = line_diagnostics[1]
     if diagnostic ~= nil then
-        vim.api.nvim_echo({{diagnostic.message or "", "Error"}}, false, {})
+        vim.api.nvim_echo({{string.format("Diagnostic: %s", diagnostic.message or ""), "Error"}}, false, {})
         cleared = false
     end
   end
@@ -84,14 +88,10 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
-EOF
 
-" Auto format go files on save
-autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync()
+-- Auto format go files on save
+vim.cmd [[ autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync() ]]
 
-" Turn off neomake for languages we use lsp's for
-let g:neomake_c_enabled_makers = []
-let g:neomake_go_enabled_makers = []
-
-" Faster cursorhold time
-set updatetime=300
+-- Turn off neomake for languages we use lsp's for
+vim.g.neomake_c_enabled_makers = {}
+vim.g.neomake_go_enabled_makers = {}
