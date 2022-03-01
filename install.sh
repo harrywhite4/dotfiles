@@ -118,24 +118,26 @@ done
 process_link ".git_template" "${todir}"
 process_link ".pandoc" "${todir}"
 
-if [ -x "$(command -v wget)" ]; then
-    # Install vim-plug if required
-    if [ ! -f "${vim_plug_file}" ]; then
-	echo "Installing vim-plug..."
-        # Create autoload dir
-	mkdir -p "$(dirname ${vim_plug_file})"
-	# Install vim-plug
-	wget -O "${vim_plug_file}" \
-	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# Install vim-plug if required
+if [ ! -f "${vim_plug_file}" ]; then
+    # Use either wget or curl since some os's come with only wget (like alpine) while others come with only curl (like macOS)
+    if [ -x "$(command -v curl)" ]; then
+        echo "Installing vim-plug with curl"
+        mkdir -p "$(dirname ${vim_plug_file})"
+        curl --fail -o "${vim_plug_file}" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    elif [ -x "$(command -v wget)" ]; then
+        echo "Installing vim-plug with wget"
+        mkdir -p "$(dirname ${vim_plug_file})"
+        wget -O "${vim_plug_file}" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    else
+        echo "Neither wget or curl are installed, skipping vim plugin installation"
     fi
+fi
 
-    # Run PlugInstall if required
-    if [ ! -d "${vim_plugins_dir}" ]; then
-	echo "Installing vim plugins..."
-	vim --not-a-term +PlugInstall +qall > /dev/null
-    fi
-else
-    echo "wget is not installed, vim plugin setup skipped"
+# Run PlugInstall if the directory is missing and we have vim plug installed
+if [ -f "${vim_plug_file}" ] && [ ! -d "${vim_plugins_dir}" ]; then
+    echo "Installing vim plugins..."
+    vim --not-a-term +PlugInstall +qall > /dev/null
 fi
 
 echo "Done!"
