@@ -16,14 +16,13 @@
   "editor.suggestOnTriggerCharacters": false,
   "editor.wrappingIndent": "none",
   "eslint.options": {
-    "rules": {
-      "no-empty": 0
+    "overrideConfig": {
+      "rules":{
+        "no-empty": 0
+      }
     }
   },
   "eslint.run": "onSave",
-  "eslint.workingDirectories": [
-    "assets"
-  ],
   "explorer.confirmDelete": false,
   "extensions.ignoreRecommendations": true,
   "gitHistory.showEditorTitleMenuBarIcons": false,
