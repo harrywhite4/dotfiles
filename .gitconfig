@@ -1,6 +1,7 @@
 [alias]
     s = status
     sn = status --untracked-files=no
+    c = commit
     cv = commit --verbose
     lg = log --compact-summary --graph
     gp = grep --untracked --perl-regexp --line-number --heading
@@ -12,14 +13,14 @@
 [branch]
     autoSetupMerge = false
 
+[commit]
+    verbose = true
+
 [pull]
     ff = only
 
 [include]
     path = ~/.gitname
-
-[credential]
-    helper = netrc -f ~/.netrc.gpg
 
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
