@@ -3,7 +3,9 @@
     sn = status --untracked-files=no
     c = commit
     cv = commit --verbose
-    lg = log --compact-summary --graph
+    # Short for top if the log
+    tog = log -n 3
+    logg = log --compact-summary --graph
     gp = grep --untracked --perl-regexp --line-number --heading
     branches = branch --sort=-committerdate
     mine = log --all --author 'Harry White'
@@ -24,3 +26,9 @@
 
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
+
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
