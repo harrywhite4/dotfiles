@@ -1,7 +1,6 @@
 {
   "editor.autoClosingQuotes": "never",
   "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-  "editor.highlightActiveIndentGuide": false,
   "editor.parameterHints.enabled": false,
   "editor.quickSuggestions": {
     "comments": false,
@@ -9,7 +8,6 @@
     "strings": false
   },
   "editor.renderFinalNewline": false,
-  "editor.renderIndentGuides": false,
   "editor.rulers": [
     100
   ],
@@ -149,5 +147,7 @@
   },
   "[terraform]": {
     "editor.tabSize": 2
-  }
+  },
+  "editor.guides.indentation": false,
+  "editor.guides.highlightActiveIndentation": false
 }
