@@ -8,6 +8,13 @@ source ~/.vim/vimrc
 -- Faster cursorhold time
 vim.opt.updatetime = 300
 
+-- Diagnostic Mappings
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
+
 -- LSP setup
 local nvim_lsp = require('lspconfig')
 
@@ -17,35 +24,33 @@ local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  -- Turn off virtual text
+  -- This is on by default, may want to turn it off in future
   vim.diagnostic.config({
-    virtual_text = false
+    virtual_text = true
   })
 
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = { noremap=true, silent=true }
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>]', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', '<leader>lh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<leader>ln', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<leader>le', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '<leader>lq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<leader>]', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', '<leader>ld', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', '<leader>lh', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<leader>ls', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', '<leader>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders))
+  end, bufopts)
+  vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<leader>lf', vim.lsp.buf.formatting, bufopts)
 
 
   -- Print diagnostics to message area
@@ -74,12 +79,13 @@ local on_attach = function(client, bufnr)
     end
   end
   
-  vim.cmd [[ autocmd CursorHold * lua PrintDiagnostics() ]]
+  -- Disabled for now as doesn't work well with long diagnostic messages
+  -- vim.cmd [[ autocmd CursorHold * lua PrintDiagnostics() ]]
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'clangd', 'gopls' }
+local servers = { 'clangd', 'gopls', 'hls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -95,3 +101,4 @@ vim.cmd [[ autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync() ]]
 -- Turn off neomake for languages we use lsp's for
 vim.g.neomake_c_enabled_makers = {}
 vim.g.neomake_go_enabled_makers = {}
+vim.g.neomake_haskell_enabled_makers = {}
