@@ -7,7 +7,7 @@
     tog = log -n 3
     logg = log --compact-summary --graph
     gp = grep --untracked --perl-regexp --line-number --heading
-    branches = branch --sort=-committerdate
+    branches = branch -vv --sort=-committerdate
     mine = log --all --author 'Harry White'
     sum = diff --compact-summary
     howmany = rev-list --count HEAD
