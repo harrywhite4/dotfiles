@@ -7,7 +7,7 @@
     "other": false,
     "strings": false
   },
-  "editor.renderFinalNewline": false,
+  "editor.renderFinalNewline": "off",
   "editor.rulers": [
     100
   ],
@@ -15,12 +15,17 @@
   "editor.wrappingIndent": "none",
   "eslint.options": {
     "overrideConfig": {
-      "rules":{
-        "no-empty": 0
+      "rules": {
+        "no-empty": 0,
+        "jest/expect-expect": 0
       }
     }
   },
   "eslint.run": "onSave",
+  "eslint.codeActionsOnSave.rules": [
+    "!eslint-comments/*",
+    "*",
+  ],
   "explorer.confirmDelete": false,
   "extensions.ignoreRecommendations": true,
   "gitHistory.showEditorTitleMenuBarIcons": false,
@@ -149,5 +154,12 @@
     "editor.tabSize": 2
   },
   "editor.guides.indentation": false,
-  "editor.guides.highlightActiveIndentation": false
+  "editor.guides.highlightActiveIndentation": false,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "javascript.suggestionActions.enabled": false,
+  "eslint.format.enable": true,
+  "emmet.showAbbreviationSuggestions": false,
+  "editor.fontLigatures": true,
 }
