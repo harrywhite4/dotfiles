@@ -45,12 +45,6 @@ alias thisip="ip -br -4 address | awk '{if (\$2 == \"UP\") { split(\$3, a, \"/\"
 # Git
 alias gittop='cd $(git rev-parse --show-toplevel)'
 
-# Python
-alias python="python3"
-alias pip="pip3"
-alias pr="pipenv run"
-alias prp="pipenv run python"
-
 # Docker
 alias doco="docker-compose"
 
