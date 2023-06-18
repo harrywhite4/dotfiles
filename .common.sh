@@ -40,6 +40,7 @@ fi
 alias mostused="history | awk '{usage[\$2]+=1}END{for(key in usage){print key, usage[key]}}' | sort -nrk 2 | head"
 alias paths="echo \$PATH | awk -F ':' '{for (i=1;i<NF;i++){print \$i}}'"
 alias temps="cat /sys/class/thermal/thermal_zone*/temp | awk '{print \"Thermal Zone \" NR-1 \" \" \$1/1000 \"C\"}'"
+alias thisip="ip -br -4 address | awk '{if (\$2 == \"UP\") { split(\$3, a, \"/\"); print a[1] }}'"
 
 # Git
 alias gittop='cd $(git rev-parse --show-toplevel)'
