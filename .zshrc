@@ -1,5 +1,3 @@
-osname=$(uname)
-
 # Prompt
 setopt promptsubst
 
@@ -29,19 +27,11 @@ setopt hist_ignore_all_dups
 # History search with up/down after typing
 autoload -U up-line-or-beginning-search
 zle -N up-line-or-beginning-search
-if [[ "${osname}" = "Darwin" ]]; then
-    bindkey "^[[A" up-line-or-beginning-search
-else
-    bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
-fi
+bindkey "^[[A" up-line-or-beginning-search
 
 autoload -U down-line-or-beginning-search
 zle -N down-line-or-beginning-search
-if [[ "${osname}" = "Darwin" ]]; then
-    bindkey "^[[B" up-line-or-beginning-search
-else
-    bindkey "${terminfo[kcud1]}" up-line-or-beginning-search
-fi
+bindkey "^[[B" down-line-or-beginning-search
 
 # Set LS_COLORS
 if [[ "$(command -v dircolors)" ]]; then
