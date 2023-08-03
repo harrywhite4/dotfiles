@@ -66,8 +66,9 @@ set nrformats-=octal
 
 " Enable mouse support
 set mouse=a
-if exists('&ttymouse')
-    " This option was removed in neovim
+if exists('&ttymouse') && getenv('TMUX') != v:null
+    " This option was removed in neovim and only neccesary when inside tmux
+    " Actually leads to worse mouse support when outside tmux
     set ttymouse=xterm2
 endif
 
