@@ -15,6 +15,7 @@ if exists("*plug#begin")
     Plug 'dikiaap/minimalist'
     Plug 'neomake/neomake'
     Plug 'editorconfig/editorconfig-vim'
+    Plug 'mattn/emmet-vim'
 
     " LSP
     if has('nvim')
