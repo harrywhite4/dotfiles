@@ -31,7 +31,7 @@ alias stime="/usr/bin/time -p"
 alias randpw="tr -dc '[:graph:]' < /dev/urandom | head -c 30 | sed '\$a\\'"
 
 # Fedoras x vim alias
-if [[ "$(command -v vimx)" ]] then
+if [ "$(command -v vimx)" ]; then
     # Since vim compiled with clipboard support is installed to vimx by the vim-X11 package on fedora
     alias vim=vimx
 fi
