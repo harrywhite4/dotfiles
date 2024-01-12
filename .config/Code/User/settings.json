@@ -1,6 +1,6 @@
 {
   "editor.autoClosingQuotes": "never",
-  "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontFamily": "'IntelOne Mono','Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.parameterHints.enabled": false,
   "editor.quickSuggestions": {
     "comments": false,
@@ -8,9 +8,7 @@
     "strings": false
   },
   "editor.renderFinalNewline": "off",
-  "editor.rulers": [
-    100
-  ],
+  "editor.rulers": [100],
   "editor.suggestOnTriggerCharacters": false,
   "editor.wrappingIndent": "none",
   "eslint.options": {
@@ -22,10 +20,7 @@
     }
   },
   "eslint.run": "onSave",
-  "eslint.codeActionsOnSave.rules": [
-    "!eslint-comments/*",
-    "*",
-  ],
+  "eslint.codeActionsOnSave.rules": ["!eslint-comments/*", "*"],
   "explorer.confirmDelete": false,
   "extensions.ignoreRecommendations": true,
   "gitHistory.showEditorTitleMenuBarIcons": false,
@@ -54,31 +49,16 @@
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "leader",
-        "w"
-      ],
-      "commands": [
-        "workbench.action.files.save"
-      ]
+      "before": ["leader", "w"],
+      "commands": ["workbench.action.files.save"]
     },
     {
-      "before": [
-        "leader",
-        "e"
-      ],
-      "commands": [
-        "workbench.view.explorer"
-      ]
+      "before": ["leader", "e"],
+      "commands": ["workbench.view.explorer"]
     },
     {
-      "before": [
-        "leader",
-        "q"
-      ],
-      "commands": [
-        "workbench.action.closeActiveEditor"
-      ]
+      "before": ["leader", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
     }
   ],
   "yaml.customTags": [
@@ -162,4 +142,6 @@
   "eslint.format.enable": true,
   "emmet.showAbbreviationSuggestions": false,
   "editor.fontLigatures": true,
+  "emmet.showExpandedAbbreviation": "never",
+  "git.openRepositoryInParentFolders": "never"
 }
