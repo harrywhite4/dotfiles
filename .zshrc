@@ -27,7 +27,7 @@ setopt hist_ignore_all_dups
 # History search with up/down after typing
 autoload -U up-line-or-beginning-search
 zle -N up-line-or-beginning-search
-if [[ "$terminfo[kcuu1]" ]]; then
+if [[ "$terminfo[kcuu1]" && "$OSTYPE" != darwin* ]]; then
     bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
 else
     bindkey "^[[A" up-line-or-beginning-search
@@ -35,7 +35,7 @@ fi
 
 autoload -U down-line-or-beginning-search
 zle -N down-line-or-beginning-search
-if [[ "$terminfo[kcud1]" ]]; then
+if [[ "$terminfo[kcud1]" && "$OSTYPE" != darwin* ]]; then
     bindkey "$terminfo[kcud1]" up-line-or-beginning-search
 else
     bindkey "^[[B" down-line-or-beginning-search
