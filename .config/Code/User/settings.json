@@ -1,6 +1,6 @@
 {
   "editor.autoClosingQuotes": "never",
-  "editor.fontFamily": "'IntelOne Mono','Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontFamily": "'Cascadia Code', 'Fira Code', 'IntelOne Mono', 'Droid Sans Mono', 'Droid Sans Fallback', monospace",
   "editor.parameterHints.enabled": false,
   "editor.quickSuggestions": {
     "comments": false,
@@ -20,7 +20,7 @@
     }
   },
   "eslint.run": "onSave",
-  "eslint.codeActionsOnSave.rules": ["!eslint-comments/*", "*"],
+  "eslint.codeActionsOnSave.rules": [],
   "explorer.confirmDelete": false,
   "extensions.ignoreRecommendations": true,
   "gitHistory.showEditorTitleMenuBarIcons": false,
@@ -139,9 +139,9 @@
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "javascript.suggestionActions.enabled": false,
-  "eslint.format.enable": true,
   "emmet.showAbbreviationSuggestions": false,
   "editor.fontLigatures": true,
   "emmet.showExpandedAbbreviation": "never",
-  "git.openRepositoryInParentFolders": "never"
+  "git.openRepositoryInParentFolders": "never",
+  "eslint.format.enable": true
 }
