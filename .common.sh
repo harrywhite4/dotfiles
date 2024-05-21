@@ -1,6 +1,5 @@
 # Common config for .bashrc and .zshrc
 
-osname="$(uname)"
 lessv=0
 if [[ "$(command -v less)" ]]; then
     lessv=$(less --version | awk 'NR == 1{print $2}')
@@ -10,7 +9,7 @@ fi
 
 # Color aliases
 alias grep="grep --color=auto"
-if [[ "${osname}" = "Linux" ]]; then
+if [[ "$OSTYPE" = linux* ]]; then
     # Assume gnu ls and diff which have --color
     alias ls="ls --color=auto"
     alias diff="diff --color=auto"
@@ -31,14 +30,14 @@ alias stime="/usr/bin/time -p"
 alias randpw="tr -dc '[:graph:]' < /dev/urandom | head -c 30 | sed '\$a\\'"
 
 # Fedoras x vim alias
-if [ "$(command -v vimx)" ]; then
+if [[ "$(command -v vimx)" ]]; then
     # Since vim compiled with clipboard support is installed to vimx by the vim-X11 package on fedora
     alias vim=vimx
 fi
 
 # Pagers
 LESS_SCRIPT="/usr/local/share/vim/vim82/macros/less.sh"
-if [ -f "$LESS_SCRIPT" ]; then
+if [[ -f "$LESS_SCRIPT" ]]; then
     alias vless="$LESS_SCRIPT"
 fi
 
