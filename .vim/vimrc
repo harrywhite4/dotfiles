@@ -173,6 +173,8 @@ set report=0
 
 " Let vim set window title
 set title
+" Keep titles relatively short
+set titlelen=30
 
 " Data saved with session
 set sessionoptions-=options
@@ -201,18 +203,11 @@ set guioptions=PdimgtrL
 set formatoptions=crqnlj
 set formatlistpat="\v^\s*(\d+[\]:\.\)\}\t ]|[\-\+\*]\s)\s*"
 
-" Determine os
-let os_name = 'non-unix'
-if executable('uname')
-    silent let os_name = trim(system('uname'), "\n")
-endif
-
 " Colors
 set background=dark
 
 " Set underline curl and color sequences
-" Assume using a terminal without this capability on macos
-if has('patch-8.2.0863') && os_name != "Darwin"
+if has('patch-8.2.0863')
     let &t_AU = "\e[58;5;%dm"
     let &t_Cs = "\e[4:3m"
     let &t_Ce = "\e[4:0m"
@@ -241,7 +236,7 @@ augroup highlights
         \ highlight User2 cterm=bold ctermbg=24 gui=bold guibg=#005f87 |
         \ highlight User3 cterm=bold ctermbg=239 ctermfg=167 gui=bold guibg=#4e4e4e guifg=#d75f5f
 
-    if has("patch-8.2.0863") && os_name != "Darwin"
+    if has("patch-8.2.0863")
         autocmd colorscheme *
             \ highlight SpellBad cterm=undercurl ctermul=167 ctermfg=NONE ctermbg=NONE |
             \ highlight SpellCap cterm=undercurl ctermul=74 ctermfg=NONE ctermbg=NONE |
