@@ -50,7 +50,8 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<leader>lf', vim.lsp.buf.formatting, bufopts)
+  -- This needs to be updated as buf.formatting is deprecated
+  -- vim.keymap.set('n', '<leader>lf', vim.lsp.buf.formatting, bufopts)
 
 
   -- Print diagnostics to message area
@@ -85,7 +86,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'clangd', 'gopls', 'hls' }
+local servers = { 'clangd', 'gopls', 'hls', 'pyright' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -102,3 +103,4 @@ vim.cmd [[ autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync() ]]
 vim.g.neomake_c_enabled_makers = {}
 vim.g.neomake_go_enabled_makers = {}
 vim.g.neomake_haskell_enabled_makers = {}
+vim.g.neomake_python_enabled_makers = {}
