@@ -1,7 +1,7 @@
 " Markdown previews with pandoc
 " Uses template at .pandoc/templates/gfm.html
 
-let s:preview_file = "/tmp/mdpreview.html"
+let s:preview_file = tempname()
 
 " Create a rendered preview html file
 " Return success status
@@ -19,7 +19,7 @@ endfunction
 " Get browser to open preview with
 function! s:getBrowser()
     let benv = getenv("BROWSER")
-    if benv
+    if benv != v:null
         return benv
     endif
     return "firefox"
@@ -32,6 +32,7 @@ function! s:showPreview()
     call system(cmd)
     if v:shell_error
         echoerr "Could not open browser"
+        echoerr cmd
     endif
 endfunction
 
