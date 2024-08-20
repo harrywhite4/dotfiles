@@ -16,6 +16,7 @@ set showmode
 
 set commentary
 set surround
+set NERDTree
 
 " ---------- Mappings ----------
 
