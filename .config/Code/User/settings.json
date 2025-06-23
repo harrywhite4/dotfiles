@@ -1,6 +1,6 @@
 {
   "editor.autoClosingQuotes": "never",
-  "editor.fontFamily": "'Cascadia Code', 'Fira Code', 'IntelOne Mono', 'Droid Sans Mono', 'Droid Sans Fallback', monospace",
+  "editor.fontFamily": "'Rec Mono Duo','Anonymous Pro','Cascadia Code', 'Fira Code', 'IntelOne Mono', 'Droid Sans Mono', 'Droid Sans Fallback', monospace",
   "editor.parameterHints.enabled": false,
   "editor.quickSuggestions": {
     "comments": false,
@@ -143,5 +143,9 @@
   "editor.fontLigatures": true,
   "emmet.showExpandedAbbreviation": "never",
   "git.openRepositoryInParentFolders": "never",
-  "eslint.format.enable": true
+  "eslint.format.enable": true,
+  "editor.fontSize": 14,
+  "python.analysis.typeCheckingMode": "standard",
+  "redhat.telemetry.enabled": true,
+  "editor.renderWhitespace": "none",
 }
