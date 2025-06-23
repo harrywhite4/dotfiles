@@ -26,10 +26,10 @@ if exists("*plug#begin")
     Plug 'vim-python/python-syntax'
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'pangloss/vim-javascript'
-    Plug 'posva/vim-vue'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'mustache/vim-mustache-handlebars'
     Plug 'udalov/kotlin-vim'
+    Plug 'hashivim/vim-terraform'
 
     call plug#end()
 endif
@@ -191,13 +191,15 @@ set foldnestmax=20
 
 " Windows
 set equalalways
-set eadirection="hor"
+set eadirection=hor
 
 " Show column at textwidth +1 if textwidth is set
 set colorcolumn=+1
 
 " GUI
-set guioptions=PdimgtrL
+if exists("&guioptions") && !has("nvim")
+    set guioptions=PdimgtrL
+endif
 
 " Formatting (see :h fo-table)
 set formatoptions=crqnlj
