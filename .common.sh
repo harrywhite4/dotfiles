@@ -27,7 +27,7 @@ alias myip="curl checkip.amazonaws.com"
 alias space="df -h -t ext4"
 alias howbig="du -sh"
 alias stime="/usr/bin/time -p"
-alias randpw="python3 -c 'import string; import secrets; print(\"\".join([secrets.choice(string.ascii_letters + string.digits + \"!@#$%^&*\") for x in range(30)]))'"
+alias randpw="python3 -c 'import string, secrets; print(\"\".join([secrets.choice(string.ascii_letters + string.digits + \"!@#$%^&*\") for x in range(30)]))'"
 
 # Fedoras x vim alias
 if [[ "$(command -v vimx)" ]]; then
