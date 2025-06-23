@@ -98,7 +98,7 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Auto format go files on save
-vim.cmd [[ autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync() ]]
+vim.cmd [[ autocmd BufWritePre *.go lua vim.lsp.buf.format({async = false}) ]]
 
 -- Turn off neomake for languages we use lsp's for
 vim.g.neomake_c_enabled_makers = {}
