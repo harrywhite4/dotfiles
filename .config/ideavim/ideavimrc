@@ -28,3 +28,10 @@ nnoremap <leader>w :w<cr>
 nnoremap <leader>p "+]p
 " Visual copy
 vnoremap <leader>y "+y
+" Navigations similar to vim-unimpaired
+map ]q <Action>(GotoNextError)
+map [q <Action>(GotoPreviousError)
+map ]c <Action>(VcsShowNextChangeMarker)
+map [c <Action>(VcsShowPrevChangeMarker)
+" Other
+map <leader>b <Action>(ToggleLineBreakpoint)
