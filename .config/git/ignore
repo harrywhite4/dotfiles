@@ -1,3 +1,7 @@
+# Per-repo vim config
 /.vimrc
+# Tags files
 /.vscode/tags
 /tags
+# Misc data I don't want to commit
+/_d
