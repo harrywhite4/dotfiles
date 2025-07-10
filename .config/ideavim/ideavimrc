@@ -35,3 +35,4 @@ map ]c <Action>(VcsShowNextChangeMarker)
 map [c <Action>(VcsShowPrevChangeMarker)
 " Other
 map <leader>b <Action>(ToggleLineBreakpoint)
+map gh <Action>(QuickJavaDoc)
