@@ -17,7 +17,7 @@ if exists("*plug#begin")
     Plug 'editorconfig/editorconfig-vim'
     Plug 'mattn/emmet-vim'
 
-    " LSP
+    " nvim only
     if has('nvim')
         Plug 'neovim/nvim-lspconfig'
     endif
@@ -132,7 +132,7 @@ else
 endif
 
 " Completion
-set completeopt=menu,menuone,noinsert
+set completeopt=menu,menuone,noinsert,noselect
 set complete=.,w,b,u,t
 set pumheight=10
 if has("patch-8.1.1880")
