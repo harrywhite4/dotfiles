@@ -33,6 +33,14 @@ map ]q <Action>(GotoNextError)
 map [q <Action>(GotoPreviousError)
 map ]c <Action>(VcsShowNextChangeMarker)
 map [c <Action>(VcsShowPrevChangeMarker)
+map ]m <Action>(MethodDown)
+map [m <Action>(MethodUp)
 " Other
 map <leader>b <Action>(ToggleLineBreakpoint)
+" Hovers
 map gh <Action>(QuickJavaDoc)
+map ge <Action>(ShowErrorDescription)
+" Refactoring and such
+map <leader>ln <Action>(RenameElement)
+map <leader>lr <Action>(FindUsages)
+map <leader>li <Action>(GotoImplementation)
