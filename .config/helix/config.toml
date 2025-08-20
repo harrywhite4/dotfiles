@@ -1,6 +1,28 @@
 theme = "jellybeans"
 
+[editor]
+color-modes = true
+auto-completion = false
+auto-format = false
+
 [editor.cursor-shape]
 normal = "block"
 insert = "bar"
 select = "block"
+
+[editor.statusline]
+left = [
+  "mode",
+  "spinner",
+  "version-control",
+  "file-name",
+  "file-modification-indicator",
+]
+right = [
+  "diagnostics",
+  "selections",
+  "register",
+  "position",
+  "position-percentage",
+  "file-encoding",
+]
