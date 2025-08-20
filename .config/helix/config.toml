@@ -26,3 +26,9 @@ right = [
   "position-percentage",
   "file-encoding",
 ]
+
+[editor.lsp]
+auto-signature-help = false
+
+[keys.insert]
+C-space = "completion"
