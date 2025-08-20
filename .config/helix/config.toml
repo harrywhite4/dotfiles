@@ -32,3 +32,4 @@ auto-signature-help = false
 
 [keys.insert]
 C-space = "completion"
+"C-[" = "normal_mode"
