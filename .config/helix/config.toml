@@ -30,6 +30,11 @@ right = [
 [editor.lsp]
 auto-signature-help = false
 
+[keys.normal."-"]
+s = ":write"
+d = ":append-output date +'%%a %%d %%b %%Y'"
+q = ":write-quit"
+
 [keys.insert]
 C-space = "completion"
 "C-[" = "normal_mode"
