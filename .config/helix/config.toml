@@ -30,7 +30,7 @@ right = [
 [editor.lsp]
 auto-signature-help = false
 
-[keys.normal."-"]
+[keys.normal."tab"]
 s = ":write"
 d = ":append-output date +'%%a %%d %%b %%Y'"
 q = ":write-quit"
