@@ -1,0 +1,4 @@
+[[language]]
+name = "markdown"
+text-width = 100
+rulers = [101]
