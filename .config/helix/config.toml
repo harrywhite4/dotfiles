@@ -34,6 +34,8 @@ auto-signature-help = false
 s = ":write"
 d = ":append-output date +'%%a %%d %%b %%Y'"
 q = ":write-quit"
+# TODO: Make it not macos specific
+y = ":sh echo \"%{buffer_name}\" | pbcopy"
 
 [keys.insert]
 C-space = "completion"
