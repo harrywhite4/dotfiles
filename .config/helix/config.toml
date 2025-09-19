@@ -30,6 +30,12 @@ right = [
 [editor.lsp]
 auto-signature-help = false
 
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'<' = '>'
+
 [keys.normal."tab"]
 s = ":write"
 d = ":append-output date +'%%a %%d %%b %%Y'"
