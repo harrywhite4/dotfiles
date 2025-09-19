@@ -2,3 +2,17 @@
 name = "markdown"
 text-width = 100
 rulers = [101]
+
+[[language]]
+name = "html"
+text-width = 100
+rulers = [101]
+
+[[language]]
+name = "json"
+formatter = { command = "jq", args = [".", "%{buffer_name}"]}
+
+[[language]]
+name = "xml"
+# There is some weirdness with this and files in subdirectories but whatever
+formatter = { command = "xmllint", args = ["--format", "%{buffer_name}"]}
