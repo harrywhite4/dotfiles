@@ -10,9 +10,8 @@ rulers = [101]
 
 [[language]]
 name = "json"
-formatter = { command = "jq", args = [".", "%{buffer_name}"]}
+formatter = {command = "jq", args = ["."]}
 
 [[language]]
 name = "xml"
-# There is some weirdness with this and files in subdirectories but whatever
-formatter = { command = "xmllint", args = ["--format", "%{buffer_name}"]}
+formatter = {command = "xmllint", args = ["--format", "-"]}
