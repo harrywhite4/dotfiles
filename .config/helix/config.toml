@@ -43,6 +43,8 @@ q = ":write-quit"
 # TODO: Make it not macos specific
 y = ":sh echo \"%{buffer_name}\" | pbcopy"
 b = ":sh git blame -L %{cursor_line},+1 %{buffer_name}"
+# Move a line to the bottom of a file. For marking as done in my todo lists
+n = "@xdgep<C-o>"
 
 [keys.insert]
 C-space = "completion"
