@@ -79,7 +79,8 @@ fi
 # ---------- Variables ----------
 
 # Default editor
-export EDITOR="vim"
+export EDITOR="hx"
+alias e="$EDITOR"
 
 # Default browser
 export BROWSER="firefox"
